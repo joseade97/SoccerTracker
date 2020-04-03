@@ -1,0 +1,66 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ProyectoMaster.master.cs" Inherits="Proyecto.formularios.ProyectoMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />    
+    <style>
+        .carousel-inner .item img {
+            width: auto;
+            margin: auto;
+            height:auto;
+            max-height:300px;
+        }       
+    </style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        <%-- Acá se incluye los scripts específicos de las páginas hijas --%>
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <form id="frAppBootstrap" runat="server">
+    <div class="jumbotron text-center" id="divEncabezadoPagina">
+        <h1>Sistema de administración de Fútbol</h1>        
+    </div>
+    <div class="container" id="divContenedorContenido">
+        <div class="col-sm-4">
+            <h3>Opciones de Menú</h3>
+            <h4>Campeonatos:</h4>
+                <asp:HyperLink ID="hpfCampeonatosRegistro" runat="server" NavigateUrl="~/Formularios/frmCampeonatosRegistro.aspx">Registro Campeonatos</asp:HyperLink>
+                 <br />
+                 <asp:HyperLink ID="hpfCampeonatosModifica" runat="server" NavigateUrl="~/Formularios/frmCampeonatosModifica.aspx">Modifica Campeonatos</asp:HyperLink>
+                 <br />
+                 <asp:HyperLink ID="hpfCampeonatosElimina" runat="server" NavigateUrl="~/Formularios/frmCampeonatosElimina.aspx">Elimina Campeonatos</asp:HyperLink>
+                 
+                 <br />
+             </div>         
+             <div class="col-sm-4">
+                 <h3>Contenido 2</h3>
+                  <p>Línea 1 del contenido 2</p>
+                  <p>Línea 2 del contenido 2</p>
+             </div>         
+             <div class="col-sm-4">
+                 <h3>Opciones del Sistema</h3>
+                  <p>
+                      <asp:HyperLink ID="hpfSalir" runat="server" NavigateUrl="~/Formularios/frmSalir.aspx">Salir</asp:HyperLink>
+                 </p>
+                  <p>Línea 2 del contenido 3</p>
+             </div>
+         </div>
+      
+         <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <%-- Acá se incluye el contenido de las páginas hijas --%>
+            </asp:ContentPlaceHolder>
+         </div>
+       </div>
+    </form>
+    <%-- Siempre es buena práctica incluir las referencias a los scripts posterior a todas las etiquetas --%>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script> 
+
+</body>
+</html>
