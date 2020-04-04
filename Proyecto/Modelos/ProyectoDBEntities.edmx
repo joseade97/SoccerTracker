@@ -1,0 +1,1142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="progra5Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Campeonatos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fec_inicio" Type="datetime" />
+          <Property Name="fec_fin" Type="datetime" />
+          <Property Name="cant_equipos" Type="int" Nullable="false" />
+          <Property Name="id_dedicado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cantones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="usuario_creacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
+          <Property Name="usuario_modificacion" Type="varchar" MaxLength="50" />
+          <Property Name="fecha_ult_mod" Type="datetime" />
+          <Property Name="vc_estado" Type="varchar" MaxLength="3" />
+          <Property Name="id_canton_inec" Type="int" Nullable="false" />
+          <Property Name="id_provincia" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Distritos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="usuario_creacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
+          <Property Name="usuario_modificacion" Type="varchar" MaxLength="50" />
+          <Property Name="fecha_ult_mod" Type="datetime" />
+          <Property Name="vc_estado" Type="varchar" MaxLength="3" />
+          <Property Name="id_distrito_inec" Type="int" Nullable="false" />
+          <Property Name="id_canton" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Equipos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="id_fundador" Type="int" />
+          <Property Name="id_distrito" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Equipos_x_Campeonato">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_equipo" Type="int" Nullable="false" />
+          <Property Name="id_campeonato" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Eventos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_evento" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Eventos_x_Partido">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_jugador" Type="int" Nullable="false" />
+          <Property Name="id_partido" Type="int" Nullable="false" />
+          <Property Name="id_evento" Type="int" Nullable="false" />
+          <Property Name="minuto_evento" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Jugadores">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_persona" Type="int" Nullable="false" />
+          <Property Name="id_equipo" Type="int" Nullable="false" />
+          <Property Name="id_posicion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Partidos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="id_casa" Type="int" Nullable="false" />
+          <Property Name="id_visita" Type="int" Nullable="false" />
+          <Property Name="resultado" Type="char" MaxLength="1" />
+          <Property Name="cant_faltas_casa" Type="int" Nullable="false" />
+          <Property Name="cant_faltas_visita" Type="int" Nullable="false" />
+          <Property Name="posesion_casa" Type="float" Nullable="false" />
+          <Property Name="posesion_visita" Type="float" Nullable="false" />
+          <Property Name="tiros_marco_casa" Type="int" Nullable="false" />
+          <Property Name="tiros_marco_visita" Type="int" Nullable="false" />
+          <Property Name="tiros_total_casa" Type="int" Nullable="false" />
+          <Property Name="tiros_total_visita" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ape1" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ape2" Type="varchar" MaxLength="30" />
+          <Property Name="correo" Type="varchar" MaxLength="60" />
+          <Property Name="num_identificacion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="tipo_identificacion" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="genero" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="telefono_principal" Type="int" Nullable="false" />
+          <Property Name="telefono_secundario" Type="int" />
+          <Property Name="direccion_fisica" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="fec_nacimiento" Type="datetime" />
+          <Property Name="id_distrito" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Posiciones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="codigo_posicion" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Provincias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="usuario_creacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
+          <Property Name="usuario_modificacion" Type="varchar" MaxLength="50" />
+          <Property Name="fecha_ult_mod" Type="datetime" />
+          <Property Name="vc_estado" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_usuario" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="hashed_pass" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="es_admin" Type="bit" Nullable="false" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+          <Property Name="id_persona" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Campeonat__id_de__76969D2E">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
+          <End Role="Campeonatos" Type="Self.Campeonatos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Campeonatos">
+              <PropertyRef Name="id_dedicado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cantones__id_pro__5DCAEF64">
+          <End Role="Provincias" Type="Self.Provincias" Multiplicity="1" />
+          <End Role="Cantones" Type="Self.Cantones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincias">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cantones">
+              <PropertyRef Name="id_provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Distritos__id_ca__60A75C0F">
+          <End Role="Cantones" Type="Self.Cantones" Multiplicity="1" />
+          <End Role="Distritos" Type="Self.Distritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cantones">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Distritos">
+              <PropertyRef Name="id_canton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipos__id_dist__6D0D32F4">
+          <End Role="Distritos" Type="Self.Distritos" Multiplicity="1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distritos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="id_distrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipos__id_fund__6C190EBB">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="id_fundador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipos_x__id_ca__7A672E12">
+          <End Role="Campeonatos" Type="Self.Campeonatos" Multiplicity="1" />
+          <End Role="Equipos_x_Campeonato" Type="Self.Equipos_x_Campeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campeonatos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Equipos_x_Campeonato">
+              <PropertyRef Name="id_campeonato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipos_x__id_eq__797309D9">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
+          <End Role="Equipos_x_Campeonato" Type="Self.Equipos_x_Campeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Equipos_x_Campeonato">
+              <PropertyRef Name="id_equipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Eventos_x__id_ev__04E4BC85">
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="1" />
+          <End Role="Eventos_x_Partido" Type="Self.Eventos_x_Partido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Eventos_x_Partido">
+              <PropertyRef Name="id_evento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Eventos_x__id_ju__02FC7413">
+          <End Role="Jugadores" Type="Self.Jugadores" Multiplicity="1" />
+          <End Role="Eventos_x_Partido" Type="Self.Eventos_x_Partido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jugadores">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Eventos_x_Partido">
+              <PropertyRef Name="id_jugador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Eventos_x__id_pa__03F0984C">
+          <End Role="Partidos" Type="Self.Partidos" Multiplicity="1" />
+          <End Role="Eventos_x_Partido" Type="Self.Eventos_x_Partido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partidos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Eventos_x_Partido">
+              <PropertyRef Name="id_partido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Jugadores__id_eq__72C60C4A">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
+          <End Role="Jugadores" Type="Self.Jugadores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Jugadores">
+              <PropertyRef Name="id_equipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Jugadores__id_pe__71D1E811">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
+          <End Role="Jugadores" Type="Self.Jugadores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Jugadores">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Jugadores__id_po__73BA3083">
+          <End Role="Posiciones" Type="Self.Posiciones" Multiplicity="1" />
+          <End Role="Jugadores" Type="Self.Jugadores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posiciones">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Jugadores">
+              <PropertyRef Name="id_posicion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Partidos__id_cas__7D439ABD">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
+          <End Role="Partidos" Type="Self.Partidos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Partidos">
+              <PropertyRef Name="id_casa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Partidos__id_vis__7E37BEF6">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
+          <End Role="Partidos" Type="Self.Partidos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Partidos">
+              <PropertyRef Name="id_visita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Personas__id_dis__656C112C">
+          <End Role="Distritos" Type="Self.Distritos" Multiplicity="1" />
+          <End Role="Personas" Type="Self.Personas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distritos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Personas">
+              <PropertyRef Name="id_distrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__id_per__693CA210">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="progra5ModelStoreContainer">
+          <EntitySet Name="Campeonatos" EntityType="Self.Campeonatos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cantones" EntityType="Self.Cantones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Distritos" EntityType="Self.Distritos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipos" EntityType="Self.Equipos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipos_x_Campeonato" EntityType="Self.Equipos_x_Campeonato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Eventos" EntityType="Self.Eventos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Eventos_x_Partido" EntityType="Self.Eventos_x_Partido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jugadores" EntityType="Self.Jugadores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Partidos" EntityType="Self.Partidos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Posiciones" EntityType="Self.Posiciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provincias" EntityType="Self.Provincias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Campeonat__id_de__76969D2E" Association="Self.FK__Campeonat__id_de__76969D2E">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Campeonatos" EntitySet="Campeonatos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cantones__id_pro__5DCAEF64" Association="Self.FK__Cantones__id_pro__5DCAEF64">
+            <End Role="Provincias" EntitySet="Provincias" />
+            <End Role="Cantones" EntitySet="Cantones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Distritos__id_ca__60A75C0F" Association="Self.FK__Distritos__id_ca__60A75C0F">
+            <End Role="Cantones" EntitySet="Cantones" />
+            <End Role="Distritos" EntitySet="Distritos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipos__id_dist__6D0D32F4" Association="Self.FK__Equipos__id_dist__6D0D32F4">
+            <End Role="Distritos" EntitySet="Distritos" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipos__id_fund__6C190EBB" Association="Self.FK__Equipos__id_fund__6C190EBB">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipos_x__id_ca__7A672E12" Association="Self.FK__Equipos_x__id_ca__7A672E12">
+            <End Role="Campeonatos" EntitySet="Campeonatos" />
+            <End Role="Equipos_x_Campeonato" EntitySet="Equipos_x_Campeonato" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipos_x__id_eq__797309D9" Association="Self.FK__Equipos_x__id_eq__797309D9">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Equipos_x_Campeonato" EntitySet="Equipos_x_Campeonato" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Eventos_x__id_ev__04E4BC85" Association="Self.FK__Eventos_x__id_ev__04E4BC85">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="Eventos_x_Partido" EntitySet="Eventos_x_Partido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Eventos_x__id_ju__02FC7413" Association="Self.FK__Eventos_x__id_ju__02FC7413">
+            <End Role="Jugadores" EntitySet="Jugadores" />
+            <End Role="Eventos_x_Partido" EntitySet="Eventos_x_Partido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Eventos_x__id_pa__03F0984C" Association="Self.FK__Eventos_x__id_pa__03F0984C">
+            <End Role="Partidos" EntitySet="Partidos" />
+            <End Role="Eventos_x_Partido" EntitySet="Eventos_x_Partido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Jugadores__id_eq__72C60C4A" Association="Self.FK__Jugadores__id_eq__72C60C4A">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Jugadores" EntitySet="Jugadores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Jugadores__id_pe__71D1E811" Association="Self.FK__Jugadores__id_pe__71D1E811">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Jugadores" EntitySet="Jugadores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Jugadores__id_po__73BA3083" Association="Self.FK__Jugadores__id_po__73BA3083">
+            <End Role="Posiciones" EntitySet="Posiciones" />
+            <End Role="Jugadores" EntitySet="Jugadores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Partidos__id_cas__7D439ABD" Association="Self.FK__Partidos__id_cas__7D439ABD">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Partidos" EntitySet="Partidos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Partidos__id_vis__7E37BEF6" Association="Self.FK__Partidos__id_vis__7E37BEF6">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Partidos" EntitySet="Partidos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Personas__id_dis__656C112C" Association="Self.FK__Personas__id_dis__656C112C">
+            <End Role="Distritos" EntitySet="Distritos" />
+            <End Role="Personas" EntitySet="Personas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__id_per__693CA210" Association="Self.FK__Usuarios__id_per__693CA210">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="progra5Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Campeonato">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fec_inicio" Type="DateTime" Precision="3" />
+          <Property Name="fec_fin" Type="DateTime" Precision="3" />
+          <Property Name="cant_equipos" Type="Int32" Nullable="false" />
+          <Property Name="id_dedicado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Campeonat__id_de__76969D2E" FromRole="Campeonatos" ToRole="Personas" />
+          <NavigationProperty Name="Equipos_x_Campeonato" Relationship="Self.FK__Equipos_x__id_ca__7A672E12" FromRole="Campeonatos" ToRole="Equipos_x_Campeonato" />
+        </EntityType>
+        <EntityType Name="Cantone">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usuario_creacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuario_modificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ult_mod" Type="DateTime" Precision="3" />
+          <Property Name="vc_estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="id_canton_inec" Type="Int32" Nullable="false" />
+          <Property Name="id_provincia" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Provincia" Relationship="Self.FK__Cantones__id_pro__5DCAEF64" FromRole="Cantones" ToRole="Provincias" />
+          <NavigationProperty Name="Distritos" Relationship="Self.FK__Distritos__id_ca__60A75C0F" FromRole="Cantones" ToRole="Distritos" />
+        </EntityType>
+        <EntityType Name="Distrito">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usuario_creacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuario_modificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ult_mod" Type="DateTime" Precision="3" />
+          <Property Name="vc_estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="id_distrito_inec" Type="Int32" Nullable="false" />
+          <Property Name="id_canton" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cantone" Relationship="Self.FK__Distritos__id_ca__60A75C0F" FromRole="Distritos" ToRole="Cantones" />
+          <NavigationProperty Name="Equipos" Relationship="Self.FK__Equipos__id_dist__6D0D32F4" FromRole="Distritos" ToRole="Equipos" />
+          <NavigationProperty Name="Personas" Relationship="Self.FK__Personas__id_dis__656C112C" FromRole="Distritos" ToRole="Personas" />
+        </EntityType>
+        <EntityType Name="Equipos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_fundador" Type="Int32" />
+          <Property Name="id_distrito" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Distrito" Relationship="Self.FK__Equipos__id_dist__6D0D32F4" FromRole="Equipos" ToRole="Distritos" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Equipos__id_fund__6C190EBB" FromRole="Equipos" ToRole="Personas" />
+          <NavigationProperty Name="Equipos_x_Campeonato" Relationship="Self.FK__Equipos_x__id_eq__797309D9" FromRole="Equipos" ToRole="Equipos_x_Campeonato" />
+          <NavigationProperty Name="Jugadores" Relationship="Self.FK__Jugadores__id_eq__72C60C4A" FromRole="Equipos" ToRole="Jugadores" />
+          <NavigationProperty Name="Partidos" Relationship="Self.FK__Partidos__id_cas__7D439ABD" FromRole="Equipos" ToRole="Partidos" />
+          <NavigationProperty Name="Partidos1" Relationship="Self.FK__Partidos__id_vis__7E37BEF6" FromRole="Equipos" ToRole="Partidos" />
+        </EntityType>
+        <EntityType Name="Equipos_x_Campeonato">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_equipo" Type="Int32" Nullable="false" />
+          <Property Name="id_campeonato" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Campeonato" Relationship="Self.FK__Equipos_x__id_ca__7A672E12" FromRole="Equipos_x_Campeonato" ToRole="Campeonatos" />
+          <NavigationProperty Name="Equipos" Relationship="Self.FK__Equipos_x__id_eq__797309D9" FromRole="Equipos_x_Campeonato" ToRole="Equipos" />
+        </EntityType>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_evento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Eventos_x_Partido" Relationship="Self.FK__Eventos_x__id_ev__04E4BC85" FromRole="Eventos" ToRole="Eventos_x_Partido" />
+        </EntityType>
+        <EntityType Name="Eventos_x_Partido">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_jugador" Type="Int32" Nullable="false" />
+          <Property Name="id_partido" Type="Int32" Nullable="false" />
+          <Property Name="id_evento" Type="Int32" Nullable="false" />
+          <Property Name="minuto_evento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Evento" Relationship="Self.FK__Eventos_x__id_ev__04E4BC85" FromRole="Eventos_x_Partido" ToRole="Eventos" />
+          <NavigationProperty Name="Jugadore" Relationship="Self.FK__Eventos_x__id_ju__02FC7413" FromRole="Eventos_x_Partido" ToRole="Jugadores" />
+          <NavigationProperty Name="Partido" Relationship="Self.FK__Eventos_x__id_pa__03F0984C" FromRole="Eventos_x_Partido" ToRole="Partidos" />
+        </EntityType>
+        <EntityType Name="Jugadore">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_persona" Type="Int32" Nullable="false" />
+          <Property Name="id_equipo" Type="Int32" Nullable="false" />
+          <Property Name="id_posicion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Equipos" Relationship="Self.FK__Jugadores__id_eq__72C60C4A" FromRole="Jugadores" ToRole="Equipos" />
+          <NavigationProperty Name="Eventos_x_Partido" Relationship="Self.FK__Eventos_x__id_ju__02FC7413" FromRole="Jugadores" ToRole="Eventos_x_Partido" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Jugadores__id_pe__71D1E811" FromRole="Jugadores" ToRole="Personas" />
+          <NavigationProperty Name="Posicione" Relationship="Self.FK__Jugadores__id_po__73BA3083" FromRole="Jugadores" ToRole="Posiciones" />
+        </EntityType>
+        <EntityType Name="Partido">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="id_casa" Type="Int32" Nullable="false" />
+          <Property Name="id_visita" Type="Int32" Nullable="false" />
+          <Property Name="resultado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cant_faltas_casa" Type="Int32" Nullable="false" />
+          <Property Name="cant_faltas_visita" Type="Int32" Nullable="false" />
+          <Property Name="posesion_casa" Type="Double" Nullable="false" />
+          <Property Name="posesion_visita" Type="Double" Nullable="false" />
+          <Property Name="tiros_marco_casa" Type="Int32" Nullable="false" />
+          <Property Name="tiros_marco_visita" Type="Int32" Nullable="false" />
+          <Property Name="tiros_total_casa" Type="Int32" Nullable="false" />
+          <Property Name="tiros_total_visita" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Equipos" Relationship="Self.FK__Partidos__id_cas__7D439ABD" FromRole="Partidos" ToRole="Equipos" />
+          <NavigationProperty Name="Equipos1" Relationship="Self.FK__Partidos__id_vis__7E37BEF6" FromRole="Partidos" ToRole="Equipos" />
+          <NavigationProperty Name="Eventos_x_Partido" Relationship="Self.FK__Eventos_x__id_pa__03F0984C" FromRole="Partidos" ToRole="Eventos_x_Partido" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ape1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ape2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="num_identificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo_identificacion" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="genero" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="telefono_principal" Type="Int32" Nullable="false" />
+          <Property Name="telefono_secundario" Type="Int32" />
+          <Property Name="direccion_fisica" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fec_nacimiento" Type="DateTime" Precision="3" />
+          <Property Name="id_distrito" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Campeonatos" Relationship="Self.FK__Campeonat__id_de__76969D2E" FromRole="Personas" ToRole="Campeonatos" />
+          <NavigationProperty Name="Distrito" Relationship="Self.FK__Personas__id_dis__656C112C" FromRole="Personas" ToRole="Distritos" />
+          <NavigationProperty Name="Equipos" Relationship="Self.FK__Equipos__id_fund__6C190EBB" FromRole="Personas" ToRole="Equipos" />
+          <NavigationProperty Name="Jugadores" Relationship="Self.FK__Jugadores__id_pe__71D1E811" FromRole="Personas" ToRole="Jugadores" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuarios__id_per__693CA210" FromRole="Personas" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Posicione">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="codigo_posicion" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Jugadores" Relationship="Self.FK__Jugadores__id_po__73BA3083" FromRole="Posiciones" ToRole="Jugadores" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usuario_creacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuario_modificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ult_mod" Type="DateTime" Precision="3" />
+          <Property Name="vc_estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cantones" Relationship="Self.FK__Cantones__id_pro__5DCAEF64" FromRole="Provincias" ToRole="Cantones" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_usuario" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hashed_pass" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="es_admin" Type="Boolean" Nullable="false" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <Property Name="id_persona" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Usuarios__id_per__693CA210" FromRole="Usuarios" ToRole="Personas" />
+        </EntityType>
+        <Association Name="FK__Campeonat__id_de__76969D2E">
+          <End Role="Personas" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Campeonatos" Type="Self.Campeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Campeonatos">
+              <PropertyRef Name="id_dedicado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipos_x__id_ca__7A672E12">
+          <End Role="Campeonatos" Type="Self.Campeonato" Multiplicity="1" />
+          <End Role="Equipos_x_Campeonato" Type="Self.Equipos_x_Campeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campeonatos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Equipos_x_Campeonato">
+              <PropertyRef Name="id_campeonato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cantones__id_pro__5DCAEF64">
+          <End Role="Provincias" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Cantones" Type="Self.Cantone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincias">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cantones">
+              <PropertyRef Name="id_provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Distritos__id_ca__60A75C0F">
+          <End Role="Cantones" Type="Self.Cantone" Multiplicity="1" />
+          <End Role="Distritos" Type="Self.Distrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cantones">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Distritos">
+              <PropertyRef Name="id_canton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipos__id_dist__6D0D32F4">
+          <End Role="Distritos" Type="Self.Distrito" Multiplicity="1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distritos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="id_distrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Personas__id_dis__656C112C">
+          <End Role="Distritos" Type="Self.Distrito" Multiplicity="1" />
+          <End Role="Personas" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distritos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Personas">
+              <PropertyRef Name="id_distrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipos__id_fund__6C190EBB">
+          <End Role="Personas" Type="Self.Persona" Multiplicity="0..1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="id_fundador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipos_x__id_eq__797309D9">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
+          <End Role="Equipos_x_Campeonato" Type="Self.Equipos_x_Campeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Equipos_x_Campeonato">
+              <PropertyRef Name="id_equipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Jugadores__id_eq__72C60C4A">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
+          <End Role="Jugadores" Type="Self.Jugadore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Jugadores">
+              <PropertyRef Name="id_equipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Partidos__id_cas__7D439ABD">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
+          <End Role="Partidos" Type="Self.Partido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Partidos">
+              <PropertyRef Name="id_casa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Partidos__id_vis__7E37BEF6">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
+          <End Role="Partidos" Type="Self.Partido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Partidos">
+              <PropertyRef Name="id_visita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Eventos_x__id_ev__04E4BC85">
+          <End Role="Eventos" Type="Self.Evento" Multiplicity="1" />
+          <End Role="Eventos_x_Partido" Type="Self.Eventos_x_Partido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Eventos_x_Partido">
+              <PropertyRef Name="id_evento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Eventos_x__id_ju__02FC7413">
+          <End Role="Jugadores" Type="Self.Jugadore" Multiplicity="1" />
+          <End Role="Eventos_x_Partido" Type="Self.Eventos_x_Partido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jugadores">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Eventos_x_Partido">
+              <PropertyRef Name="id_jugador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Eventos_x__id_pa__03F0984C">
+          <End Role="Partidos" Type="Self.Partido" Multiplicity="1" />
+          <End Role="Eventos_x_Partido" Type="Self.Eventos_x_Partido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partidos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Eventos_x_Partido">
+              <PropertyRef Name="id_partido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Jugadores__id_pe__71D1E811">
+          <End Role="Personas" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Jugadores" Type="Self.Jugadore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Jugadores">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Jugadores__id_po__73BA3083">
+          <End Role="Posiciones" Type="Self.Posicione" Multiplicity="1" />
+          <End Role="Jugadores" Type="Self.Jugadore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posiciones">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Jugadores">
+              <PropertyRef Name="id_posicion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__id_per__693CA210">
+          <End Role="Personas" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="progra5Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Campeonatos" EntityType="Self.Campeonato" />
+          <EntitySet Name="Cantones" EntityType="Self.Cantone" />
+          <EntitySet Name="Distritos" EntityType="Self.Distrito" />
+          <EntitySet Name="Equipos" EntityType="Self.Equipos" />
+          <EntitySet Name="Equipos_x_Campeonato" EntityType="Self.Equipos_x_Campeonato" />
+          <EntitySet Name="Eventos" EntityType="Self.Evento" />
+          <EntitySet Name="Eventos_x_Partido" EntityType="Self.Eventos_x_Partido" />
+          <EntitySet Name="Jugadores" EntityType="Self.Jugadore" />
+          <EntitySet Name="Partidos" EntityType="Self.Partido" />
+          <EntitySet Name="Personas" EntityType="Self.Persona" />
+          <EntitySet Name="Posiciones" EntityType="Self.Posicione" />
+          <EntitySet Name="Provincias" EntityType="Self.Provincia" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK__Campeonat__id_de__76969D2E" Association="Self.FK__Campeonat__id_de__76969D2E">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Campeonatos" EntitySet="Campeonatos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipos_x__id_ca__7A672E12" Association="Self.FK__Equipos_x__id_ca__7A672E12">
+            <End Role="Campeonatos" EntitySet="Campeonatos" />
+            <End Role="Equipos_x_Campeonato" EntitySet="Equipos_x_Campeonato" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cantones__id_pro__5DCAEF64" Association="Self.FK__Cantones__id_pro__5DCAEF64">
+            <End Role="Provincias" EntitySet="Provincias" />
+            <End Role="Cantones" EntitySet="Cantones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Distritos__id_ca__60A75C0F" Association="Self.FK__Distritos__id_ca__60A75C0F">
+            <End Role="Cantones" EntitySet="Cantones" />
+            <End Role="Distritos" EntitySet="Distritos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipos__id_dist__6D0D32F4" Association="Self.FK__Equipos__id_dist__6D0D32F4">
+            <End Role="Distritos" EntitySet="Distritos" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Personas__id_dis__656C112C" Association="Self.FK__Personas__id_dis__656C112C">
+            <End Role="Distritos" EntitySet="Distritos" />
+            <End Role="Personas" EntitySet="Personas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipos__id_fund__6C190EBB" Association="Self.FK__Equipos__id_fund__6C190EBB">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipos_x__id_eq__797309D9" Association="Self.FK__Equipos_x__id_eq__797309D9">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Equipos_x_Campeonato" EntitySet="Equipos_x_Campeonato" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Jugadores__id_eq__72C60C4A" Association="Self.FK__Jugadores__id_eq__72C60C4A">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Jugadores" EntitySet="Jugadores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Partidos__id_cas__7D439ABD" Association="Self.FK__Partidos__id_cas__7D439ABD">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Partidos" EntitySet="Partidos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Partidos__id_vis__7E37BEF6" Association="Self.FK__Partidos__id_vis__7E37BEF6">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Partidos" EntitySet="Partidos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Eventos_x__id_ev__04E4BC85" Association="Self.FK__Eventos_x__id_ev__04E4BC85">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="Eventos_x_Partido" EntitySet="Eventos_x_Partido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Eventos_x__id_ju__02FC7413" Association="Self.FK__Eventos_x__id_ju__02FC7413">
+            <End Role="Jugadores" EntitySet="Jugadores" />
+            <End Role="Eventos_x_Partido" EntitySet="Eventos_x_Partido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Eventos_x__id_pa__03F0984C" Association="Self.FK__Eventos_x__id_pa__03F0984C">
+            <End Role="Partidos" EntitySet="Partidos" />
+            <End Role="Eventos_x_Partido" EntitySet="Eventos_x_Partido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Jugadores__id_pe__71D1E811" Association="Self.FK__Jugadores__id_pe__71D1E811">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Jugadores" EntitySet="Jugadores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Jugadores__id_po__73BA3083" Association="Self.FK__Jugadores__id_po__73BA3083">
+            <End Role="Posiciones" EntitySet="Posiciones" />
+            <End Role="Jugadores" EntitySet="Jugadores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__id_per__693CA210" Association="Self.FK__Usuarios__id_per__693CA210">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="progra5ModelStoreContainer" CdmEntityContainer="progra5Entities">
+          <EntitySetMapping Name="Campeonatos">
+            <EntityTypeMapping TypeName="progra5Model.Campeonato">
+              <MappingFragment StoreEntitySet="Campeonatos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fec_inicio" ColumnName="fec_inicio" />
+                <ScalarProperty Name="fec_fin" ColumnName="fec_fin" />
+                <ScalarProperty Name="cant_equipos" ColumnName="cant_equipos" />
+                <ScalarProperty Name="id_dedicado" ColumnName="id_dedicado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cantones">
+            <EntityTypeMapping TypeName="progra5Model.Cantone">
+              <MappingFragment StoreEntitySet="Cantones">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
+                <ScalarProperty Name="fecha_ult_mod" ColumnName="fecha_ult_mod" />
+                <ScalarProperty Name="vc_estado" ColumnName="vc_estado" />
+                <ScalarProperty Name="id_canton_inec" ColumnName="id_canton_inec" />
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Distritos">
+            <EntityTypeMapping TypeName="progra5Model.Distrito">
+              <MappingFragment StoreEntitySet="Distritos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
+                <ScalarProperty Name="fecha_ult_mod" ColumnName="fecha_ult_mod" />
+                <ScalarProperty Name="vc_estado" ColumnName="vc_estado" />
+                <ScalarProperty Name="id_distrito_inec" ColumnName="id_distrito_inec" />
+                <ScalarProperty Name="id_canton" ColumnName="id_canton" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipos">
+            <EntityTypeMapping TypeName="progra5Model.Equipos">
+              <MappingFragment StoreEntitySet="Equipos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_fundador" ColumnName="id_fundador" />
+                <ScalarProperty Name="id_distrito" ColumnName="id_distrito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipos_x_Campeonato">
+            <EntityTypeMapping TypeName="progra5Model.Equipos_x_Campeonato">
+              <MappingFragment StoreEntitySet="Equipos_x_Campeonato">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_equipo" ColumnName="id_equipo" />
+                <ScalarProperty Name="id_campeonato" ColumnName="id_campeonato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Eventos">
+            <EntityTypeMapping TypeName="progra5Model.Evento">
+              <MappingFragment StoreEntitySet="Eventos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre_evento" ColumnName="nombre_evento" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Eventos_x_Partido">
+            <EntityTypeMapping TypeName="progra5Model.Eventos_x_Partido">
+              <MappingFragment StoreEntitySet="Eventos_x_Partido">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_jugador" ColumnName="id_jugador" />
+                <ScalarProperty Name="id_partido" ColumnName="id_partido" />
+                <ScalarProperty Name="id_evento" ColumnName="id_evento" />
+                <ScalarProperty Name="minuto_evento" ColumnName="minuto_evento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jugadores">
+            <EntityTypeMapping TypeName="progra5Model.Jugadore">
+              <MappingFragment StoreEntitySet="Jugadores">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+                <ScalarProperty Name="id_equipo" ColumnName="id_equipo" />
+                <ScalarProperty Name="id_posicion" ColumnName="id_posicion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Partidos">
+            <EntityTypeMapping TypeName="progra5Model.Partido">
+              <MappingFragment StoreEntitySet="Partidos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id_casa" ColumnName="id_casa" />
+                <ScalarProperty Name="id_visita" ColumnName="id_visita" />
+                <ScalarProperty Name="resultado" ColumnName="resultado" />
+                <ScalarProperty Name="cant_faltas_casa" ColumnName="cant_faltas_casa" />
+                <ScalarProperty Name="cant_faltas_visita" ColumnName="cant_faltas_visita" />
+                <ScalarProperty Name="posesion_casa" ColumnName="posesion_casa" />
+                <ScalarProperty Name="posesion_visita" ColumnName="posesion_visita" />
+                <ScalarProperty Name="tiros_marco_casa" ColumnName="tiros_marco_casa" />
+                <ScalarProperty Name="tiros_marco_visita" ColumnName="tiros_marco_visita" />
+                <ScalarProperty Name="tiros_total_casa" ColumnName="tiros_total_casa" />
+                <ScalarProperty Name="tiros_total_visita" ColumnName="tiros_total_visita" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personas">
+            <EntityTypeMapping TypeName="progra5Model.Persona">
+              <MappingFragment StoreEntitySet="Personas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="ape1" ColumnName="ape1" />
+                <ScalarProperty Name="ape2" ColumnName="ape2" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="num_identificacion" ColumnName="num_identificacion" />
+                <ScalarProperty Name="tipo_identificacion" ColumnName="tipo_identificacion" />
+                <ScalarProperty Name="genero" ColumnName="genero" />
+                <ScalarProperty Name="telefono_principal" ColumnName="telefono_principal" />
+                <ScalarProperty Name="telefono_secundario" ColumnName="telefono_secundario" />
+                <ScalarProperty Name="direccion_fisica" ColumnName="direccion_fisica" />
+                <ScalarProperty Name="fec_nacimiento" ColumnName="fec_nacimiento" />
+                <ScalarProperty Name="id_distrito" ColumnName="id_distrito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posiciones">
+            <EntityTypeMapping TypeName="progra5Model.Posicione">
+              <MappingFragment StoreEntitySet="Posiciones">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo_posicion" ColumnName="codigo_posicion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provincias">
+            <EntityTypeMapping TypeName="progra5Model.Provincia">
+              <MappingFragment StoreEntitySet="Provincias">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
+                <ScalarProperty Name="fecha_ult_mod" ColumnName="fecha_ult_mod" />
+                <ScalarProperty Name="vc_estado" ColumnName="vc_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="progra5Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="progra5Model.Usuario">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+                <ScalarProperty Name="hashed_pass" ColumnName="hashed_pass" />
+                <ScalarProperty Name="es_admin" ColumnName="es_admin" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

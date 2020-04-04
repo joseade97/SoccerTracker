@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="085a00a9f981474489017ca0c270f30e" Name="Diagram1">
+        <EntityTypeShape EntityType="progra5Model.Campeonato" Width="1.5" PointX="9.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra5Model.Cantone" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra5Model.Distrito" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra5Model.Equipos" Width="1.5" PointX="9.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra5Model.Equipos_x_Campeonato" Width="1.5" PointX="12" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra5Model.Evento" Width="1.5" PointX="15" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra5Model.Eventos_x_Partido" Width="1.5" PointX="17.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra5Model.Jugadore" Width="1.5" PointX="15" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra5Model.Partido" Width="1.5" PointX="12" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra5Model.Persona" Width="1.5" PointX="7.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra5Model.Posicione" Width="1.5" PointX="12.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra5Model.Provincia" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra5Model.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra5Model.Usuario" Width="1.5" PointX="9.75" PointY="15" IsExpanded="true" />
+        <AssociationConnector Association="progra5Model.FK__Campeonat__id_de__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="progra5Model.FK__Equipos_x__id_ca__7A672E12" ManuallyRouted="false" />
+        <AssociationConnector Association="progra5Model.FK__Cantones__id_pro__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="progra5Model.FK__Distritos__id_ca__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="progra5Model.FK__Equipos__id_dist__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="progra5Model.FK__Personas__id_dis__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="progra5Model.FK__Equipos__id_fund__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="progra5Model.FK__Equipos_x__id_eq__797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="progra5Model.FK__Jugadores__id_eq__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="progra5Model.FK__Partidos__id_cas__7D439ABD" ManuallyRouted="false" />
+        <AssociationConnector Association="progra5Model.FK__Partidos__id_vis__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="progra5Model.FK__Eventos_x__id_ev__04E4BC85" ManuallyRouted="false" />
+        <AssociationConnector Association="progra5Model.FK__Eventos_x__id_ju__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="progra5Model.FK__Eventos_x__id_pa__03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="progra5Model.FK__Jugadores__id_pe__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="progra5Model.FK__Jugadores__id_po__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="progra5Model.FK__Usuarios__id_per__693CA210" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
