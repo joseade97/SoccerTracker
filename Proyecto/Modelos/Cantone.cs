@@ -17,9 +17,10 @@ namespace Proyecto.Modelos
         public Cantone()
         {
             this.Distritos = new HashSet<Distrito>();
+            this.Distritos1 = new HashSet<Distrito>();
         }
     
-        public int id { get; set; }
+        public int id_canton { get; set; }
         public string nombre { get; set; }
         public string usuario_creacion { get; set; }
         public System.DateTime fecha_creacion { get; set; }
@@ -31,5 +32,7 @@ namespace Proyecto.Modelos
     
         public virtual Provincia Provincia { get; set; }
         public virtual ICollection<Distrito> Distritos { get; set; }
+        public virtual Provincia Provincia1 { get; set; }
+        public virtual ICollection<Distrito> Distritos1 { get; set; }
     }
 }

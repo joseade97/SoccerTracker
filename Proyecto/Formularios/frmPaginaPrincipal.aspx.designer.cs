@@ -11,7 +11,7 @@ namespace Proyecto.Formularios
 {
 
 
-    public partial class Login
+    public partial class frmPaginaPrincipal
     {
     }
 }

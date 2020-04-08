@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="progra5Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ProyectoBDEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Campeonatos">
           <Key>
             <PropertyRef Name="id" />
@@ -17,9 +17,9 @@
         </EntityType>
         <EntityType Name="Cantones">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="id_canton" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_canton" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="usuario_creacion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
@@ -31,9 +31,9 @@
         </EntityType>
         <EntityType Name="Distritos">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="id_distrito" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_distrito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="usuario_creacion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
@@ -133,9 +133,9 @@
         </EntityType>
         <EntityType Name="Provincias">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="id_provincia" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_provincia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="usuario_creacion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
@@ -143,27 +143,41 @@
           <Property Name="fecha_ult_mod" Type="datetime" />
           <Property Name="vc_estado" Type="varchar" MaxLength="3" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Usuarios">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="id_usuario" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre_usuario" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="hashed_pass" Type="varchar" MaxLength="256" Nullable="false" />
           <Property Name="es_admin" Type="bit" Nullable="false" />
           <Property Name="estado" Type="bit" Nullable="false" />
           <Property Name="id_persona" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="Canton_ref_Provincia">
+          <End Role="Provincias" Type="Self.Provincias" Multiplicity="1" />
+          <End Role="Cantones" Type="Self.Cantones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincias">
+              <PropertyRef Name="id_provincia" />
+            </Principal>
+            <Dependent Role="Cantones">
+              <PropertyRef Name="id_provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Distrito_ref_Canton">
+          <End Role="Cantones" Type="Self.Cantones" Multiplicity="1" />
+          <End Role="Distritos" Type="Self.Distritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cantones">
+              <PropertyRef Name="id_canton" />
+            </Principal>
+            <Dependent Role="Distritos">
+              <PropertyRef Name="id_canton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Campeonat__id_de__76969D2E">
           <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
           <End Role="Campeonatos" Type="Self.Campeonatos" Multiplicity="*" />
@@ -181,7 +195,7 @@
           <End Role="Cantones" Type="Self.Cantones" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Provincias">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="id_provincia" />
             </Principal>
             <Dependent Role="Cantones">
               <PropertyRef Name="id_provincia" />
@@ -193,7 +207,7 @@
           <End Role="Distritos" Type="Self.Distritos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cantones">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="id_canton" />
             </Principal>
             <Dependent Role="Distritos">
               <PropertyRef Name="id_canton" />
@@ -205,7 +219,7 @@
           <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Distritos">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="id_distrito" />
             </Principal>
             <Dependent Role="Equipos">
               <PropertyRef Name="id_distrito" />
@@ -349,7 +363,7 @@
           <End Role="Personas" Type="Self.Personas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Distritos">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="id_distrito" />
             </Principal>
             <Dependent Role="Personas">
               <PropertyRef Name="id_distrito" />
@@ -368,7 +382,47 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="progra5ModelStoreContainer">
+        <Function Name="sp_EliminaCanton" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_canton" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertaCanton" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_provincia" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="id_canton_inec" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ModificaCanton" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_canton" Type="int" Mode="In" />
+          <Parameter Name="id_provincia" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="id_canton_inec" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_RetornaCantones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="id_provincia" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_RetornaCantonesid_canton" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_canton" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_RetornaDistritos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="id_canton" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_RetornaProvincias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="id_provincia" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_RetornaUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre_usuario" Type="varchar" Mode="In" />
+          <Parameter Name="id_Usuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_RetornaUsuarioID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_usuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_RetornaUsuarioNombrePwd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre_usuario" Type="varchar" Mode="In" />
+          <Parameter Name="contrasena" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ProyectoBDEntitiesStoreContainer">
           <EntitySet Name="Campeonatos" EntityType="Self.Campeonatos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cantones" EntityType="Self.Cantones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Distritos" EntityType="Self.Distritos" Schema="dbo" store:Type="Tables" />
@@ -381,8 +435,15 @@
           <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Posiciones" EntityType="Self.Posiciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Provincias" EntityType="Self.Provincias" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Canton_ref_Provincia" Association="Self.Canton_ref_Provincia">
+            <End Role="Provincias" EntitySet="Provincias" />
+            <End Role="Cantones" EntitySet="Cantones" />
+          </AssociationSet>
+          <AssociationSet Name="Distrito_ref_Canton" Association="Self.Distrito_ref_Canton">
+            <End Role="Cantones" EntitySet="Cantones" />
+            <End Role="Distritos" EntitySet="Distritos" />
+          </AssociationSet>
           <AssociationSet Name="FK__Campeonat__id_de__76969D2E" Association="Self.FK__Campeonat__id_de__76969D2E">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="Campeonatos" EntitySet="Campeonatos" />
@@ -452,10 +513,11 @@
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="progra5Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ProyectoBDEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Campeonato">
           <Key>
             <PropertyRef Name="id" />
@@ -470,9 +532,9 @@
         </EntityType>
         <EntityType Name="Cantone">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="id_canton" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_canton" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="usuario_creacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="3" />
@@ -481,14 +543,16 @@
           <Property Name="vc_estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Name="id_canton_inec" Type="Int32" Nullable="false" />
           <Property Name="id_provincia" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Provincia" Relationship="Self.FK__Cantones__id_pro__5DCAEF64" FromRole="Cantones" ToRole="Provincias" />
-          <NavigationProperty Name="Distritos" Relationship="Self.FK__Distritos__id_ca__60A75C0F" FromRole="Cantones" ToRole="Distritos" />
+          <NavigationProperty Name="Provincia" Relationship="Self.Canton_ref_Provincia" FromRole="Cantones" ToRole="Provincias" />
+          <NavigationProperty Name="Distritos" Relationship="Self.Distrito_ref_Canton" FromRole="Cantones" ToRole="Distritos" />
+          <NavigationProperty Name="Provincia1" Relationship="Self.FK__Cantones__id_pro__5DCAEF64" FromRole="Cantones" ToRole="Provincias" />
+          <NavigationProperty Name="Distritos1" Relationship="Self.FK__Distritos__id_ca__60A75C0F" FromRole="Cantones" ToRole="Distritos" />
         </EntityType>
         <EntityType Name="Distrito">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="id_distrito" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_distrito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="usuario_creacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="3" />
@@ -497,7 +561,8 @@
           <Property Name="vc_estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Name="id_distrito_inec" Type="Int32" Nullable="false" />
           <Property Name="id_canton" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cantone" Relationship="Self.FK__Distritos__id_ca__60A75C0F" FromRole="Distritos" ToRole="Cantones" />
+          <NavigationProperty Name="Cantone" Relationship="Self.Distrito_ref_Canton" FromRole="Distritos" ToRole="Cantones" />
+          <NavigationProperty Name="Cantone1" Relationship="Self.FK__Distritos__id_ca__60A75C0F" FromRole="Distritos" ToRole="Cantones" />
           <NavigationProperty Name="Equipos" Relationship="Self.FK__Equipos__id_dist__6D0D32F4" FromRole="Distritos" ToRole="Equipos" />
           <NavigationProperty Name="Personas" Relationship="Self.FK__Personas__id_dis__656C112C" FromRole="Distritos" ToRole="Personas" />
         </EntityType>
@@ -616,32 +681,23 @@
         </EntityType>
         <EntityType Name="Provincia">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="id_provincia" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_provincia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="usuario_creacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="usuario_modificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="fecha_ult_mod" Type="DateTime" Precision="3" />
           <Property Name="vc_estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Cantones" Relationship="Self.FK__Cantones__id_pro__5DCAEF64" FromRole="Provincias" ToRole="Cantones" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Cantones" Relationship="Self.Canton_ref_Provincia" FromRole="Provincias" ToRole="Cantones" />
+          <NavigationProperty Name="Cantones1" Relationship="Self.FK__Cantones__id_pro__5DCAEF64" FromRole="Provincias" ToRole="Cantones" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="id_usuario" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre_usuario" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="hashed_pass" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="es_admin" Type="Boolean" Nullable="false" />
@@ -673,12 +729,36 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Canton_ref_Provincia">
+          <End Role="Provincias" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Cantones" Type="Self.Cantone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincias">
+              <PropertyRef Name="id_provincia" />
+            </Principal>
+            <Dependent Role="Cantones">
+              <PropertyRef Name="id_provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Distrito_ref_Canton">
+          <End Role="Cantones" Type="Self.Cantone" Multiplicity="1" />
+          <End Role="Distritos" Type="Self.Distrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cantones">
+              <PropertyRef Name="id_canton" />
+            </Principal>
+            <Dependent Role="Distritos">
+              <PropertyRef Name="id_canton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Cantones__id_pro__5DCAEF64">
           <End Role="Provincias" Type="Self.Provincia" Multiplicity="1" />
           <End Role="Cantones" Type="Self.Cantone" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Provincias">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="id_provincia" />
             </Principal>
             <Dependent Role="Cantones">
               <PropertyRef Name="id_provincia" />
@@ -690,7 +770,7 @@
           <End Role="Distritos" Type="Self.Distrito" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cantones">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="id_canton" />
             </Principal>
             <Dependent Role="Distritos">
               <PropertyRef Name="id_canton" />
@@ -702,7 +782,7 @@
           <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Distritos">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="id_distrito" />
             </Principal>
             <Dependent Role="Equipos">
               <PropertyRef Name="id_distrito" />
@@ -714,7 +794,7 @@
           <End Role="Personas" Type="Self.Persona" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Distritos">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="id_distrito" />
             </Principal>
             <Dependent Role="Personas">
               <PropertyRef Name="id_distrito" />
@@ -853,7 +933,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="progra5Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ProyectoBD" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Campeonatos" EntityType="Self.Campeonato" />
           <EntitySet Name="Cantones" EntityType="Self.Cantone" />
           <EntitySet Name="Distritos" EntityType="Self.Distrito" />
@@ -866,7 +946,6 @@
           <EntitySet Name="Personas" EntityType="Self.Persona" />
           <EntitySet Name="Posiciones" EntityType="Self.Posicione" />
           <EntitySet Name="Provincias" EntityType="Self.Provincia" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
           <AssociationSet Name="FK__Campeonat__id_de__76969D2E" Association="Self.FK__Campeonat__id_de__76969D2E">
             <End Role="Personas" EntitySet="Personas" />
@@ -875,6 +954,14 @@
           <AssociationSet Name="FK__Equipos_x__id_ca__7A672E12" Association="Self.FK__Equipos_x__id_ca__7A672E12">
             <End Role="Campeonatos" EntitySet="Campeonatos" />
             <End Role="Equipos_x_Campeonato" EntitySet="Equipos_x_Campeonato" />
+          </AssociationSet>
+          <AssociationSet Name="Canton_ref_Provincia" Association="Self.Canton_ref_Provincia">
+            <End Role="Provincias" EntitySet="Provincias" />
+            <End Role="Cantones" EntitySet="Cantones" />
+          </AssociationSet>
+          <AssociationSet Name="Distrito_ref_Canton" Association="Self.Distrito_ref_Canton">
+            <End Role="Cantones" EntitySet="Cantones" />
+            <End Role="Distritos" EntitySet="Distritos" />
           </AssociationSet>
           <AssociationSet Name="FK__Cantones__id_pro__5DCAEF64" Association="Self.FK__Cantones__id_pro__5DCAEF64">
             <End Role="Provincias" EntitySet="Provincias" />
@@ -936,15 +1023,124 @@
             <End Role="Personas" EntitySet="Personas" />
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
+          <FunctionImport Name="sp_EliminaCanton">
+            <Parameter Name="id_canton" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertaCanton">
+            <Parameter Name="id_provincia" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="id_canton_inec" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ModificaCanton">
+            <Parameter Name="id_canton" Mode="In" Type="Int32" />
+            <Parameter Name="id_provincia" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="id_canton_inec" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaCantones" ReturnType="Collection(ProyectoBDEntities.sp_RetornaCantones_Result)">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="id_provincia" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaCantonesid_canton" ReturnType="Collection(ProyectoBDEntities.sp_RetornaCantonesid_canton_Result)">
+            <Parameter Name="id_canton" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaDistritos" ReturnType="Collection(ProyectoBDEntities.sp_RetornaDistritos_Result)">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="id_canton" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaProvincias" ReturnType="Collection(ProyectoBDEntities.sp_RetornaProvincias_Result)">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="id_provincia" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaUsuario" ReturnType="Collection(ProyectoBDEntities.sp_RetornaUsuario_Result)">
+            <Parameter Name="nombre_usuario" Mode="In" Type="String" />
+            <Parameter Name="id_Usuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaUsuarioID" ReturnType="Collection(ProyectoBDEntities.sp_RetornaUsuarioID_Result)">
+            <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaUsuarioNombrePwd" ReturnType="Collection(ProyectoBDEntities.sp_RetornaUsuarioNombrePwd_Result)">
+            <Parameter Name="nombre_usuario" Mode="In" Type="String" />
+            <Parameter Name="contrasena" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="sp_RetornaCantones_Result">
+          <Property Type="Int32" Name="id_canton" Nullable="false" />
+          <Property Type="Int32" Name="id_provincia" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="usuario_creacion" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="false" Precision="23" />
+          <Property Type="String" Name="usuario_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_mod" Nullable="true" Precision="23" />
+          <Property Type="String" Name="vc_estado" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="id_canton_inec" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_RetornaCantonesid_canton_Result">
+          <Property Type="Int32" Name="id_canton" Nullable="false" />
+          <Property Type="Int32" Name="id_provincia" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="usuario_creacion" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="false" Precision="23" />
+          <Property Type="String" Name="usuario_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_mod" Nullable="true" Precision="23" />
+          <Property Type="String" Name="vc_estado" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="id_canton_inec" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_RetornaDistritos_Result">
+          <Property Type="Int32" Name="id_distrito" Nullable="false" />
+          <Property Type="Int32" Name="id_canton" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Canton" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="usuario_creacion" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="false" Precision="23" />
+          <Property Type="String" Name="usuario_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_mod" Nullable="true" Precision="23" />
+          <Property Type="String" Name="vc_estado" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="id_distrito_inec" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_RetornaProvincias_Result">
+          <Property Type="Int32" Name="id_provincia" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="usuario_creacion" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="false" Precision="23" />
+          <Property Type="String" Name="usuario_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_mod" Nullable="true" Precision="23" />
+          <Property Type="String" Name="vc_estado" Nullable="true" MaxLength="3" />
+        </ComplexType>
+        <ComplexType Name="sp_RetornaUsuario_Result">
+          <Property Type="Int32" Name="id_usuario" Nullable="false" />
+          <Property Type="String" Name="nombre_usuario" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="hashed_pass" Nullable="false" MaxLength="256" />
+          <Property Type="Boolean" Name="es_admin" Nullable="false" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <Property Type="Int32" Name="id_persona" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_RetornaUsuarioID_Result">
+          <Property Type="Int32" Name="id_usuario" Nullable="false" />
+          <Property Type="String" Name="nombre_usuario" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="hashed_pass" Nullable="false" MaxLength="256" />
+          <Property Type="Boolean" Name="es_admin" Nullable="false" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <Property Type="Int32" Name="id_persona" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_RetornaUsuarioNombrePwd_Result">
+          <Property Type="Int32" Name="id_usuario" Nullable="false" />
+          <Property Type="String" Name="nombre_usuario" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="hashed_pass" Nullable="false" MaxLength="256" />
+          <Property Type="Boolean" Name="es_admin" Nullable="false" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <Property Type="Int32" Name="id_persona" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="progra5ModelStoreContainer" CdmEntityContainer="progra5Entities">
+        <EntityContainerMapping StorageEntityContainer="ProyectoBDEntitiesStoreContainer" CdmEntityContainer="ProyectoBD">
           <EntitySetMapping Name="Campeonatos">
-            <EntityTypeMapping TypeName="progra5Model.Campeonato">
+            <EntityTypeMapping TypeName="ProyectoBDEntities.Campeonato">
               <MappingFragment StoreEntitySet="Campeonatos">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="fec_inicio" ColumnName="fec_inicio" />
@@ -955,9 +1151,9 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cantones">
-            <EntityTypeMapping TypeName="progra5Model.Cantone">
+            <EntityTypeMapping TypeName="ProyectoBDEntities.Cantone">
               <MappingFragment StoreEntitySet="Cantones">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_canton" ColumnName="id_canton" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
                 <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
@@ -970,9 +1166,9 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Distritos">
-            <EntityTypeMapping TypeName="progra5Model.Distrito">
+            <EntityTypeMapping TypeName="ProyectoBDEntities.Distrito">
               <MappingFragment StoreEntitySet="Distritos">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_distrito" ColumnName="id_distrito" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
                 <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
@@ -985,7 +1181,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Equipos">
-            <EntityTypeMapping TypeName="progra5Model.Equipos">
+            <EntityTypeMapping TypeName="ProyectoBDEntities.Equipos">
               <MappingFragment StoreEntitySet="Equipos">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -995,7 +1191,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Equipos_x_Campeonato">
-            <EntityTypeMapping TypeName="progra5Model.Equipos_x_Campeonato">
+            <EntityTypeMapping TypeName="ProyectoBDEntities.Equipos_x_Campeonato">
               <MappingFragment StoreEntitySet="Equipos_x_Campeonato">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_equipo" ColumnName="id_equipo" />
@@ -1004,7 +1200,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Eventos">
-            <EntityTypeMapping TypeName="progra5Model.Evento">
+            <EntityTypeMapping TypeName="ProyectoBDEntities.Evento">
               <MappingFragment StoreEntitySet="Eventos">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre_evento" ColumnName="nombre_evento" />
@@ -1013,7 +1209,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Eventos_x_Partido">
-            <EntityTypeMapping TypeName="progra5Model.Eventos_x_Partido">
+            <EntityTypeMapping TypeName="ProyectoBDEntities.Eventos_x_Partido">
               <MappingFragment StoreEntitySet="Eventos_x_Partido">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_jugador" ColumnName="id_jugador" />
@@ -1024,7 +1220,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Jugadores">
-            <EntityTypeMapping TypeName="progra5Model.Jugadore">
+            <EntityTypeMapping TypeName="ProyectoBDEntities.Jugadore">
               <MappingFragment StoreEntitySet="Jugadores">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_persona" ColumnName="id_persona" />
@@ -1034,7 +1230,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Partidos">
-            <EntityTypeMapping TypeName="progra5Model.Partido">
+            <EntityTypeMapping TypeName="ProyectoBDEntities.Partido">
               <MappingFragment StoreEntitySet="Partidos">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
@@ -1053,7 +1249,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Personas">
-            <EntityTypeMapping TypeName="progra5Model.Persona">
+            <EntityTypeMapping TypeName="ProyectoBDEntities.Persona">
               <MappingFragment StoreEntitySet="Personas">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1072,7 +1268,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Posiciones">
-            <EntityTypeMapping TypeName="progra5Model.Posicione">
+            <EntityTypeMapping TypeName="ProyectoBDEntities.Posicione">
               <MappingFragment StoreEntitySet="Posiciones">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1081,9 +1277,9 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Provincias">
-            <EntityTypeMapping TypeName="progra5Model.Provincia">
+            <EntityTypeMapping TypeName="ProyectoBDEntities.Provincia">
               <MappingFragment StoreEntitySet="Provincias">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
                 <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
@@ -1093,21 +1289,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="progra5Model.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="progra5Model.Usuario">
+            <EntityTypeMapping TypeName="ProyectoBDEntities.Usuario">
               <MappingFragment StoreEntitySet="Usuarios">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
                 <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
                 <ScalarProperty Name="hashed_pass" ColumnName="hashed_pass" />
                 <ScalarProperty Name="es_admin" ColumnName="es_admin" />
@@ -1116,6 +1301,106 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_EliminaCanton" FunctionName="ProyectoBDEntities.Store.sp_EliminaCanton" />
+          <FunctionImportMapping FunctionImportName="sp_InsertaCanton" FunctionName="ProyectoBDEntities.Store.sp_InsertaCanton" />
+          <FunctionImportMapping FunctionImportName="sp_ModificaCanton" FunctionName="ProyectoBDEntities.Store.sp_ModificaCanton" />
+          <FunctionImportMapping FunctionImportName="sp_RetornaCantones" FunctionName="ProyectoBDEntities.Store.sp_RetornaCantones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoBDEntities.sp_RetornaCantones_Result">
+                <ScalarProperty Name="id_canton" ColumnName="id_canton" />
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
+                <ScalarProperty Name="fecha_ult_mod" ColumnName="fecha_ult_mod" />
+                <ScalarProperty Name="vc_estado" ColumnName="vc_estado" />
+                <ScalarProperty Name="id_canton_inec" ColumnName="id_canton_inec" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RetornaCantonesid_canton" FunctionName="ProyectoBDEntities.Store.sp_RetornaCantonesid_canton">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoBDEntities.sp_RetornaCantonesid_canton_Result">
+                <ScalarProperty Name="id_canton" ColumnName="id_canton" />
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
+                <ScalarProperty Name="fecha_ult_mod" ColumnName="fecha_ult_mod" />
+                <ScalarProperty Name="vc_estado" ColumnName="vc_estado" />
+                <ScalarProperty Name="id_canton_inec" ColumnName="id_canton_inec" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RetornaDistritos" FunctionName="ProyectoBDEntities.Store.sp_RetornaDistritos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoBDEntities.sp_RetornaDistritos_Result">
+                <ScalarProperty Name="id_distrito" ColumnName="id_distrito" />
+                <ScalarProperty Name="id_canton" ColumnName="id_canton" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Canton" ColumnName="Canton" />
+                <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
+                <ScalarProperty Name="fecha_ult_mod" ColumnName="fecha_ult_mod" />
+                <ScalarProperty Name="vc_estado" ColumnName="vc_estado" />
+                <ScalarProperty Name="id_distrito_inec" ColumnName="id_distrito_inec" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RetornaProvincias" FunctionName="ProyectoBDEntities.Store.sp_RetornaProvincias">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoBDEntities.sp_RetornaProvincias_Result">
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
+                <ScalarProperty Name="fecha_ult_mod" ColumnName="fecha_ult_mod" />
+                <ScalarProperty Name="vc_estado" ColumnName="vc_estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RetornaUsuario" FunctionName="ProyectoBDEntities.Store.sp_RetornaUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoBDEntities.sp_RetornaUsuario_Result">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+                <ScalarProperty Name="hashed_pass" ColumnName="hashed_pass" />
+                <ScalarProperty Name="es_admin" ColumnName="es_admin" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RetornaUsuarioID" FunctionName="ProyectoBDEntities.Store.sp_RetornaUsuarioID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoBDEntities.sp_RetornaUsuarioID_Result">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+                <ScalarProperty Name="hashed_pass" ColumnName="hashed_pass" />
+                <ScalarProperty Name="es_admin" ColumnName="es_admin" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RetornaUsuarioNombrePwd" FunctionName="ProyectoBDEntities.Store.sp_RetornaUsuarioNombrePwd">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoBDEntities.sp_RetornaUsuarioNombrePwd_Result">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+                <ScalarProperty Name="hashed_pass" ColumnName="hashed_pass" />
+                <ScalarProperty Name="es_admin" ColumnName="es_admin" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

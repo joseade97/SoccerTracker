@@ -17,9 +17,10 @@ namespace Proyecto.Modelos
         public Provincia()
         {
             this.Cantones = new HashSet<Cantone>();
+            this.Cantones1 = new HashSet<Cantone>();
         }
     
-        public int id { get; set; }
+        public int id_provincia { get; set; }
         public string nombre { get; set; }
         public string usuario_creacion { get; set; }
         public System.DateTime fecha_creacion { get; set; }
@@ -28,5 +29,6 @@ namespace Proyecto.Modelos
         public string vc_estado { get; set; }
     
         public virtual ICollection<Cantone> Cantones { get; set; }
+        public virtual ICollection<Cantone> Cantones1 { get; set; }
     }
 }

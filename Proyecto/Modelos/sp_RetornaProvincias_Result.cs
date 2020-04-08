@@ -10,14 +10,15 @@
 namespace Proyecto.Modelos
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class sp_RetornaProvincias_Result
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int id_provincia { get; set; }
+        public string nombre { get; set; }
+        public string usuario_creacion { get; set; }
+        public System.DateTime fecha_creacion { get; set; }
+        public string usuario_modificacion { get; set; }
+        public Nullable<System.DateTime> fecha_ult_mod { get; set; }
+        public string vc_estado { get; set; }
     }
 }
