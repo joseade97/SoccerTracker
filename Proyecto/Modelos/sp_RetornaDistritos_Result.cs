@@ -10,29 +10,18 @@
 namespace Proyecto.Modelos
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Distrito
+    public partial class sp_RetornaDistritos_Result
     {
-        public Distrito()
-        {
-            this.Equipos = new HashSet<Equipos>();
-            this.Personas = new HashSet<Persona>();
-        }
-    
         public int id_distrito { get; set; }
+        public int id_canton { get; set; }
         public string nombre { get; set; }
+        public string Canton { get; set; }
         public string usuario_creacion { get; set; }
         public System.DateTime fecha_creacion { get; set; }
         public string usuario_modificacion { get; set; }
         public Nullable<System.DateTime> fecha_ult_mod { get; set; }
         public string vc_estado { get; set; }
         public int id_distrito_inec { get; set; }
-        public int id_canton { get; set; }
-    
-        public virtual Cantone Cantone { get; set; }
-        public virtual Cantone Cantone1 { get; set; }
-        public virtual ICollection<Equipos> Equipos { get; set; }
-        public virtual ICollection<Persona> Personas { get; set; }
     }
 }

@@ -10,9 +10,8 @@
 namespace Proyecto.Modelos
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Usuario
+    public partial class sp_RetornaUsuarioNombrePwd_Result
     {
         public int id_usuario { get; set; }
         public string nombre_usuario { get; set; }
@@ -20,7 +19,5 @@ namespace Proyecto.Modelos
         public bool es_admin { get; set; }
         public bool estado { get; set; }
         public int id_persona { get; set; }
-    
-        public virtual Persona Persona { get; set; }
     }
 }

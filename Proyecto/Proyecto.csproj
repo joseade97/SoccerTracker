@@ -121,7 +121,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Formularios\Login.aspx" />
+    <Content Include="Formularios\frmLogin.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -131,25 +131,25 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Formularios\ProyectoMaster.Master" />
-    <EntityDeploy Include="Modelos\ProyectoDBEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ProyectoDBEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Modelos\ProyectoDBEntities.edmx.diagram">
-      <DependentUpon>ProyectoDBEntities.edmx</DependentUpon>
-    </Content>
     <Content Include="libman.json" />
-    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Modelos\ProyectoDBEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ProyectoDBEntities.Context.cs</LastGenOutput>
-      <DependentUpon>ProyectoDBEntities.edmx</DependentUpon>
+    <Content Include="Formularios\ProyectoMaster.Master" />
+    <EntityDeploy Include="Modelos\ProyectoBD.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProyectoBD.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Modelos\ProyectoBD.edmx.diagram">
+      <DependentUpon>ProyectoBD.edmx</DependentUpon>
     </Content>
-    <Content Include="Modelos\ProyectoDBEntities.tt">
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Modelos\ProyectoBD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ProyectoDBEntities.edmx</DependentUpon>
-      <LastGenOutput>ProyectoDBEntities.cs</LastGenOutput>
+      <DependentUpon>ProyectoBD.edmx</DependentUpon>
+      <LastGenOutput>ProyectoBD.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\ProyectoBD.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProyectoBD.edmx</DependentUpon>
+      <LastGenOutput>ProyectoBD.cs</LastGenOutput>
     </Content>
     <Content Include="prueba\frmPrueba.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -258,12 +258,12 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
+    <Compile Include="Formularios\frmLogin.aspx.cs">
+      <DependentUpon>frmLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Formularios\Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
+    <Compile Include="Formularios\frmLogin.aspx.designer.cs">
+      <DependentUpon>frmLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\ProyectoMaster.Master.cs">
       <DependentUpon>ProyectoMaster.Master</DependentUpon>
@@ -276,61 +276,79 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Campeonato.cs">
-      <DependentUpon>ProyectoDBEntities.tt</DependentUpon>
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Cantone.cs">
-      <DependentUpon>ProyectoDBEntities.tt</DependentUpon>
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Distrito.cs">
-      <DependentUpon>ProyectoDBEntities.tt</DependentUpon>
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Equipos.cs">
-      <DependentUpon>ProyectoDBEntities.tt</DependentUpon>
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Equipos_x_Campeonato.cs">
-      <DependentUpon>ProyectoDBEntities.tt</DependentUpon>
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Evento.cs">
-      <DependentUpon>ProyectoDBEntities.tt</DependentUpon>
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Eventos_x_Partido.cs">
-      <DependentUpon>ProyectoDBEntities.tt</DependentUpon>
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Jugadore.cs">
-      <DependentUpon>ProyectoDBEntities.tt</DependentUpon>
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Partido.cs">
-      <DependentUpon>ProyectoDBEntities.tt</DependentUpon>
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Persona.cs">
-      <DependentUpon>ProyectoDBEntities.tt</DependentUpon>
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Posicione.cs">
-      <DependentUpon>ProyectoDBEntities.tt</DependentUpon>
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Provincia.cs">
-      <DependentUpon>ProyectoDBEntities.tt</DependentUpon>
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelos\ProyectoDBEntities.Context.cs">
+    <Compile Include="Modelos\ProyectoBD.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ProyectoDBEntities.Context.tt</DependentUpon>
+      <DependentUpon>ProyectoBD.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelos\ProyectoDBEntities.cs">
+    <Compile Include="Modelos\ProyectoBD.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ProyectoDBEntities.tt</DependentUpon>
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelos\ProyectoDBEntities.Designer.cs">
+    <Compile Include="Modelos\ProyectoBD.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ProyectoDBEntities.edmx</DependentUpon>
+      <DependentUpon>ProyectoBD.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Modelos\sysdiagram.cs">
-      <DependentUpon>ProyectoDBEntities.tt</DependentUpon>
+    <Compile Include="Modelos\sp_RetornaCantonesid_canton_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\sp_RetornaCantones_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\sp_RetornaDistritos_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\sp_RetornaProvincias_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\sp_RetornaUsuarioID_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\sp_RetornaUsuarioNombrePwd_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\sp_RetornaUsuario_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Usuario.cs">
-      <DependentUpon>ProyectoDBEntities.tt</DependentUpon>
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="prueba\frmPrueba.aspx.cs">
