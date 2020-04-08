@@ -122,6 +122,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Formularios\frmLogin.aspx" />
+    <Content Include="Formularios\frmPaginaPrincipal.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -264,6 +265,13 @@
     </Compile>
     <Compile Include="Formularios\frmLogin.aspx.designer.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmPaginaPrincipal.aspx.cs">
+      <DependentUpon>frmPaginaPrincipal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmPaginaPrincipal.aspx.designer.cs">
+      <DependentUpon>frmPaginaPrincipal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\ProyectoMaster.Master.cs">
       <DependentUpon>ProyectoMaster.Master</DependentUpon>

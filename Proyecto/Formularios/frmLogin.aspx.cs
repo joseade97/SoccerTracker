@@ -16,7 +16,7 @@ namespace Proyecto.Formularios
 
         }
 
-        protected void btAceptar_Click(object sender, EventArgs e)
+        protected void btnIngresar_Click(object sender, EventArgs e)
         {
             ///validar que todas las reglas del formulario se cumplan
             if (this.Page.IsValid)

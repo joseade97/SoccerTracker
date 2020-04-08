@@ -3,17 +3,23 @@
 
     <form id="form1" runat="server">
     <div class="login">
-        <h4 class="mb-1" style="color: #FFFFFF">Usuario</h4>
-        <asp:TextBox style="width: 200px; background-color: white;" runat="server" type="text" id="txtUsuario" class="form-control btn" />
-        <br />
-        <h4 class="mb-1" style="color: #FFFFFF">Contraseña</h4>
-        <asp:TextBox style="width: 200px; background-color: white;" runat="server" type="password" id="txtContrasena" class="form-control btn" />
-        <br />
-        <br />
-        <a class="btn btn-primary btn-xl js-scroll-trigger" id="btnIngresar" runat="server" OnClick="btnIngresar_Click">Ingresar</a>
+        <asp:Label ID="Label1" runat="server" class="mb-1" style="color: #FFFFFF" Text="Usuario" BorderColor="Black"></asp:Label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox style="width: 200px; background-color: white;" runat="server" type="text" id="txtUsuario" class="form-control btn" BorderColor="Black" BorderStyle="Solid"></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <br />
         <br />
-        <asp:Label ID="lblResultado" runat="server"></asp:Label>
+        <asp:Label ID="Label2" runat="server" class="mb-1" style="color: #FFFFFF" Text="Contraseña" BorderColor="Black"></asp:Label>
+        <asp:TextBox style="width: 200px; background-color: white;" runat="server" type="password" id="txtContrasena" class="form-control btn" BorderColor="Black" BorderStyle="Solid"></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br />
+        <br />
+        <asp:Button ID="btnIngresar" runat="server" OnClick="btnIngresar_Click" Text="Ingresar" class="btn btn-primary btn-xl js-scroll-trigger"></asp:Button>
+        <br />
+        <br />
+        <asp:Label ID="lblResultado" runat="server" Font-Size="X-Large" Font-Bold="True"></asp:Label>
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <br />
      </div>
      </form>
