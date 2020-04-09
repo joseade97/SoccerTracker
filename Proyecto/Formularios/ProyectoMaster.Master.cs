@@ -11,7 +11,29 @@ namespace Proyecto.Formularios
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Convert.ToBoolean(this.Session["usuariologueado"]) != true)
+            {
+                this.Response.Redirect("~/Formularios/frmLogin.aspx");
+            }
+            else
+            {
+                this.VerificaPermisosTipoUsuario();
+            }
+        }
 
+        /// <summary>
+        /// Usando la variable de session tipousuario muestra/oculta opciones del menu
+        /// </summary>
+        void VerificaPermisosTipoUsuario()
+        {
+            if (Convert.ToInt16(this.Session["esadmin"]).Equals("1"))
+            {
+                this.hpfSalir.Visible = true;
+            }
+            else
+            {
+                this.hpfSalir.Visible = false;
+            }
         }
     }
 }

@@ -36,7 +36,7 @@ namespace Proyecto.Formularios
             ///es incorrecto
             if (resultadoSp == null)
             {
-                this.lblResultado.Text = "Datos invalidos";
+                this.lblResultado.Text = "Debe ingresar un usuario y/o contraseña válidos";
                 this.Session.Add("nombreusuario", null);
                 this.Session.Add("idusuario", null);
                 this.Session.Add("usuariologueado", null);
