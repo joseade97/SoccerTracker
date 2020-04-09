@@ -24,7 +24,6 @@ namespace Proyecto.Formularios
                 this.RealizarAutenticacion();
             }
         }
-
         void RealizarAutenticacion()
         {
             sp_RetornaUsuarioNombrePwd_Result

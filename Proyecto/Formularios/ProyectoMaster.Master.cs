@@ -11,6 +11,14 @@ namespace Proyecto.Formularios
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.VerificaUsuarioLogueado();
+        }
+
+        /// <summary>
+        /// usando la variable de la sesion usuariologueado se verifica que el usuario este logueado
+        /// </summary>
+        void VerificaUsuarioLogueado()
+        {
             if (Convert.ToBoolean(this.Session["usuariologueado"]) != true)
             {
                 this.Response.Redirect("~/Formularios/frmLogin.aspx");
