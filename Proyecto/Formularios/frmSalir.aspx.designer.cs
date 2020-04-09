@@ -11,16 +11,25 @@ namespace Proyecto.Formularios
 {
 
 
-    public partial class frmPaginaPrincipal
+    public partial class frmSalir
     {
 
         /// <summary>
-        /// lblDatosUsuario control.
+        /// btnSi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDatosUsuario;
+        protected global::System.Web.UI.WebControls.Button btnSi;
+
+        /// <summary>
+        /// btnNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNo;
     }
 }
