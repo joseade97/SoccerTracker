@@ -11,17 +11,10 @@ namespace Proyecto.Formularios
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Convert.ToBoolean(this.Session["usuariologueado"]) != true)
+        string datosUsuario = Convert.ToString(this.Session["nombreusuario"]);
+            if (!string.IsNullOrEmpty(datosUsuario))
             {
-                this.Response.Redirect("~/Formularios/frmLogin.aspx");
-            }
-            else
-            {
-                string datosUsuario = Convert.ToString(this.Session["nombreusuario"]);
-                if (!string.IsNullOrEmpty(datosUsuario))
-                {
-                    this.lblDatosUsuario.Text = "Bienvenido(a): " + datosUsuario;
-                }
+                this.lblDatosUsuario.Text = "Bienvenido(a): " + datosUsuario;
             }
         }
     }

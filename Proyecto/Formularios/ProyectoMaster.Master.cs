@@ -26,7 +26,7 @@ namespace Proyecto.Formularios
         /// </summary>
         void VerificaPermisosTipoUsuario()
         {
-            if (Convert.ToInt16(this.Session["esadmin"]).Equals("1"))
+            if (Convert.ToString(this.Session["esadmin"]) == "1")
             {
                 this.hpfSalir.Visible = true;
             }
