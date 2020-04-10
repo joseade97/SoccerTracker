@@ -17,7 +17,6 @@ namespace Proyecto.Formularios
             }
             else
             {
-                this.hpfSalir.Visible = true;
                 this.VerificaPermisosTipoUsuario();
             }
         }
@@ -36,6 +35,5 @@ namespace Proyecto.Formularios
                 /// this.hpfSalir.Visible = false;
             }
         }
-
     }
 }

@@ -15,7 +15,14 @@ namespace Proyecto.Formularios
                 if (!string.IsNullOrEmpty(datosUsuario))
                 {
                     this.lblDatosUsuario.Text = "Bienvenido(a): " + datosUsuario;
+                    this.btnSalir.Visible = true;
                 }        
+        }
+
+        protected void btnSalir_Click(object sender, EventArgs e)
+        {
+            ///al dar click al boton "Cerrar Sesion" redirecciona al frmSalir
+            this.Response.Redirect("~/Formularios/frmSalir.aspx");
         }
     }
 }
