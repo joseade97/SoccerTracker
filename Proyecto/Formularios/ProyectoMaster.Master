@@ -58,15 +58,10 @@
       <h3 class="mb-5">
         <em style="color: #FFFFFF">Sistema de Control de Fútbol</em>
       </h3>
-      <div>
+      <div runat="server">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         <!-- Acá se incluye el contenido de la página de Login -->
-            <!-- Este es el boton de salir cuando un usuario esta logueado -->
-            <div style="text-align: right; color:black;" class="col-sm-4">
-                <p>
-                <asp:HyperLink ID="hpfSalir" runat="server" NavigateUrl="~/Formularios/frmSalir.aspx">Cerrar Sesíon</asp:HyperLink>
-                </p>
-            </div>
+
 
         </asp:ContentPlaceHolder>
       </div>
@@ -78,6 +73,7 @@
 <div>
     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
     <!-- Acá se incluye el contenido de las demas páginas hijas -->
+
     </asp:ContentPlaceHolder>
 </div>
 
