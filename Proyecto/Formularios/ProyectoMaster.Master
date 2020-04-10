@@ -62,7 +62,7 @@
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         <!-- Acá se incluye el contenido de la página de Login -->
             <!-- Este es el boton de salir cuando un usuario esta logueado -->
-            <div style="text-align: right;" class="col-sm-4">
+            <div style="text-align: right; color:black;" class="col-sm-4">
                 <p>
                 <asp:HyperLink ID="hpfSalir" runat="server" NavigateUrl="~/Formularios/frmSalir.aspx">Cerrar Sesíon</asp:HyperLink>
                 </p>

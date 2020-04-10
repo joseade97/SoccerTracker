@@ -10,14 +10,11 @@ namespace Proyecto.Formularios
 {
     public partial class frmLogin : System.Web.UI.Page
     {
-        
         ProyectoBD modelo = new ProyectoBD();
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
             ///validar que todas las reglas del formulario se cumplan
