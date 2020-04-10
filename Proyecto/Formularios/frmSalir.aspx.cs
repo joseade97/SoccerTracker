@@ -25,7 +25,7 @@ namespace Proyecto.Formularios
             this.Session.Add("usuariologueado", null);
 
             ///redireccionar a la pagina de loggin
-            this.Response.Redirect("~/Formularios/frmLogin.aspx");
+           this.Response.Redirect("~/Formularios/frmLogin.aspx");
         }
 
         protected void btnNo_Click(object sender, EventArgs e)
