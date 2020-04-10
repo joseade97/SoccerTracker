@@ -10,7 +10,9 @@ namespace Proyecto.Formularios
 {
     public partial class frmLogin : System.Web.UI.Page
     {
+        
         ProyectoBD modelo = new ProyectoBD();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 

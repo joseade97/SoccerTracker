@@ -11,20 +11,13 @@ namespace Proyecto.Formularios
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.VerificaUsuarioLogueado();
-        }
-
-        /// <summary>
-        /// usando la variable de la sesion usuariologueado se verifica que el usuario este logueado
-        /// </summary>
-        void VerificaUsuarioLogueado()
-        {
             if (Convert.ToBoolean(this.Session["usuariologueado"]) != true)
             {
-                this.Response.Redirect("~/Formularios/frmLogin.aspx");
+                this.Response.Redirect("~/Formularios/frmLogin.aspx"); 
             }
             else
             {
+                this.hpfSalir.Visible = true;
                 this.VerificaPermisosTipoUsuario();
             }
         }
@@ -36,12 +29,13 @@ namespace Proyecto.Formularios
         {
             if (Convert.ToString(this.Session["esadmin"]) == "1")
             {
-                this.hpfSalir.Visible = true;
+                /// this.hpfSalir.Visible = true;
             }
             else
             {
-                this.hpfSalir.Visible = false;
+                /// this.hpfSalir.Visible = false;
             }
         }
+
     }
 }

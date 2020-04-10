@@ -60,8 +60,8 @@
       </h3>
       <div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        <%-- Acá se incluye el contenido de la página de Login --%>
-
+        <!-- Acá se incluye el contenido de la página de Login -->
+            <!-- Este es el boton de salir cuando un usuario esta logueado -->
             <div style="text-align: right;" class="col-sm-4">
                 <p>
                 <asp:HyperLink ID="hpfSalir" runat="server" NavigateUrl="~/Formularios/frmSalir.aspx">Cerrar Sesíon</asp:HyperLink>
@@ -77,7 +77,7 @@
 <!-- Donde van las paginas hijas -->
 <div>
     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
-    <%-- Acá se incluye el contenido de las demas páginas hijas --%>
+    <!-- Acá se incluye el contenido de las demas páginas hijas -->
     </asp:ContentPlaceHolder>
 </div>
 

@@ -11,11 +11,11 @@ namespace Proyecto.Formularios
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-        string datosUsuario = Convert.ToString(this.Session["nombreusuario"]);
-            if (!string.IsNullOrEmpty(datosUsuario))
-            {
-                this.lblDatosUsuario.Text = "Bienvenido(a): " + datosUsuario;
-            }
+            string datosUsuario = Convert.ToString(this.Session["nombreusuario"]);
+                if (!string.IsNullOrEmpty(datosUsuario))
+                {
+                    this.lblDatosUsuario.Text = "Bienvenido(a): " + datosUsuario;
+                }        
         }
     }
 }
