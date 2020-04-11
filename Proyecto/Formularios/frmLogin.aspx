@@ -23,11 +23,17 @@
   <!-- Custom CSS -->
   <link href="../StartBootstrap/css/stylish-portfolio.min.css" rel="stylesheet">
 
+  <!-- Bootstrap 2-->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+
 </head>
 
 <body id="page-top">
 
-  <!-- Navigation -->
+  <!-- Navigation 
   <a class="menu-toggle rounded" href="#">
     <i class="fas fa-bars"></i>
   </a>
@@ -49,43 +55,40 @@
         <a class="js-scroll-trigger" href="#services">Reportes</a>
       </li>
     </ul>
-  </nav>
+  </nav>-->
 
   <!-- Header -->
-  <div class="masthead d-flex">
+  <div class="masthead d-flex" style="height:100%">
     <div class="container text-center my-auto">
       <h1 class="mb-1" style="color: #FFFFFF">Soccer Tracker</h1>
       <h3 class="mb-5">
         <em style="color: #FFFFFF">Sistema de Control de Fútbol</em>
-      </h3>
-      <div>
-
         <!-- Acá se incluye el contenido de la página de Login -->
-
-            <form id="form1" runat="server">
-                <div class="login">
-                    <asp:Label ID="Label1" runat="server" class="mb-1" style="color: #FFFFFF" Text="Usuario" BorderColor="Black"></asp:Label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox style="width: 200px; background-color: white;" runat="server" type="text" id="txtUsuario" class="form-control btn" BorderColor="Black" BorderStyle="Solid"></asp:TextBox>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <br />
-                    <br />
-                    <asp:Label ID="Label2" runat="server" class="mb-1" style="color: #FFFFFF" Text="Contraseña" BorderColor="Black"></asp:Label>
-                    <asp:TextBox style="width: 200px; background-color: white;" runat="server" type="password" id="txtContrasena" class="form-control btn" BorderColor="Black" BorderStyle="Solid"></asp:TextBox>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <br />
-                    <br />
-                    <asp:Button ID="btnIngresar" runat="server" OnClick="btnIngresar_Click" Text="Ingresar" class="btn btn-primary btn-xl js-scroll-trigger"></asp:Button>
-                    <br />
-                    <br />
-                    <asp:Label ID="lblResultado" runat="server" Font-Size="X-Large" Font-Bold="True"></asp:Label>
-                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                    <br />
-                 </div>
-             </form>
-
-      </div>
+        <form id="form1" runat="server">
+            <div class="login">
+                <asp:Label ID="lblResultado" runat="server" Font-Size="X-Large" color="white" Font-Bold="True" ForeColor="White"></asp:Label>
+                <br />
+                <br />
+                <asp:Label ID="Label1" runat="server" class="mb-1" style="color: #FFFFFF" Text="Usuario" BorderColor="Black"></asp:Label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:TextBox style="width: 200px; background-color: white;" runat="server" type="text" id="txtUsuario" class="form-control btn" BorderColor="Black" BorderStyle="Solid"></asp:TextBox>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <br />
+                <br />
+                <asp:Label ID="Label2" runat="server" class="mb-1" style="color: #FFFFFF" Text="Contraseña" BorderColor="Black"></asp:Label>
+                <asp:TextBox style="width: 200px; background-color: white;" runat="server" type="password" id="txtContrasena" class="form-control btn" BorderColor="Black" BorderStyle="Solid"></asp:TextBox>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <br />
+                <br />
+                <asp:Button ID="btnIngresar" runat="server" OnClick="btnIngresar_Click" Text="Ingresar" class="btn btn-primary btn-xl js-scroll-trigger"></asp:Button>
+                <br />
+                <br />
+                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                <br />
+            </div>
+        </form>
+       </h3>
     </div>
     <div class="overlay"></div>
   </div>
@@ -110,7 +113,7 @@
           </a>
         </li>
       </ul>
-      <p class="text-muted small mb-0">Copyright &copy; Your Website 2019</p>
+      <p class="text-muted small mb-0">Copyright &copy; Your Website 2020</p>
     </div>
   </footer>
 
