@@ -4,7 +4,7 @@
 
     <!-- Este es el boton de salir cuando un usuario esta logueado -->
     <form id="form1" runat="server">
-    <asp:Button ID="btnSalir" runat="server" OnClick="btnSalir_Click" Text="Cerrar Sesión" class="btn btn-primary btn-xl js-scroll-trigger"></asp:Button>
+    <asp:Button style="font-size: 18px;" ID="btnSalir" runat="server" OnClick="btnSalir_Click" Text="Cerrar Sesión" class="btn btn-primary btn-xl js-scroll-trigger"></asp:Button>
     </form>
 
 </asp:Content>

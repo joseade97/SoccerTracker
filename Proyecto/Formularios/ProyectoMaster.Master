@@ -27,32 +27,8 @@
 
 <body id="page-top">
 
-  <!-- Navigation -->
-  <a class="menu-toggle rounded" href="#">
-    <i class="fas fa-bars"></i>
-  </a>
-  <nav id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-      <li class="sidebar-brand">
-        <a class="js-scroll-trigger" href="#page-top">Soccer Tracker</a>
-      </li>
-      <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#page-top">Campeonatos</a>
-      </li>
-        <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#about">Equipos</a>
-      </li>
-      <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#about">Jugadores</a>
-      </li>
-      <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#services">Reportes</a>
-      </li>
-    </ul>
-  </nav>
-
   <!-- Header -->
-  <div class="masthead d-flex">
+  <div class="masthead d-flex" style="height:85%">
     <div class="container text-center my-auto">
       <h1 class="mb-1" style="color: #FFFFFF">Soccer Tracker</h1>
       <h3 class="mb-5">
@@ -62,12 +38,64 @@
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         <!-- Acá se incluye el contenido de la página de Login -->
 
-
         </asp:ContentPlaceHolder>
       </div>
     </div>
     <div class="overlay"></div>
   </div>
+
+    
+<!-- Barra de navegacion -->
+<nav class="navbar navbar-expand-sm" style="background-color:#1D809F;">
+    <a class="navbar-brand" href="frmPaginaPrincipal.aspx" style="color:white;">Soccer Tracker</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" data-hover="dropdown">
+	    <span class="navbar-toggler-icon"></span>				
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+	    <ul class="navbar-nav">
+		    <div class="dropdown">
+			    <li class="nav-item">
+			    <a class="js-scroll-trigger btn btn-primary dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Campeonatos</a>
+				    <div class="dropdown-menu" style="background-color:#1D809F;">
+					    <a class="dropdown-item" href="#IngresarCampeonatos">Ingresar Campeonatos</a>
+					    <a class="dropdown-item" href="#ModificarCampeonatos">Modificar Campeonatos</a>
+                        <a class="dropdown-item" href="#EliminarCampeonatos">Eliminar Campeonatos</a>
+				    </div>
+			    </li>
+		    </div>
+		    <div class="dropdown">
+			    <li class="nav-item">
+				    <a class="js-scroll-trigger btn btn-primary dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Equipos</a>
+					    <div class="dropdown-menu" style="background-color:#1D809F;">
+						    <a class="dropdown-item" href="#IngresarEquipos">Ingresar Equipos</a>
+						    <a class="dropdown-item" href="#ModificarEquipos">Modificar Equipos</a>
+						    <a class="dropdown-item" href="#EliminarEquipos">Eliminar Equipos</a>
+					    </div>
+			    </li>
+		    </div>
+		    <div class="dropdown">
+			    <li class="nav-item">
+				    <a class="js-scroll-trigger btn btn-primary dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Jugadores</a>
+					    <div class="dropdown-menu" style="background-color:#1D809F;">
+						    <a class="dropdown-item" href="#IngresarJugadores">Ingresar Jugadores</a>
+						    <a class="dropdown-item" href="#ModificarJugadores">Modificar Jugadores</a>
+						    <a class="dropdown-item" href="#EliminarJugadores">Eliminar Jugadores</a>
+					    </div>
+			    </li>
+	        </div>
+            <div class="dropdown">
+			    <li class="nav-item">
+				    <a class="js-scroll-trigger btn btn-primary dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Reportes</a>
+					    <div class="dropdown-menu" style="background-color:#1D809F;">
+						    <a class="dropdown-item" href="#ReportesDeCampeonatos">Reportes de Campeonatos</a>
+						    <a class="dropdown-item" href="#ReportesDeEquipos">Reportes de Equipos</a>
+						    <a class="dropdown-item" href="#ReportesDeJugadores">Reportes de Jugadores</a>
+					    </div>
+			    </li>
+	        </div>
+        </ul>
+    </div>
+</nav>
 
 <!-- Donde van las paginas hijas -->
 <div>
@@ -97,7 +125,7 @@
           </a>
         </li>
       </ul>
-      <p class="text-muted small mb-0">Copyright &copy; Your Website 2019</p>
+      <p class="text-muted small mb-0">Copyright &copy; Your Website 2020</p>
     </div>
   </footer>
 
