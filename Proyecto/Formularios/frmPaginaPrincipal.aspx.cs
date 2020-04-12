@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Proyecto.Formularios
 {
-    public partial class frmPaginaPrincipal : System.Web.UI.Page
+    public partial class frmPaginaPrincipal : Page
     {
         ProyectoBD modelo = new ProyectoBD();
         protected void Page_Load(object sender, EventArgs e)

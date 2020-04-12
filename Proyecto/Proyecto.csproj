@@ -124,6 +124,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Formularios\frmIngresarPersona.aspx" />
     <Content Include="Formularios\frmLogin.aspx" />
     <Content Include="Formularios\frmPaginaPrincipal.aspx" />
     <Content Include="Formularios\frmSalir.aspx" />
@@ -262,6 +263,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmIngresarPersona.aspx.cs">
+      <DependentUpon>frmIngresarPersona.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmIngresarPersona.aspx.designer.cs">
+      <DependentUpon>frmIngresarPersona.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmLogin.aspx.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>

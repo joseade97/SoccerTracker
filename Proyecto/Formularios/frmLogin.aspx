@@ -5,15 +5,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
     <title>Soccer Tracker</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../StartBootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../StartBootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Custom Fonts -->
     <link href="../StartBootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
