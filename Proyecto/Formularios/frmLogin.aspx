@@ -68,7 +68,7 @@
             <hr />            <!-- Acá se incluye el contenido de la página de Login -->
             <form id="form1" runat="server">
                 <div class="login">
-                    <asp:Label ID="lblResultado" runat="server" Font-Size="X-Large" color="white" Font-Bold="True" ForeColor="White"></asp:Label>
+                    <asp:Label ID="lblResultado" runat="server" Font-Size="X-Large" style="color:red;" Font-Bold="True" ForeColor="White"></asp:Label> <br />
                     <asp:Label ID="Label1" runat="server" class="mb-1" Text="Usuario" BorderColor="Black"></asp:Label>
                     <br />
                     <asp:TextBox runat="server" type="text" ID="txtUsuario" class="form-control md-textbox btn" BorderColor="Black" BorderStyle="Solid"></asp:TextBox>
