@@ -22,6 +22,7 @@
 
     <!-- Custom CSS -->
     <link href="../StartBootstrap/css/stylish-portfolio.min.css" rel="stylesheet">
+    <link href="../Content/Site.css" rel="stylesheet" />
 </head>
 
 <body id="page-top">
