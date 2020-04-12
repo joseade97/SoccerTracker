@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto.Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,12 +10,13 @@ namespace Proyecto.Formularios
 {
     public partial class frmPaginaPrincipal : System.Web.UI.Page
     {
+        ProyectoBD modelo = new ProyectoBD();
         protected void Page_Load(object sender, EventArgs e)
         {
-            string datosUsuario = Convert.ToString(this.Session["nombreusuario"]);
-                if (!string.IsNullOrEmpty(datosUsuario))
+            Usuario datosUsuario = (Usuario)Session["datosUsuario"];
+                if (datosUsuario != null)
                 {
-                    this.lblDatosUsuario.Text = "Bienvenido(a): " + datosUsuario;
+                    this.lblDatosUsuario.Text = "Bienvenido(a): " + datosUsuario.nombre_usuario;
                     this.btnSalir.Visible = true;
                 }        
         }

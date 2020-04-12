@@ -39,12 +39,12 @@ namespace Proyecto.Formularios
 
             ///Verificar si el objeto es nulo, si lo es entonces el usuario o el password
             ///es incorrecto
-            bool isValid = hasher.Verify(user.hashed_pass, contra);
+            bool isValid = hasher.Verify(user != null ? user.hashed_pass : "", contra);
             if (isValid)
             {
-                this.Session.Add("datosUsuario", user);
+                Session["datosUsuario"] = user;
                 ///redireccionar a la pagina inicial
-                this.Response.Redirect("~/Formularios/frmPaginaPrincipal.aspx");
+                this.Response.Redirect("~/Formularios/frmPaginaPrincipal.aspx", false);
             }
             else
             {
@@ -52,7 +52,7 @@ namespace Proyecto.Formularios
                 ///es case-sensitive
                 ///nombre variable, valor de la variable
                 this.lblResultado.Text = "Debe ingresar un usuario y/o contraseña válidos";
-                this.Session.Add("datosUsuario", null);
+                Session["datosUsuario"] = null;
             }
         }
     }

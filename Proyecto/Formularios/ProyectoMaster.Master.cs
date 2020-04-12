@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto.Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,7 @@ namespace Proyecto.Formularios
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Convert.ToBoolean(this.Session["usuariologueado"]) != true)
+            if (Session["datosUsuario"] == null)
             {
                 this.Response.Redirect("~/Formularios/frmLogin.aspx"); 
             }
@@ -26,7 +27,8 @@ namespace Proyecto.Formularios
         /// </summary>
         void VerificaPermisosTipoUsuario()
         {
-            if (Convert.ToString(this.Session["esadmin"]) == "1")
+            var user = (Usuario)Session["datosUsuario"];
+            if (user.es_admin)
             {
                 /// this.hpfSalir.Visible = true;
             }
