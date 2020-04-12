@@ -26,6 +26,7 @@
         <label class="mb-1">Tipo de Identificación</label>
         <br />
         <asp:DropDownList runat="server" ID="ddlTipoIde">
+            <asp:ListItem Text="Seleccione" Value="" />
             <asp:ListItem Text="Nacional" Value="N" />
             <asp:ListItem Text="Internacional" Value="I" />
         </asp:DropDownList>
@@ -33,6 +34,7 @@
         <label class="mb-1">Género</label>
         <br />
         <asp:DropDownList runat="server" ID="ddlGenero">
+            <asp:ListItem Text="Seleccione" Value="" />
             <asp:ListItem Text="Masculino" Value="M" />
             <asp:ListItem Text="Femenino" Value="F"/>
         </asp:DropDownList>

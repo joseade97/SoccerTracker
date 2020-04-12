@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Proyecto.Modelos;
+using Microsoft.Ajax;
+using Proyecto.Clases;
 
 namespace Proyecto.Formularios
 {
@@ -16,6 +18,8 @@ namespace Proyecto.Formularios
 
             if (!IsPostBack)
             {
+                ddlCanton.Items.Insert(0, new ListItem("Selecccione", ""));
+                ddlDistrito.Items.Insert(0, new ListItem("Selecccione", ""));
                 var provincias = (from p in modelo.Provincias
                                   select p).ToList();
                 ddlProvincia.DataSource = provincias;
@@ -23,6 +27,7 @@ namespace Proyecto.Formularios
                 ddlProvincia.DataTextField = "nombre";
                 ddlProvincia.DataValueField = "id_provincia";
                 ddlProvincia.DataBind();
+                ddlProvincia.Items.Insert(0, new ListItem("Selecccione", ""));
             }
         }
 
@@ -37,6 +42,7 @@ namespace Proyecto.Formularios
             ddlCanton.DataTextField = "nombre";
             ddlCanton.DataValueField = "id_canton";
             ddlCanton.DataBind();
+            ddlCanton.Items.Insert(0, new ListItem("Selecccione", ""));
         }
         protected void ddlCanton_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -50,6 +56,7 @@ namespace Proyecto.Formularios
             ddlDistrito.DataTextField = "nombre";
             ddlDistrito.DataValueField = "id_distrito";
             ddlDistrito.DataBind();
+            ddlDistrito.Items.Insert(0, new ListItem("Selecccione", ""));
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -57,6 +64,7 @@ namespace Proyecto.Formularios
             Persona nPersona = GenerarNuevaPersona();
             modelo.Personas.Add(nPersona);
             modelo.SaveChanges();
+            Utilidades.ResetAllControls(this);
         }
 
         protected Persona GenerarNuevaPersona()
