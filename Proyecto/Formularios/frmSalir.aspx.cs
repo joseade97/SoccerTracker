@@ -19,10 +19,7 @@ namespace Proyecto.Formularios
             ///variable de sesion
             ///es case-sensitive
             ///nombre variable, valor de la variable
-            this.Session.Add("nombreusuario", null);
-            this.Session.Add("idusuario", null);
-            this.Session.Add("tipousuario", null);
-            this.Session.Add("usuariologueado", null);
+            Session["datosUsuario"] = null;
 
             ///redireccionar a la pagina de loggin
            this.Response.Redirect("~/Formularios/frmLogin.aspx");

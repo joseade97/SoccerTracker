@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Proyecto.Modelos;
+using Liphsoft.Crypto.Argon2;
 
 namespace Proyecto.Formularios
 {
@@ -25,33 +26,33 @@ namespace Proyecto.Formularios
         }
         void RealizarAutenticacion()
         {
-            sp_RetornaUsuarioNombrePwd_Result
-                resultadoSp = this.modelo.sp_RetornaUsuarioNombrePwd(
-                    this.txtUsuario.Text,
-                    this.txtContrasena.Text).FirstOrDefault();
+
+            var hasher = new PasswordHasher();
+
+            string nomUsuario = this.txtUsuario.Text;
+            string contra = this.txtContrasena.Text;
+
+
+            var user = (from u in modelo.Usuarios
+                        where u.nombre_usuario == nomUsuario
+                        select u).FirstOrDefault();
 
             ///Verificar si el objeto es nulo, si lo es entonces el usuario o el password
             ///es incorrecto
-            if (resultadoSp == null)
+            bool isValid = hasher.Verify(user != null ? user.hashed_pass : "", contra);
+            if (isValid)
             {
-                this.lblResultado.Text = "Debe ingresar un usuario y/o contraseña válidos";
-                this.Session.Add("nombreusuario", null);
-                this.Session.Add("idusuario", null);
-                this.Session.Add("usuariologueado", null);
-                this.Session.Add("esadmin", null);
+                Session["datosUsuario"] = user;
+                ///redireccionar a la pagina inicial
+                this.Response.Redirect("~/Formularios/frmPaginaPrincipal.aspx", false);
             }
             else
             {
                 ///variable de sesion
                 ///es case-sensitive
                 ///nombre variable, valor de la variable
-                this.Session.Add("nombreusuario", resultadoSp.nombre_usuario);
-                this.Session.Add("idusuario", resultadoSp.id_usuario);
-                this.Session.Add("esadmin", resultadoSp.es_admin);
-                this.Session.Add("usuariologueado", true);
-
-                ///redireccionar a la pagina inicial
-                this.Response.Redirect("~/Formularios/frmPaginaPrincipal.aspx");
+                this.lblResultado.Text = "Debe ingresar un usuario y/o contraseña válidos";
+                Session["datosUsuario"] = null;
             }
         }
     }
