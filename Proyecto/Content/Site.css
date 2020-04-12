@@ -1,31 +1,67 @@
-﻿/* Move down content because we have a fixed navbar that is 50px tall */
-body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿
+/*Inicio del CSS propio*/
+
+.btn-main {
+    color: #fff;
+    background-color: #366cc2;
+    border-radius: 50px;
+    padding: 20px;
+    box-shadow: 2px 6px 6px rgba(0, 0, 0, 0.3);
+    transition: all 0.25s linear;
+    margin: 15px;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.btn-xl {
+    min-width: 200px;
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
-input,
-select,
-textarea {
-    max-width: 280px;
+.md-textbox {
+    width: 250px;
+    text-align: center;
+    border: 0;
+    background-color: #fff;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 25px;
+    margin: 15px;
 }
 
+.btn-main:hover {
+    background-color: #852ed9;
+    color: #fff;
+    box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.35);
+}
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-    .jumbotron {
-        margin-top: 20px;
+.login-container {
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 25px;
+    color: #000;
+    font-family: Verdana;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 25px;
+}
+
+.login {
+    text-align: center;
+}
+
+@media (min-width: 576px) {
+}
+
+@media (min-width: 768px) {
+    .login-container {
+        max-width: 60%;
     }
+}
 
-    .body-content {
-        padding: 0;
+@media (min-width: 992px) {
+    .login-container {
+        max-width: 55%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .login-container {
+        max-width: 40%;
     }
 }
