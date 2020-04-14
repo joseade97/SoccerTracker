@@ -68,17 +68,16 @@ namespace Proyecto.Formularios
                     Persona nPersona = GenerarNuevaPersona();
                     modelo.Personas.Add(nPersona);
                     modelo.SaveChanges();
-                    string script = "<script type='text/javascript'> alert('La persona se ha registrado con éxito'); </script>";
-                    ClientScript.RegisterStartupScript(this.GetType(), Guid.NewGuid().ToString(), script);
+                    Utilidades.CreateMessageByScript(ClientScript, GetType(), "La persona ha sido registrada con éxito");
                     Utilidades.ClearTextBoxes(this);
                 }
                 catch (Exception ex)
                 {
-                    string script = "<script type='text/javascript'> alert('Ha ocurrido un error inesperado, por favor comuníquese con" +
-                                        " el administrador de la web brindándole la siguiente información: " + ex.Message + "'); </script>";
-                    ClientScript.RegisterStartupScript(this.GetType(), Guid.NewGuid().ToString(), script);
+                    string msg = "Ha ocurrido un error inesperado, por favor comuníquese con" +
+                                        " el administrador de la web brindándole la siguiente información: " + ex.Message;
+                    Utilidades.CreateMessageByScript(ClientScript, GetType(), msg);
                 }
-                
+
             }
         }
 

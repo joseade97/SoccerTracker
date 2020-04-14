@@ -22,6 +22,10 @@ namespace Proyecto.Clases
                         t.Text = String.Empty;
                     }
                 }
+                else if (ctrl is DropDownList c)
+                {
+                    c.SelectedIndex = 0;
+                }
                 else
                 {
                     if (ctrl.Controls.Count > 0)
@@ -30,6 +34,12 @@ namespace Proyecto.Clases
                     }
                 }
             }
+        }
+
+        public static void CreateMessageByScript(ClientScriptManager ClientScript, Type type, string message)
+        {
+            string script = $"<script type='text/javascript'> alert('{message}'); </script>";
+            ClientScript.RegisterStartupScript(type, Guid.NewGuid().ToString(), script);
         }
     }
 }
