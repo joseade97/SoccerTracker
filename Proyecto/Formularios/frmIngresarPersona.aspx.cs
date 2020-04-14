@@ -61,10 +61,13 @@ namespace Proyecto.Formularios
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            Persona nPersona = GenerarNuevaPersona();
-            modelo.Personas.Add(nPersona);
-            modelo.SaveChanges();
-            Utilidades.ResetAllControls(this);
+            if (this.IsValid)
+            {
+                Persona nPersona = GenerarNuevaPersona();
+                modelo.Personas.Add(nPersona);
+                modelo.SaveChanges();
+                Utilidades.ResetAllControls(this);
+            }
         }
 
         protected Persona GenerarNuevaPersona()

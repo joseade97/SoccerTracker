@@ -93,3 +93,9 @@ label {
         max-width: 40%;
     }
 }
+
+.validator-message {
+    color: #FF5050;
+    display: block;
+    text-align: center;
+}
