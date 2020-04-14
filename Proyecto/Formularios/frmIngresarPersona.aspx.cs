@@ -27,7 +27,7 @@ namespace Proyecto.Formularios
                 ddlProvincia.DataTextField = "nombre";
                 ddlProvincia.DataValueField = "id_provincia";
                 ddlProvincia.DataBind();
-                ddlProvincia.Items.Insert(0, new ListItem("Selecccione", ""));
+                ddlProvincia.Items.Insert(0, new ListItem("Seleccione", ""));
             }
         }
 
@@ -42,7 +42,7 @@ namespace Proyecto.Formularios
             ddlCanton.DataTextField = "nombre";
             ddlCanton.DataValueField = "id_canton";
             ddlCanton.DataBind();
-            ddlCanton.Items.Insert(0, new ListItem("Selecccione", ""));
+            ddlCanton.Items.Insert(0, new ListItem("Seleccione", ""));
         }
         protected void ddlCanton_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -56,17 +56,26 @@ namespace Proyecto.Formularios
             ddlDistrito.DataTextField = "nombre";
             ddlDistrito.DataValueField = "id_distrito";
             ddlDistrito.DataBind();
-            ddlDistrito.Items.Insert(0, new ListItem("Selecccione", ""));
+            ddlDistrito.Items.Insert(0, new ListItem("Seleccione", ""));
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             if (this.IsValid)
             {
-                Persona nPersona = GenerarNuevaPersona();
-                modelo.Personas.Add(nPersona);
-                modelo.SaveChanges();
-                Utilidades.ResetAllControls(this);
+                try
+                {
+                    Persona nPersona = GenerarNuevaPersona();
+                    modelo.Personas.Add(nPersona);
+                    modelo.SaveChanges();
+                    ClientScript.RegisterStartupScript(this.GetType(), Guid.NewGuid().ToString(),
+                                                       "La persona se ha registrado con éxito");
+                }catch(Exception ex)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), Guid.NewGuid().ToString(),
+                                                       "Ha ocurrido un error inesperado, por favor comuníquese con el administrador de la web brindándole la siguiente información: " + ex.Message);
+                }
+                Utilidades.ClearTextBoxes(this);
             }
         }
 

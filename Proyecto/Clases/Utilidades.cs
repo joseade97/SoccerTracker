@@ -9,33 +9,25 @@ namespace Proyecto.Clases
 {
     public class Utilidades
     {
-        public static void ResetAllControls(Control form)
+        public static void ClearTextBoxes(Control p1)
         {
-            foreach (Control control in form.Controls)
+            foreach (Control ctrl in p1.Controls)
             {
-                if (control is TextBox)
+                if (ctrl is TextBox)
                 {
-                    TextBox textBox = (TextBox)control;
-                    textBox.Text = null;
-                }
+                    TextBox t = ctrl as TextBox;
 
-                if (control is DropDownList)
-                {
-                    DropDownList comboBox = (DropDownList)control;
-                    if (comboBox.Items.Count > 0)
-                        comboBox.SelectedIndex = 0;
+                    if (t != null)
+                    {
+                        t.Text = String.Empty;
+                    }
                 }
-
-                if (control is CheckBox)
+                else
                 {
-                    CheckBox checkBox = (CheckBox)control;
-                    checkBox.Checked = false;
-                }
-
-                if (control is ListBox)
-                {
-                    ListBox listBox = (ListBox)control;
-                    listBox.SelectedIndex = 0;
+                    if (ctrl.Controls.Count > 0)
+                    {
+                        ClearTextBoxes(ctrl);
+                    }
                 }
             }
         }
