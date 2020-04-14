@@ -41,5 +41,10 @@ namespace Proyecto.Clases
             string script = $"<script type='text/javascript'> alert('{message}'); </script>";
             ClientScript.RegisterStartupScript(type, Guid.NewGuid().ToString(), script);
         }
+        public static void CreateMessageandRedirect(ClientScriptManager ClientScript, Type type, string message, string url)
+        {
+            string script = $"<script type='text/javascript'> alert('{message}'); window.location.href = '{url}'</script>";
+            ClientScript.RegisterStartupScript(type, Guid.NewGuid().ToString(), script);
+        }
     }
 }

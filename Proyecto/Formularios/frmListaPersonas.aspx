@@ -17,7 +17,8 @@
                     <asp:BoundField DataField="canton" HeaderText="Cantón" />
                     <asp:BoundField DataField="distrito" HeaderText="Distrito" />
                     <asp:BoundField DataField="direccion_fisica" HeaderText="Dirección Exacta" />
-                    <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="/Formularios/frmModificarPersona.aspx?idPersona={0}" HeaderText="Modificar" Text="Modificar Datos" />
+                    <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="/Formularios/frmModificarPersona.aspx?id_persona={0}" HeaderText="Modificar" Text="Modificar Datos" />
+                    <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="/Formularios/frmEliminarPersona.aspx?id_persona={0}" HeaderText="Eliminar" Text="Eliminar Persona" />
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

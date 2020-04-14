@@ -13,7 +13,7 @@ namespace Proyecto.Formularios
         int id;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            id = Int32.Parse(Request.QueryString["id_persona"]);
             if (!IsPostBack)
             {
                 InitForm();
@@ -32,14 +32,14 @@ namespace Proyecto.Formularios
                                    select p).FirstOrDefault();
                     GenerarModificacionPersona(persona);
                     modelo.SaveChanges();
-                    Utilidades.CreateMessageByScript(ClientScript, GetType(), "La persona ha sido modificada con éxito");
+                    Utilidades.CreateMessageandRedirect(ClientScript, GetType(), "La persona ha sido modificada con éxito", "frmListaPersonas");
                     Utilidades.ClearTextBoxes(this);
                 }
                 catch (Exception ex)
                 {
                     string msg = "Ha ocurrido un error inesperado, por favor comuníquese con" +
                                         " el administrador de la web brindándole la siguiente información: " + ex.Message;
-                    Utilidades.CreateMessageByScript(ClientScript, GetType(), msg);
+                    Utilidades.CreateMessageandRedirect(ClientScript, GetType(), msg, "frmListaPersonas");
                 }
 
             }
@@ -83,8 +83,6 @@ namespace Proyecto.Formularios
         }
         protected void InitForm()
         {
-            id = Int32.Parse(Request.QueryString["idPersona"]);
-
             var persona = (from ps in modelo.Personas
                            where ps.id == id
                            join d in modelo.Distritos on ps.id_distrito equals d.id_distrito
@@ -117,7 +115,7 @@ namespace Proyecto.Formularios
             ddlGenero.SelectedValue = persona.datos.genero;
             txtTel1.Text = persona.datos.telefono_principal.ToString();
             txtTel2.Text = persona.datos.telefono_secundario != null ? persona.datos.telefono_secundario.ToString() : String.Empty;
-            txtFecNac.Text = String.Format("dd/MM/yyyy", CultureInfo.InvariantCulture, persona.datos.fec_nacimiento);
+            txtFecNac.Text = ((DateTime)persona.datos.fec_nacimiento).ToString("dd/MM/yyyy",CultureInfo.InvariantCulture);
             txtDireccion.Text = persona.datos.direccion_fisica;
         }
 
