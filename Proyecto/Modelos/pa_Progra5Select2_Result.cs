@@ -10,19 +10,20 @@
 namespace Proyecto.Modelos
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Posicione
+    public partial class pa_Progra5Select2_Result
     {
-        public Posicione()
-        {
-            this.Jugadores = new HashSet<Jugadore>();
-        }
-    
         public int id { get; set; }
         public string nombre { get; set; }
-        public string codigo_posicion { get; set; }
-    
-        public virtual ICollection<Jugadore> Jugadores { get; set; }
+        public Nullable<int> id_fundador { get; set; }
+        public int id_distrito { get; set; }
+        public int id1 { get; set; }
+        public int id_equipo { get; set; }
+        public int id_campeonato { get; set; }
+        public int id2 { get; set; }
+        public Nullable<System.DateTime> fec_inicio { get; set; }
+        public Nullable<System.DateTime> fec_fin { get; set; }
+        public int cant_equipos { get; set; }
+        public int id_dedicado { get; set; }
     }
 }

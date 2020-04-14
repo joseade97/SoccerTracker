@@ -124,6 +124,8 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Formularios\frmListaPersonas.aspx" />
+    <Content Include="Formularios\frmModificarPersona.aspx" />
     <Content Include="Formularios\frmIngresarPersona.aspx" />
     <Content Include="Formularios\frmLogin.aspx" />
     <Content Include="Formularios\frmPaginaPrincipal.aspx" />
@@ -265,6 +267,20 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmListaPersonas.aspx.cs">
+      <DependentUpon>frmListaPersonas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmListaPersonas.aspx.designer.cs">
+      <DependentUpon>frmListaPersonas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmModificarPersona.aspx.cs">
+      <DependentUpon>frmModificarPersona.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmModificarPersona.aspx.designer.cs">
+      <DependentUpon>frmModificarPersona.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmIngresarPersona.aspx.cs">
       <DependentUpon>frmIngresarPersona.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -330,6 +346,15 @@
     <Compile Include="Modelos\Partido.cs">
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\pa_obtener_lista_personas_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\pa_Progra5Select1_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\pa_Progra5Select2_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\Persona.cs">
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
@@ -354,6 +379,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProyectoBD.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\sp_helpdiagrams_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\sp_RetornaCantonesid_canton_Result.cs">
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
@@ -373,6 +404,9 @@
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\sp_RetornaUsuario_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\sysdiagram.cs">
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Usuario.cs">
