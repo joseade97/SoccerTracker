@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <form id="frm1" runat="server" class="text-center">
-        <h2>Ingresar Nueva Persona</h2>
+        <h2>Modificar Persona</h2>
         <label class="mb-1">Nombre</label>
         <br />
         <asp:RequiredFieldValidator CssClass="validator-message" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Este campo es requerido" ControlToValidate="txtNombre" ForeColor="#FF5050"></asp:RequiredFieldValidator>

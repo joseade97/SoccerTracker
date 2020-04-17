@@ -79,8 +79,9 @@
                         <a class="js-scroll-trigger btn btn-primary dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Personas</a>
                         <div class="dropdown-menu" style="background-color: #1D809F;">
                             <a class="dropdown-item" href="/Formularios/frmIngresarPersona">Ingresar Personas</a>
-                            <a class="dropdown-item" href="#EliminarJugadores">Ingresar Usuarios</a>
+                            <a class="dropdown-item" href="/Formularios/frmIngresarUsuario">Ingresar Usuarios</a>
                             <a class="dropdown-item" href="/Formularios/frmListaPersonas">Lista de Personas</a>
+                            <a class="dropdown-item" href="/Formularios/frmListaUsuarios">Lista de Usuarios</a>
                         </div>
                     </div>
                 </li>

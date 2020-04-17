@@ -400,6 +400,9 @@
         <Function Name="pa_obtener_lista_personas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="identificacion" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="pa_obtener_lista_usuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="identificacion" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="PA_OBTENER_SIG_INDEX" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombreTabla" Type="varchar" Mode="In" />
           <Parameter Name="nombreIdentificador" Type="varchar" Mode="In" />
@@ -1227,6 +1230,9 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="pa_obtener_lista_usuarios" ReturnType="Collection(ProyectoBDEntities.pa_obtener_lista_usuarios_Result)">
+          <Parameter Name="identificacion" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_RetornaCantones_Result">
           <Property Type="Int32" Name="id_canton" Nullable="false" />
@@ -1362,6 +1368,12 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="pa_obtener_lista_usuarios_Result">
+          <Property Type="Int32" Name="id_usuario" Nullable="false" />
+          <Property Type="String" Name="nombre_usuario" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="es_admin" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="estado" Nullable="false" MaxLength="8" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1731,6 +1743,16 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ProyectoBDEntities.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ProyectoBDEntities.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="pa_obtener_lista_usuarios" FunctionName="ProyectoBDEntities.Store.pa_obtener_lista_usuarios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoBDEntities.pa_obtener_lista_usuarios_Result">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+                <ScalarProperty Name="es_admin" ColumnName="es_admin" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -11,12 +11,11 @@ namespace Proyecto.Modelos
 {
     using System;
     
-    public partial class sp_helpdiagrams_Result
+    public partial class pa_obtener_lista_usuarios_Result
     {
-        public string Database { get; set; }
-        public string Name { get; set; }
-        public int ID { get; set; }
-        public string Owner { get; set; }
-        public int OwnerID { get; set; }
+        public int id_usuario { get; set; }
+        public string nombre_usuario { get; set; }
+        public string es_admin { get; set; }
+        public string estado { get; set; }
     }
 }
