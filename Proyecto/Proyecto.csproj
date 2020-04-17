@@ -125,10 +125,14 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Formularios\frmEliminarPersona.aspx" />
+    <Content Include="Formularios\frmEliminarUsuario.aspx" />
+    <Content Include="Formularios\frmIngresarUsuario.aspx" />
     <Content Include="Formularios\frmListaPersonas.aspx" />
+    <Content Include="Formularios\frmListaUsuarios.aspx" />
     <Content Include="Formularios\frmModificarPersona.aspx" />
     <Content Include="Formularios\frmIngresarPersona.aspx" />
     <Content Include="Formularios\frmLogin.aspx" />
+    <Content Include="Formularios\frmModificarUsuario.aspx" />
     <Content Include="Formularios\frmPaginaPrincipal.aspx" />
     <Content Include="Formularios\frmSalir.aspx" />
     <Content Include="Global.asax" />
@@ -275,12 +279,33 @@
     <Compile Include="Formularios\frmEliminarPersona.aspx.designer.cs">
       <DependentUpon>frmEliminarPersona.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmEliminarUsuario.aspx.cs">
+      <DependentUpon>frmEliminarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmEliminarUsuario.aspx.designer.cs">
+      <DependentUpon>frmEliminarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmIngresarUsuario.aspx.cs">
+      <DependentUpon>frmIngresarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmIngresarUsuario.aspx.designer.cs">
+      <DependentUpon>frmIngresarUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmListaPersonas.aspx.cs">
       <DependentUpon>frmListaPersonas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Formularios\frmListaPersonas.aspx.designer.cs">
       <DependentUpon>frmListaPersonas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmListaUsuarios.aspx.cs">
+      <DependentUpon>frmListaUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmListaUsuarios.aspx.designer.cs">
+      <DependentUpon>frmListaUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmModificarPersona.aspx.cs">
       <DependentUpon>frmModificarPersona.aspx</DependentUpon>
@@ -302,6 +327,13 @@
     </Compile>
     <Compile Include="Formularios\frmLogin.aspx.designer.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmModificarUsuario.aspx.cs">
+      <DependentUpon>frmModificarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmModificarUsuario.aspx.designer.cs">
+      <DependentUpon>frmModificarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmPaginaPrincipal.aspx.cs">
       <DependentUpon>frmPaginaPrincipal.aspx</DependentUpon>
@@ -355,6 +387,9 @@
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\pa_obtener_lista_personas_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\pa_obtener_lista_usuarios_Result.cs">
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\pa_Progra5Select1_Result.cs">
