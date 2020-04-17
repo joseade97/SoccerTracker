@@ -10,18 +10,9 @@
 namespace Proyecto.Modelos
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Persona
+    public partial class pa_Progra5Select1_Result
     {
-        public Persona()
-        {
-            this.Campeonatos = new HashSet<Campeonato>();
-            this.Equipos = new HashSet<Equipos>();
-            this.Jugadores = new HashSet<Jugadore>();
-            this.Usuarios = new HashSet<Usuario>();
-        }
-    
         public int id { get; set; }
         public string nombre { get; set; }
         public string ape1 { get; set; }
@@ -35,11 +26,9 @@ namespace Proyecto.Modelos
         public string direccion_fisica { get; set; }
         public Nullable<System.DateTime> fec_nacimiento { get; set; }
         public int id_distrito { get; set; }
-    
-        public virtual ICollection<Campeonato> Campeonatos { get; set; }
-        public virtual Distrito Distrito { get; set; }
-        public virtual ICollection<Equipos> Equipos { get; set; }
-        public virtual ICollection<Jugadore> Jugadores { get; set; }
-        public virtual ICollection<Usuario> Usuarios { get; set; }
+        public int id1 { get; set; }
+        public int id_persona { get; set; }
+        public int id_equipo { get; set; }
+        public int id_posicion { get; set; }
     }
 }

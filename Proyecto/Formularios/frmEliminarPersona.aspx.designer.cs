@@ -8,36 +8,35 @@
 //------------------------------------------------------------------------------
 
 namespace Proyecto.Formularios {
-
-
-    public partial class frmPaginaPrincipal
-    {
-
+    
+    
+    public partial class frmEliminarPersona {
+        
         /// <summary>
-        /// form1 control.
+        /// Control form1.
         /// </summary>
         /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
+        
         /// <summary>
-        /// btnSalir control.
+        /// Control btnSi.
         /// </summary>
         /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSalir;
-
+        protected global::System.Web.UI.WebControls.Button btnSi;
+        
         /// <summary>
-        /// lblDatosUsuario control.
+        /// Control btnNo.
         /// </summary>
         /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDatosUsuario;
+        protected global::System.Web.UI.WebControls.Button btnNo;
     }
 }

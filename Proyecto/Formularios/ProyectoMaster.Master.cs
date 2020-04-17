@@ -22,6 +22,10 @@ namespace Proyecto.Formularios
             }
         }
 
+        protected void btnIngresarPersona_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Formularios/frmIngresarPersona.aspx");
+        }
         /// <summary>
         /// Usando la variable de session tipousuario muestra/oculta opciones del menu
         /// </summary>

@@ -7,7 +7,7 @@
     <asp:Button style="font-size: 18px;" ID="btnSalir" runat="server" OnClick="btnSalir_Click" Text="Cerrar Sesión" class="btn btn-primary btn-xl js-scroll-trigger"></asp:Button>
     </form>
 
-</asp:Content>
+</asp:Content> 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
 

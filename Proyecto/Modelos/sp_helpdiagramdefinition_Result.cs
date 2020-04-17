@@ -10,19 +10,10 @@
 namespace Proyecto.Modelos
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Evento
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public Evento()
-        {
-            this.Eventos_x_Partido = new HashSet<Eventos_x_Partido>();
-        }
-    
-        public int id { get; set; }
-        public string nombre_evento { get; set; }
-        public string descripcion { get; set; }
-    
-        public virtual ICollection<Eventos_x_Partido> Eventos_x_Partido { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
