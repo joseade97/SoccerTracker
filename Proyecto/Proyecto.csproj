@@ -125,6 +125,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Formularios\frmEliminarEquipo.aspx" />
     <Content Include="Formularios\frmEliminarPersona.aspx" />
     <Content Include="Formularios\frmEliminarUsuario.aspx" />
     <Content Include="Formularios\frmIngresarEquipo.aspx" />
@@ -132,6 +133,7 @@
     <Content Include="Formularios\frmListaEquipos.aspx" />
     <Content Include="Formularios\frmListaPersonas.aspx" />
     <Content Include="Formularios\frmListaUsuarios.aspx" />
+    <Content Include="Formularios\frmModificarEquipo.aspx" />
     <Content Include="Formularios\frmModificarPersona.aspx" />
     <Content Include="Formularios\frmIngresarPersona.aspx" />
     <Content Include="Formularios\frmLogin.aspx" />
@@ -275,6 +277,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmEliminarEquipo.aspx.cs">
+      <DependentUpon>frmEliminarEquipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmEliminarEquipo.aspx.designer.cs">
+      <DependentUpon>frmEliminarEquipo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmEliminarPersona.aspx.cs">
       <DependentUpon>frmEliminarPersona.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -323,6 +332,13 @@
     </Compile>
     <Compile Include="Formularios\frmListaUsuarios.aspx.designer.cs">
       <DependentUpon>frmListaUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmModificarEquipo.aspx.cs">
+      <DependentUpon>frmModificarEquipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmModificarEquipo.aspx.designer.cs">
+      <DependentUpon>frmModificarEquipo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmModificarPersona.aspx.cs">
       <DependentUpon>frmModificarPersona.aspx</DependentUpon>
