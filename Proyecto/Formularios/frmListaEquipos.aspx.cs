@@ -29,6 +29,7 @@ namespace Proyecto.Formularios
                                     e.id,
                                     e.nombre,
                                     fundador = pr.nombre + " " + pr.ape1 + " " + pr.ape2,
+                                    e.fecha_fundacion,
                                     distrito = d.nombre,
                                     canton = c.nombre,
                                     provincia = p.nombre

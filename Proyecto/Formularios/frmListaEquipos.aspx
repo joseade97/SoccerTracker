@@ -11,6 +11,7 @@
                 <Columns>
                     <asp:BoundField DataField="nombre" HeaderText="Nombre" />
                     <asp:BoundField DataField="fundador" HeaderText="Fundador" />
+                    <asp:BoundField DataField="fecha_fundacion" HeaderText="Fecha de Fundación" />
                     <asp:BoundField DataField="distrito" HeaderText="Distrito" />
                     <asp:BoundField DataField="canton" HeaderText="Cantón" />
                     <asp:BoundField DataField="provincia" HeaderText="Provincia" />
