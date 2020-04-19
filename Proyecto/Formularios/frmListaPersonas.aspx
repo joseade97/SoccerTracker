@@ -5,7 +5,15 @@
         <h2>Lista de Personas</h2>
         <br />
         <form runat="server">
-            <asp:GridView CssClass="centered-element" ID="grdPersonas" runat="server" AllowPaging="True" AllowSorting="True" PageSize="15" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnPageIndexChanging="grdPersonas_PageIndexChanging" OnRowCreated="grdPersonas_RowCreated">
+            <div style="width:100%;text-align:right">
+                <label class="mb-1">Número de identificación</label>
+                <asp:TextBox runat="server" type="text" ID="txtIdentificacion" class="form-control md-textbox btn" BorderColor="Black" BorderStyle="Solid"></asp:TextBox>
+                <asp:Button Text="Buscar" ID="btnVal" class="btn btn-alter btn-s" runat="server" OnClick="btnVal_Click" />
+            </div>
+            <br />
+            <asp:GridView CssClass="centered-element" ID="grdPersonas" runat="server" AllowPaging="True"
+                AllowSorting="True" PageSize="15" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333"
+                GridLines="None" OnPageIndexChanging="grdPersonas_PageIndexChanging" OnRowCreated="grdPersonas_RowCreated">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="nombre_completo" HeaderText="Nombre Completo" />

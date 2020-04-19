@@ -27,27 +27,9 @@
 
 <body id="page-top">
 
-    <!-- Header -->
-    <div class="masthead d-flex" style="height: 85%">
-        <div class="container text-center my-auto">
-            <h1 class="mb-1" style="color: #FFFFFF">Soccer Tracker</h1>
-            <h3 class="mb-5">
-                <em style="color: #FFFFFF">Sistema de Control de Fútbol</em>
-            </h3>
-            <div runat="server">
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                    <!-- Acá se incluye el contenido de la página de Login -->
-
-                </asp:ContentPlaceHolder>
-            </div>
-        </div>
-        <div class="overlay"></div>
-    </div>
-
-
     <!-- Barra de navegacion -->
     <nav class="navbar navbar-expand-sm" style="background-color: #1D809F;">
-        <a class="navbar-brand" href="frmPaginaPrincipal.aspx" style="color: white;">Soccer Tracker</a>
+        <a class="navbar-brand" href="frmPaginaPrincipal.aspx" style="color: white;"><img alt="logo" src="../Content/Imagenes/ST_Icon.png" width="120" height="60"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" data-hover="dropdown">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -68,9 +50,8 @@
                     <div class="dropdown">
                         <a class="js-scroll-trigger btn btn-primary dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Equipos</a>
                         <div class="dropdown-menu" style="background-color: #1D809F;">
-                            <a class="dropdown-item" href="#IngresarEquipos">Ingresar Equipos</a>
-                            <a class="dropdown-item" href="#ModificarEquipos">Modificar Equipos</a>
-                            <a class="dropdown-item" href="#EliminarEquipos">Eliminar Equipos</a>
+                            <a class="dropdown-item" href="/Formularios/frmIngresarEquipo">Ingresar Equipo</a>
+                            <a class="dropdown-item" href="/Formularios/frmListaEquipos">Lista de Equipos</a>
                         </div>
                     </div>
                 </li>
@@ -78,9 +59,9 @@
                     <div class="dropdown">
                         <a class="js-scroll-trigger btn btn-primary dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Personas</a>
                         <div class="dropdown-menu" style="background-color: #1D809F;">
-                            <a class="dropdown-item" href="/Formularios/frmIngresarPersona">Ingresar Personas</a>
-                            <a class="dropdown-item" href="/Formularios/frmIngresarUsuario">Ingresar Usuarios</a>
+                            <a class="dropdown-item" href="/Formularios/frmIngresarPersona">Ingresar Persona</a>
                             <a class="dropdown-item" href="/Formularios/frmListaPersonas">Lista de Personas</a>
+                            <a class="dropdown-item" href="/Formularios/frmIngresarUsuario">Ingresar Usuario</a>
                             <a class="dropdown-item" href="/Formularios/frmListaUsuarios">Lista de Usuarios</a>
                         </div>
                     </div>

@@ -14,17 +14,20 @@ namespace Proyecto.Formularios
         protected void Page_Load(object sender, EventArgs e)
         {
             Usuario datosUsuario = (Usuario)Session["datosUsuario"];
-                if (datosUsuario != null)
-                {
-                    this.lblDatosUsuario.Text = "Bienvenido(a): " + datosUsuario.nombre_usuario;
-                    this.btnSalir.Visible = true;
-                }        
-        }
-
-        protected void btnSalir_Click(object sender, EventArgs e)
-        {
-            ///al dar click al boton "Cerrar Sesion" redirecciona al frmSalir
-            this.Response.Redirect("~/Formularios/frmSalir.aspx");
+            var persona = (from u in modelo.Personas
+                           where u.id == datosUsuario.id_persona
+                           select u).FirstOrDefault();
+            if (datosUsuario != null && persona != null)
+            {
+                this.lblDatosUsuario.Text = $"Bienvenido(a) {persona.nombre} {persona.ape1} {(persona.ape2 ?? "")}" +
+                                            $"<br />{(datosUsuario.ultimo_ingreso != null ? "Su último ingreso fue el " + datosUsuario.ultimo_ingreso:"Primer ingreso al sistema")}";
         }
     }
+
+    protected void btnSalir_Click(object sender, EventArgs e)
+    {
+        ///al dar click al boton "Cerrar Sesion" redirecciona al frmSalir
+        this.Response.Redirect("~/Formularios/frmSalir.aspx");
+    }
+}
 }

@@ -22,7 +22,7 @@ namespace Proyecto.Formularios
 
         protected void InitList()
         {
-            var lista = modelo.pa_obtener_lista_personas("");
+            var lista = modelo.pa_obtener_lista_personas(txtIdentificacion.Text);
             grdPersonas.DataSource = lista;
             grdPersonas.DataBind();
         }
@@ -35,6 +35,11 @@ namespace Proyecto.Formularios
 
         protected void grdPersonas_RowCreated(object sender, GridViewRowEventArgs e)
         {
+        }
+
+        protected void btnVal_Click(object sender, EventArgs e)
+        {
+            InitList();
         }
     }
 }

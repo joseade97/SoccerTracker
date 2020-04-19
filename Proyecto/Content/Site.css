@@ -15,7 +15,6 @@
         color: #fff;
         box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.35);
     }
-
 .btn-alter {
     color: #fff;
     background-color: #2bb580;
@@ -24,11 +23,13 @@
     transition: all 0.25s linear;
     margin: 15px;
 }
+
     .btn-alter:hover {
         background-color: #54ccc4;
         color: #fff;
         box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.35);
     }
+
 .btn-cancel {
     color: #fff;
     background-color: #cc2b4e;
@@ -48,6 +49,7 @@
     min-width: 200px;
     padding: 20px;
 }
+
 .btn-m {
     min-width: 150px;
     padding: 10px;
@@ -88,6 +90,14 @@ label {
 .login {
     text-align: center;
 }
+
+.dropdown-item {
+    color: #fff;
+}
+
+    .dropdown-item:hover {
+        color: #2e2e2e;
+    }
 
 @media (min-width: 576px) {
 }

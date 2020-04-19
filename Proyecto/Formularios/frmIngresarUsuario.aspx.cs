@@ -62,7 +62,7 @@ namespace Proyecto.Formularios
             string hashed_pass = hasher.Hash(txtPassword.Text);
 
             Usuario nUsuario = new Usuario();
-            
+
             nUsuario.nombre_usuario = txtNombreUsuario.Text;
             nUsuario.hashed_pass = hashed_pass;
             nUsuario.es_admin = Boolean.Parse(ddlTipoUsu.SelectedValue);
@@ -76,8 +76,14 @@ namespace Proyecto.Formularios
             var persona = (from u in modelo.Personas
                            where u.num_identificacion == txtIdentificacion.Text
                            select new { u.id, nombre = u.nombre + " " + u.ape1 + " " + u.ape2 }).FirstOrDefault();
-            hdfIdPersona.Value = persona.id.ToString();
-            txtNombre.Text = persona.nombre;
+            if (persona != null)
+            {
+                hdfIdPersona.Value = persona.id.ToString();
+                txtNombre.Text = persona.nombre;
+            }else
+            {
+                Utilidades.CreateMessageByScript(ClientScript, GetType(), "No hay ninguna persona registrada con ese número de identificación.");
+            }
         }
     }
 }

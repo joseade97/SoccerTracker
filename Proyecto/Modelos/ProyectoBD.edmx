@@ -51,6 +51,7 @@
           <Property Name="nombre" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="id_fundador" Type="int" />
           <Property Name="id_distrito" Type="int" Nullable="false" />
+          <Property Name="fecha_fundacion" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Equipos_x_Campeonato">
           <Key>
@@ -163,6 +164,7 @@
           <Property Name="es_admin" Type="bit" Nullable="false" />
           <Property Name="estado" Type="bit" Nullable="false" />
           <Property Name="id_persona" Type="int" Nullable="false" />
+          <Property Name="ultimo_ingreso" Type="datetime" />
         </EntityType>
         <Association Name="Canton_ref_Provincia">
           <End Role="Provincias" Type="Self.Provincias" Multiplicity="1" />
@@ -512,6 +514,10 @@
           <Parameter Name="contrasena" Type="varchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UPDATE_ULTIMO_INGRESO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ult_date" Type="datetime" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="ProyectoBDEntitiesStoreContainer">
           <EntitySet Name="Campeonatos" EntityType="Self.Campeonatos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cantones" EntityType="Self.Cantones" Schema="dbo" store:Type="Tables" />
@@ -670,6 +676,7 @@
           <NavigationProperty Name="Jugadores" Relationship="Self.FK__Jugadores__id_eq__72C60C4A" FromRole="Equipos" ToRole="Jugadores" />
           <NavigationProperty Name="Partidos" Relationship="Self.FK__Partidos__id_cas__7D439ABD" FromRole="Equipos" ToRole="Partidos" />
           <NavigationProperty Name="Partidos1" Relationship="Self.FK__Partidos__id_vis__7E37BEF6" FromRole="Equipos" ToRole="Partidos" />
+          <Property Name="fecha_fundacion" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Equipos_x_Campeonato">
           <Key>
@@ -794,6 +801,7 @@
           <Property Name="estado" Type="Boolean" Nullable="false" />
           <Property Name="id_persona" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Persona" Relationship="Self.FK__Usuarios__id_per__693CA210" FromRole="Usuarios" ToRole="Personas" />
+          <Property Name="ultimo_ingreso" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK__Campeonat__id_de__76969D2E">
           <End Role="Personas" Type="Self.Persona" Multiplicity="1" />
@@ -1233,6 +1241,10 @@
           <FunctionImport Name="pa_obtener_lista_usuarios" ReturnType="Collection(ProyectoBDEntities.pa_obtener_lista_usuarios_Result)">
           <Parameter Name="identificacion" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="UPDATE_ULTIMO_INGRESO">
+            <Parameter Name="ult_date" Mode="In" Type="DateTime" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_RetornaCantones_Result">
           <Property Type="Int32" Name="id_canton" Nullable="false" />
@@ -1425,6 +1437,7 @@
           <EntitySetMapping Name="Equipos">
             <EntityTypeMapping TypeName="ProyectoBDEntities.Equipos">
               <MappingFragment StoreEntitySet="Equipos">
+                <ScalarProperty Name="fecha_fundacion" ColumnName="fecha_fundacion" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id_fundador" ColumnName="id_fundador" />
@@ -1534,6 +1547,7 @@
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="ProyectoBDEntities.Usuario">
               <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="ultimo_ingreso" ColumnName="ultimo_ingreso" />
                 <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
                 <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
                 <ScalarProperty Name="hashed_pass" ColumnName="hashed_pass" />
@@ -1753,6 +1767,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UPDATE_ULTIMO_INGRESO" FunctionName="ProyectoBDEntities.Store.UPDATE_ULTIMO_INGRESO" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
