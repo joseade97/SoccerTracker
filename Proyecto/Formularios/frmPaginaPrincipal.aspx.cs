@@ -21,12 +21,12 @@ namespace Proyecto.Formularios
             {
                 this.lblDatosUsuario.Text = $"Bienvenido(a) {persona.nombre} {persona.ape1} {(persona.ape2 ?? "")}" +
                                             $"<br />{(datosUsuario.ultimo_ingreso != null ? "Su último ingreso fue el " + datosUsuario.ultimo_ingreso : "Primer ingreso al sistema")}";
-            }
-            if(!IsPostBack)
-            {
-                Usuario user = (Usuario)Session["datosUsuario"];
-                modelo.UPDATE_ULTIMO_INGRESO(DateTime.Now, user.id_usuario);
-                modelo.SaveChanges();
+                if (!IsPostBack)
+                {
+                    Usuario user = (Usuario)Session["datosUsuario"];
+                    modelo.UPDATE_ULTIMO_INGRESO(DateTime.Now, user.id_usuario);
+                    modelo.SaveChanges();
+                }
             }
         }
 
