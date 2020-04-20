@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <link href="../Content/Imagenes/ST_Icon.png" rel="icon" type="image/png"/>
     <title>Soccer Tracker</title>
 
     <!-- Bootstrap Core CSS -->
@@ -70,9 +70,8 @@
                     <div class="dropdown">
                         <a class="js-scroll-trigger btn btn-primary dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Jugadores</a>
                         <div class="dropdown-menu" style="background-color: #1D809F;">
-                            <a class="dropdown-item" href="#IngresarJugadores">Ingresar Jugadores</a>
-                            <a class="dropdown-item" href="#ModificarJugadores">Modificar Jugadores</a>
-                            <a class="dropdown-item" href="#EliminarJugadores">Eliminar Jugadores</a>
+                            <a class="dropdown-item" href="/Formularios/frmIngresarJugador">Ingresar Jugador</a>
+                            <a class="dropdown-item" href="/Formularios/frmListaJugadores">Lista de Jugadores</a
                         </div>
                     </div>
                 </li>
