@@ -10,24 +10,26 @@
         <asp:TextBox runat="server" type="text" ID="txtNombreUsuario" class="form-control md-textbox btn" BorderColor="Black" BorderStyle="Solid"></asp:TextBox>
         <br />
         <label class="mb-1">Contraseña</label>
-        <br />
-        <asp:RequiredFieldValidator CssClass="validator-message" ID="RequiredFieldValidator2" runat="server" ErrorMessage="Este campo es requerido" ControlToValidate="txtPassword" ForeColor="#FF5050"></asp:RequiredFieldValidator>
-        <asp:TextBox runat="server" type="text" ID="txtPassword" class="form-control md-textbox btn" BorderColor="Black" BorderStyle="Solid"></asp:TextBox>
+        <asp:TextBox runat="server" type="password" ID="txtPassword" class="form-control md-textbox btn" BorderColor="Black" BorderStyle="Solid"></asp:TextBox>
+         <br />
+        <label class="mb-1">Verificar Contraseña</label>
+        <asp:CompareValidator ID="CompareValidator1" CssClass="validator-message" runat="server" ErrorMessage="Las contraseñas deben coincidir" ControlToCompare="txtVerContra" ControlToValidate="txtPassword"></asp:CompareValidator>
+        <asp:TextBox runat="server" type="password" ID="txtVerContra" class="form-control md-textbox btn" BorderColor="Black" BorderStyle="Solid"></asp:TextBox>
         <br />
         <label class="mb-1">Tipo de Usuario</label>
         <asp:RequiredFieldValidator CssClass="validator-message" ID="RequiredFieldValidator5" runat="server" ErrorMessage="Este campo es requerido" ControlToValidate="ddlTipoUsu"></asp:RequiredFieldValidator>
         <asp:DropDownList runat="server" ID="ddlTipoUsu">
             <asp:ListItem Text="Seleccione" Value="" />
-            <asp:ListItem Text="Administrador" Value="1" />
-            <asp:ListItem Text="Genérico" Value="0" />
+            <asp:ListItem Text="Administrador" Value="True" />
+            <asp:ListItem Text="Consultor" Value="False" />
         </asp:DropDownList>
         <br />
         <label class="mb-1">Estado del Usuario</label>
         <asp:RequiredFieldValidator CssClass="validator-message" ID="RequiredFieldValidator3" runat="server" ErrorMessage="Este campo es requerido" ControlToValidate="ddlEstado"></asp:RequiredFieldValidator>
         <asp:DropDownList runat="server" ID="ddlEstado">
             <asp:ListItem Text="Seleccione" Value="" />
-            <asp:ListItem Text="Activo" Value="1" />
-            <asp:ListItem Text="Inactivo" Value="0" />
+            <asp:ListItem Text="Activo" Value="True" />
+            <asp:ListItem Text="Inactivo" Value="False" />
         </asp:DropDownList>
         <br />
         <asp:Button Text="Guardar" ID="btnSubmit" class="btn btn-alter btn-xl" runat="server" OnClick="btnSubmit_Click" />

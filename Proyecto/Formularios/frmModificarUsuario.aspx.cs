@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Proyecto.Modelos;
 using Proyecto.Clases;
 using System.Globalization;
+using Liphsoft.Crypto.Argon2;
 
 namespace Proyecto.Formularios
 {
@@ -46,46 +47,37 @@ namespace Proyecto.Formularios
 
             }
         }
+
         protected void ddlTipoUsu_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
         protected void ddlEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
+
         protected void InitForm()
         {
             var usuario = (from us in modelo.Usuarios
                            where us.id_usuario == id_usuario
-                           select new { datos = us, tipoUsuario = us.es_admin, estadoUsuario = us.estado }).FirstOrDefault();
+                           select new { us.nombre_usuario, us.estado, us.es_admin }).FirstOrDefault();
             
-            txtNombreUsuario.Text = usuario.datos.nombre_usuario;
-            txtPassword.Text = usuario.datos.hashed_pass;
-
-            if (usuario.datos.es_admin == true)
-            {
-                ddlTipoUsu.Items.FindByValue("1").Selected = true;
-            }
-            else
-            {
-                ddlTipoUsu.Items.FindByValue("0").Selected = true;
-            }
-
-            if (usuario.datos.estado == true)
-            {
-                ddlEstado.Items.FindByValue("1").Selected = true;
-            }
-            else
-            {
-                ddlEstado.Items.FindByValue("0").Selected = true;
-            }
+            txtNombreUsuario.Text = usuario.nombre_usuario;
+            ddlEstado.SelectedValue = usuario.estado.ToString();
+            ddlTipoUsu.SelectedValue = usuario.es_admin.ToString();
         }
 
         protected void GenerarModificacionPersona(Usuario nUsuario)
         {
             nUsuario.nombre_usuario = txtNombreUsuario.Text;
-            nUsuario.hashed_pass = txtPassword.Text;
             nUsuario.es_admin = Convert.ToBoolean(ddlTipoUsu.SelectedValue);
             nUsuario.estado = Convert.ToBoolean(ddlEstado.SelectedValue);
+            if (!String.IsNullOrEmpty(txtPassword.Text))
+            {
+                var hasher = new PasswordHasher();
+                string hashed_pass = hasher.Hash(txtPassword.Text);
+
+                nUsuario.hashed_pass = hashed_pass;
+            }
         }
     }
 }
