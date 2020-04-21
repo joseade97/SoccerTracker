@@ -46,78 +46,38 @@ namespace Proyecto.Formularios
 
             }
         }
-
-        protected void setDdlTipoUsu()
-        {
-            var es_admin = Boolean.Parse(ddlTipoUsu.SelectedValue); 
-            var tipoUsu = (from u in modelo.Usuarios
-                            where u.es_admin == es_admin
-                            select u).ToList();
-            ddlTipoUsu.DataSource = tipoUsu;
-            ddlTipoUsu.DataBind();
-            ddlTipoUsu.DataTextField = "es_admin";
-            ddlTipoUsu.DataValueField = "es_admin";
-            ddlTipoUsu.DataBind();
-            ddlTipoUsu.Items.Insert(0, new ListItem("Seleccione", ""));
-        }
-
-        protected void setDdlEstado()
-        {
-            var estado = Boolean.Parse(ddlEstado.SelectedValue);
-            var estadoUsu = (from u in modelo.Usuarios
-                             where u.estado == estado
-                             select u).ToList();
-
-            ddlEstado.DataSource = estadoUsu;
-            ddlEstado.DataBind();
-            ddlEstado.DataTextField = "estado";
-            ddlEstado.DataValueField = "estado";
-            ddlEstado.DataBind();
-            ddlEstado.Items.Insert(0, new ListItem("Seleccione", ""));
-        }
         protected void ddlTipoUsu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            setDdlTipoUsu();
         }
         protected void ddlEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
-            setDdlEstado();
         }
         protected void InitForm()
         {
             var usuario = (from us in modelo.Usuarios
                            where us.id_usuario == id_usuario
                            select new { datos = us, tipoUsuario = us.es_admin, estadoUsuario = us.estado }).FirstOrDefault();
-
-            ddlTipoUsu.Items.Insert(0, new ListItem("Selecccione", ""));
-            ddlEstado.Items.Insert(0, new ListItem("Selecccione", ""));
-            var usuarios = (from u in modelo.Usuarios
-                              select u).ToList();
-            ddlTipoUsu.DataSource = usuarios;
-            ddlTipoUsu.DataBind();
-            ddlTipoUsu.DataTextField = "es_admin";
-            ddlTipoUsu.DataValueField = "es_admin";
-            ddlTipoUsu.DataBind();
-            ddlTipoUsu.Items.Insert(0, new ListItem("Seleccione", ""));
-            ddlTipoUsu.SelectedValue = usuario.tipoUsuario.ToString();
-
-            ddlEstado.DataSource = usuarios;
-            ddlEstado.DataBind();
-            ddlEstado.DataTextField = "estado";
-            ddlEstado.DataValueField = "estado";
-            ddlEstado.DataBind();
-            ddlEstado.Items.Insert(0, new ListItem("Seleccione", ""));
-            ddlEstado.SelectedValue = usuario.tipoUsuario.ToString();
-
-            setDdlTipoUsu();
-            ddlTipoUsu.SelectedValue = usuario.tipoUsuario.ToString();
-            setDdlEstado();
-            ddlEstado.SelectedValue = usuario.datos.estado.ToString();
-
+            
             txtNombreUsuario.Text = usuario.datos.nombre_usuario;
             txtPassword.Text = usuario.datos.hashed_pass;
-            ddlTipoUsu.Text = Convert.ToString(usuario.datos.es_admin);
-            ddlEstado.Text = Convert.ToString(usuario.datos.estado);
+
+            if (usuario.datos.es_admin == true)
+            {
+                ddlTipoUsu.Items.FindByValue("1").Selected = true;
+            }
+            else
+            {
+                ddlTipoUsu.Items.FindByValue("0").Selected = true;
+            }
+
+            if (usuario.datos.estado == true)
+            {
+                ddlEstado.Items.FindByValue("1").Selected = true;
+            }
+            else
+            {
+                ddlEstado.Items.FindByValue("0").Selected = true;
+            }
         }
 
         protected void GenerarModificacionPersona(Usuario nUsuario)
