@@ -11,19 +11,24 @@ namespace Proyecto.Formularios
 {
     public partial class frmAgregarPartidos : System.Web.UI.Page
     {
+        ///variable para asignar id del torneo
         int idTorneo;
+        ///se crea una instancia del modelo de base de datos
         ProyectoBD modelo = new ProyectoBD();
         protected void Page_Load(object sender, EventArgs e)
         {
+            ///se asigna el valor de id_torneo a la variable
             idTorneo = Int32.Parse(Request.QueryString["id_torneo"]);
-
+            ///se crea variable que va a obtener el estado del Campeonato segun la variable idTorneo
             string estado = (from c in modelo.Campeonatos
                              where c.id == idTorneo
                              select c.estado).FirstOrDefault();
+            ///Verifica si el estado es 'Terminado' y si lo es no se pueden registrar eventos en el torneo
             if (!estado.Equals("T"))
             {
                 if (!IsPostBack)
                 {
+                    ///se crea variable que va a obtener el nombre e id del equipo por torneo
                     var equiposTorneo = (from ec in modelo.Equipos_x_Campeonato
                                          join eq in modelo.Equipos on ec.id_equipo equals eq.id
                                          where ec.id_campeonato == idTorneo
@@ -32,6 +37,7 @@ namespace Proyecto.Formularios
                                              display = eq.nombre,
                                              value = eq.id
                                          }).ToList();
+                    ///se agregan los valores obtenidos anteriormente a los campos del formulario
                     ddlCasa.DataSource = equiposTorneo;
                     ddlCasa.DataTextField = "display";
                     ddlCasa.DataValueField = "value";
@@ -46,27 +52,46 @@ namespace Proyecto.Formularios
                 }
             }else
             {
+                ///este es el error por si el torneo ya esta finalizado
                 string url = "frmListaPartidos?id_torneo=" + idTorneo;
+                ///redirecciona a la lista de partidos
                 Utilidades.CreateMessageandRedirect(ClientScript, GetType(), "No se pueden registrar eventos en un torneo finalizado", url);
             }
         }
 
-
+        /// <summary>
+        /// evento click para agregar eventos al partido
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             AgregarPartido("frmRegistrarEventos");
         }
 
+        /// <summary>
+        /// evento click parar omitir agregar eventos al partido
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnOmitirEventos_Click(object sender, EventArgs e)
         {
             string url = "frmListaPartidos?id_torneo=" + idTorneo;
             AgregarPartido(url);
         }
 
+        /// <summary>
+        /// Procedimiento que agrega un Partido al torneo
+        /// </summary>
+        /// <param name="url"></param>
         protected void AgregarPartido(string url)
         {
+            ///Verifica que las validaciones de los campos requeridos fueron ingresadas correctamente
+            ///si es valido, entonces, agrega el partido al torneo
             if (this.IsValid)
             {
+                ///verifica que el equipo casa y visita no sea el mismo para agregarlo al torneo, si es el mismo,
+                ///no podra ser ingresado, si da algun otro error se desplegara
                 try
                 {
                     Partido nPartido = GenerarDatosPartido();
@@ -92,6 +117,12 @@ namespace Proyecto.Formularios
             }
         }
 
+
+        /// <summary>
+        /// Procedimiento que genera los datos del partido con respecto a los valores ingresados
+        /// por el Administrador en el frmAgregarPartido
+        /// </summary>
+        /// <returns></returns>
         protected Partido GenerarDatosPartido()
         {
             Partido nPartido = new Partido();
