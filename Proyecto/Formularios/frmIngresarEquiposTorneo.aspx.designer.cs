@@ -13,6 +13,15 @@ namespace Proyecto.Formularios {
     public partial class frmIngresarEquiposTorneo {
         
         /// <summary>
+        /// Control lblRes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRes;
+        
+        /// <summary>
         /// Control grdEquipos.
         /// </summary>
         /// <remarks>

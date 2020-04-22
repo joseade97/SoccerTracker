@@ -32,9 +32,11 @@ namespace Proyecto.Modelos
         public int tiros_marco_visita { get; set; }
         public int tiros_total_casa { get; set; }
         public int tiros_total_visita { get; set; }
+        public int id_campeonato { get; set; }
     
         public virtual Equipos Equipos { get; set; }
         public virtual Equipos Equipos1 { get; set; }
         public virtual ICollection<Eventos_x_Partido> Eventos_x_Partido { get; set; }
+        public virtual Campeonato Campeonato { get; set; }
     }
 }

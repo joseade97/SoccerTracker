@@ -14,7 +14,7 @@
           <Property Name="fec_fin" Type="datetime" />
           <Property Name="cant_equipos" Type="int" Nullable="false" />
           <Property Name="id_dedicado" Type="int" Nullable="false" />
-          <Property Name="estado" Type="char" MaxLength="1" />
+          <Property Name="estado" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityType Name="Cantones">
           <Key>
@@ -106,6 +106,7 @@
           <Property Name="tiros_marco_visita" Type="int" Nullable="false" />
           <Property Name="tiros_total_casa" Type="int" Nullable="false" />
           <Property Name="tiros_total_visita" Type="int" Nullable="false" />
+          <Property Name="id_campeonato" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Personas">
           <Key>
@@ -344,6 +345,18 @@
             </Principal>
             <Dependent Role="Jugadores">
               <PropertyRef Name="id_posicion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Partidos__id_cam__2B0A656D">
+          <End Role="Campeonatos" Type="Self.Campeonatos" Multiplicity="1" />
+          <End Role="Partidos" Type="Self.Partidos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campeonatos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Partidos">
+              <PropertyRef Name="id_campeonato" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -594,6 +607,10 @@
             <End Role="Posiciones" EntitySet="Posiciones" />
             <End Role="Jugadores" EntitySet="Jugadores" />
           </AssociationSet>
+          <AssociationSet Name="FK__Partidos__id_cam__2B0A656D" Association="Self.FK__Partidos__id_cam__2B0A656D">
+            <End Role="Campeonatos" EntitySet="Campeonatos" />
+            <End Role="Partidos" EntitySet="Partidos" />
+          </AssociationSet>
           <AssociationSet Name="FK__Partidos__id_cas__7D439ABD" Association="Self.FK__Partidos__id_cas__7D439ABD">
             <End Role="Equipos" EntitySet="Equipos" />
             <End Role="Partidos" EntitySet="Partidos" />
@@ -626,7 +643,8 @@
           <Property Name="id_dedicado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Persona" Relationship="Self.FK__Campeonat__id_de__76969D2E" FromRole="Campeonatos" ToRole="Personas" />
           <NavigationProperty Name="Equipos_x_Campeonato" Relationship="Self.FK__Equipos_x__id_ca__7A672E12" FromRole="Campeonatos" ToRole="Equipos_x_Campeonato" />
-          <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Partidos" Relationship="ProyectoBDEntities.FK__Partidos__id_cam__2B0A656D" FromRole="Campeonato" ToRole="Partido" />
         </EntityType>
         <EntityType Name="Cantone">
           <Key>
@@ -745,6 +763,8 @@
           <NavigationProperty Name="Equipos" Relationship="Self.FK__Partidos__id_cas__7D439ABD" FromRole="Partidos" ToRole="Equipos" />
           <NavigationProperty Name="Equipos1" Relationship="Self.FK__Partidos__id_vis__7E37BEF6" FromRole="Partidos" ToRole="Equipos" />
           <NavigationProperty Name="Eventos_x_Partido" Relationship="Self.FK__Eventos_x__id_pa__03F0984C" FromRole="Partidos" ToRole="Eventos_x_Partido" />
+          <Property Name="id_campeonato" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Campeonato" Relationship="ProyectoBDEntities.FK__Partidos__id_cam__2B0A656D" FromRole="Partido" ToRole="Campeonato" />
         </EntityType>
         <EntityType Name="Persona">
           <Key>
@@ -1247,6 +1267,10 @@
             <Parameter Name="ult_date" Mode="In" Type="DateTime" />
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <AssociationSet Name="FK__Partidos__id_cam__2B0A656D" Association="ProyectoBDEntities.FK__Partidos__id_cam__2B0A656D">
+            <End Role="Campeonato" EntitySet="Campeonatos" />
+            <End Role="Partido" EntitySet="Partidos" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_RetornaCantones_Result">
           <Property Type="Int32" Name="id_canton" Nullable="false" />
@@ -1389,6 +1413,18 @@
           <Property Type="String" Name="es_admin" Nullable="false" MaxLength="13" />
           <Property Type="String" Name="estado" Nullable="false" MaxLength="8" />
         </ComplexType>
+        <Association Name="FK__Partidos__id_cam__2B0A656D">
+          <End Type="ProyectoBDEntities.Campeonato" Role="Campeonato" Multiplicity="1" />
+          <End Type="ProyectoBDEntities.Partido" Role="Partido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campeonato">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Partido">
+              <PropertyRef Name="id_campeonato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1490,6 +1526,7 @@
           <EntitySetMapping Name="Partidos">
             <EntityTypeMapping TypeName="ProyectoBDEntities.Partido">
               <MappingFragment StoreEntitySet="Partidos">
+                <ScalarProperty Name="id_campeonato" ColumnName="id_campeonato" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="id_casa" ColumnName="id_casa" />

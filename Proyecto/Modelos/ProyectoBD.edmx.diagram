@@ -38,6 +38,7 @@
         <AssociationConnector Association="ProyectoBDEntities.FK__Jugadores__id_po__73BA3083" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoBDEntities.FK__Usuarios__id_per__693CA210" ManuallyRouted="false" />
         <EntityTypeShape EntityType="ProyectoBDEntities.sysdiagram" Width="1.5" PointX="0.5" PointY="1.125" />
+        <AssociationConnector Association="ProyectoBDEntities.FK__Partidos__id_cam__2B0A656D" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

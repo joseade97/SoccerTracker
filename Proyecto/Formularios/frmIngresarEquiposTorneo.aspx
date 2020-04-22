@@ -4,6 +4,7 @@
     <div style="text-align: center;">
         <h2>Lista de Equipos</h2>
         <br />
+        <asp:Label Text="" ID="lblRes" runat="server" ForeColor="Red" />
         <form runat="server">
             <asp:GridView CssClass="centered-element" ID="grdEquipos" runat="server" AllowPaging="True" AllowSorting="True" PageSize="15"
                 AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="id">
