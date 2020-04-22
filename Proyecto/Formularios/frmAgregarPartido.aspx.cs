@@ -16,33 +16,45 @@ namespace Proyecto.Formularios
         protected void Page_Load(object sender, EventArgs e)
         {
             idTorneo = Int32.Parse(Request.QueryString["id_torneo"]);
-            if (!IsPostBack)
-            {
-                var equiposTorneo = (from ec in modelo.Equipos_x_Campeonato
-                                     join eq in modelo.Equipos on ec.id_equipo equals eq.id
-                                     where ec.id_campeonato == idTorneo
-                                     select new
-                                     {
-                                         display = eq.nombre,
-                                         value = eq.id
-                                     }).ToList();
-                ddlCasa.DataSource = equiposTorneo;
-                ddlCasa.DataTextField = "display";
-                ddlCasa.DataValueField = "value";
-                ddlCasa.DataBind();
-                ddlCasa.Items.Insert(0, new ListItem("Seleccione", ""));
 
-                ddlVisita.DataSource = equiposTorneo;
-                ddlVisita.DataTextField = "display";
-                ddlVisita.DataValueField = "value";
-                ddlVisita.DataBind();
-                ddlVisita.Items.Insert(0, new ListItem("Seleccione", ""));
+            string estado = (from c in modelo.Campeonatos
+                             where c.id == idTorneo
+                             select c.estado).FirstOrDefault();
+            if (!estado.Equals("T"))
+            {
+                if (!IsPostBack)
+                {
+                    var equiposTorneo = (from ec in modelo.Equipos_x_Campeonato
+                                         join eq in modelo.Equipos on ec.id_equipo equals eq.id
+                                         where ec.id_campeonato == idTorneo
+                                         select new
+                                         {
+                                             display = eq.nombre,
+                                             value = eq.id
+                                         }).ToList();
+                    ddlCasa.DataSource = equiposTorneo;
+                    ddlCasa.DataTextField = "display";
+                    ddlCasa.DataValueField = "value";
+                    ddlCasa.DataBind();
+                    ddlCasa.Items.Insert(0, new ListItem("Seleccione", ""));
+
+                    ddlVisita.DataSource = equiposTorneo;
+                    ddlVisita.DataTextField = "display";
+                    ddlVisita.DataValueField = "value";
+                    ddlVisita.DataBind();
+                    ddlVisita.Items.Insert(0, new ListItem("Seleccione", ""));
+                }
+            }else
+            {
+                string url = "frmListaPartidos?id_torneo=" + idTorneo;
+                Utilidades.CreateMessageandRedirect(ClientScript, GetType(), "No se pueden registrar eventos en un torneo finalizado", url);
             }
         }
 
+
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            AgregarPartido("frmAgregarEventos");
+            AgregarPartido("frmRegistrarEventos");
         }
 
         protected void btnOmitirEventos_Click(object sender, EventArgs e)
@@ -58,11 +70,11 @@ namespace Proyecto.Formularios
                 try
                 {
                     Partido nPartido = GenerarDatosPartido();
-                    if(nPartido.id_casa != nPartido.id_visita)
+                    if (nPartido.id_casa != nPartido.id_visita)
                     {
                         modelo.Partidos.Add(nPartido);
                         modelo.SaveChanges();
-                        string ir = url.Equals("frmAgregarEventos") ? url + "?id_partido=" + nPartido.id : url;
+                        string ir = url.Equals("frmRegistrarEventos") ? url + "?id_partido=" + nPartido.id : url;
                         Utilidades.CreateMessageandRedirect(ClientScript, GetType(), "El partido ha sido ingresado con éxito", ir);
                     }
                     else
@@ -80,7 +92,7 @@ namespace Proyecto.Formularios
             }
         }
 
-        protected Partido GenerarDatosPartido ()
+        protected Partido GenerarDatosPartido()
         {
             Partido nPartido = new Partido();
             nPartido.fecha = DateTime.Parse(txtFecha.Text);

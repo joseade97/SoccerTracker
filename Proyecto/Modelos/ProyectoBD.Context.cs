@@ -483,5 +483,59 @@ namespace Proyecto.Modelos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pa_RetornaPosiciones_Result>("pa_RetornaPosiciones", id_CampeonatoParameter);
         }
+    
+        public virtual ObjectResult<string> pa_lista_jugadores_partido(Nullable<int> id_partido)
+        {
+            var id_partidoParameter = id_partido.HasValue ?
+                new ObjectParameter("id_partido", id_partido) :
+                new ObjectParameter("id_partido", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("pa_lista_jugadores_partido", id_partidoParameter);
+        }
+    
+        public virtual ObjectResult<pa_lista_jugadores_partido1_Result> pa_lista_jugadores_partido1(Nullable<int> id_partido)
+        {
+            var id_partidoParameter = id_partido.HasValue ?
+                new ObjectParameter("id_partido", id_partido) :
+                new ObjectParameter("id_partido", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pa_lista_jugadores_partido1_Result>("pa_lista_jugadores_partido1", id_partidoParameter);
+        }
+    
+        public virtual ObjectResult<pa_lista_jugadores_partido2_Result> pa_lista_jugadores_partido2(Nullable<int> id_partido)
+        {
+            var id_partidoParameter = id_partido.HasValue ?
+                new ObjectParameter("id_partido", id_partido) :
+                new ObjectParameter("id_partido", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pa_lista_jugadores_partido2_Result>("pa_lista_jugadores_partido2", id_partidoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> pa_partidos_equipo(Nullable<int> id_campeonato)
+        {
+            var id_campeonatoParameter = id_campeonato.HasValue ?
+                new ObjectParameter("id_campeonato", id_campeonato) :
+                new ObjectParameter("id_campeonato", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("pa_partidos_equipo", id_campeonatoParameter);
+        }
+    
+        public virtual ObjectResult<pa_goleador_Result> pa_goleador(Nullable<int> id_torneo)
+        {
+            var id_torneoParameter = id_torneo.HasValue ?
+                new ObjectParameter("id_torneo", id_torneo) :
+                new ObjectParameter("id_torneo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pa_goleador_Result>("pa_goleador", id_torneoParameter);
+        }
+    
+        public virtual ObjectResult<pa_campeon_torneo_Result> pa_campeon_torneo(Nullable<int> id_Campeonato)
+        {
+            var id_CampeonatoParameter = id_Campeonato.HasValue ?
+                new ObjectParameter("Id_Campeonato", id_Campeonato) :
+                new ObjectParameter("Id_Campeonato", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pa_campeon_torneo_Result>("pa_campeon_torneo", id_CampeonatoParameter);
+        }
     }
 }

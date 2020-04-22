@@ -1,16 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frmTerminaTorneo.aspx.cs" Inherits="Proyecto.Formularios.frmTerminaTorneo" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Formularios/ProyectoMaster.Master" AutoEventWireup="true" CodeBehind="frmTerminaTorneo.aspx.cs" Inherits="Proyecto.Formularios.frmTerminaTorneo" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-        </div>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+    <form style="text-align: center;" id="form1" runat="server">
+        <h2>¿Desea dar por finalizado el torneo seleccionado?</h2>
+        <asp:Button Text="Sí" ID="btnSi" class="btn btn-alter btn-xl" runat="server" OnClick="btnSi_Click" />
+        <asp:Button Text="No" ID="btnNo" class="btn btn-cancel btn-xl" runat="server" OnClick="btnNo_Click" />
     </form>
-</body>
-</html>
+</asp:Content>

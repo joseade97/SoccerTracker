@@ -144,6 +144,7 @@
     <Content Include="Formularios\frmListaPartidos.aspx" />
     <Content Include="Formularios\frmListaPersonas.aspx" />
     <Content Include="Formularios\frmListaTorneos.aspx" />
+    <Content Include="Formularios\frmListaTorneosF.aspx" />
     <Content Include="Formularios\frmListaUsuarios.aspx" />
     <Content Include="Formularios\frmModificarEquipo.aspx" />
     <Content Include="Formularios\frmModificarJugador.aspx" />
@@ -153,6 +154,7 @@
     <Content Include="Formularios\frmModificarTorneo.aspx" />
     <Content Include="Formularios\frmModificarUsuario.aspx" />
     <Content Include="Formularios\frmPaginaPrincipal.aspx" />
+    <Content Include="Formularios\frmRegistrarEventos.aspx" />
     <Content Include="Formularios\frmSalir.aspx" />
     <Content Include="Formularios\frmTerminaTorneo.aspx" />
     <Content Include="Global.asax" />
@@ -184,7 +186,6 @@
       <DependentUpon>ProyectoBD.edmx</DependentUpon>
       <LastGenOutput>ProyectoBD.cs</LastGenOutput>
     </Content>
-    <Content Include="prueba\frmPrueba.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -425,6 +426,13 @@
     <Compile Include="Formularios\frmListaTorneos.aspx.designer.cs">
       <DependentUpon>frmListaTorneos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmListaTorneosF.aspx.cs">
+      <DependentUpon>frmListaTorneosF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmListaTorneosF.aspx.designer.cs">
+      <DependentUpon>frmListaTorneosF.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmListaUsuarios.aspx.cs">
       <DependentUpon>frmListaUsuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -488,6 +496,13 @@
     <Compile Include="Formularios\frmPaginaPrincipal.aspx.designer.cs">
       <DependentUpon>frmPaginaPrincipal.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmRegistrarEventos.aspx.cs">
+      <DependentUpon>frmRegistrarEventos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmRegistrarEventos.aspx.designer.cs">
+      <DependentUpon>frmRegistrarEventos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmSalir.aspx.cs">
       <DependentUpon>frmSalir.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -537,6 +552,18 @@
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Partido.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\pa_campeon_torneo_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\pa_goleador_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\pa_lista_jugadores_partido1_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\pa_lista_jugadores_partido2_Result.cs">
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\pa_obtener_lista_personas_Result.cs">
@@ -618,13 +645,6 @@
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="prueba\frmPrueba.aspx.cs">
-      <DependentUpon>frmPrueba.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="prueba\frmPrueba.aspx.designer.cs">
-      <DependentUpon>frmPrueba.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -709,6 +729,10 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reportes\ReporteGoleadores.rdlc" />
+    <EmbeddedResource Include="Reportes\ReporteTablaPosiciones.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -39,12 +39,13 @@ namespace Proyecto.Formularios
                     modelo.Campeonatos.Add(torneo);
                     modelo.SaveChanges();
                     Utilidades.CreateMessageByScript(ClientScript, GetType(), "El torneo ha sido creado con éxito");
+                    Utilidades.ClearTextBoxes(this);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     string msg = "Ha ocurrido un error inesperado, por favor comuníquese con" +
-                                        " el administrador de la web brindándole la siguiente información: " + ex.Message;
-                    Utilidades.CreateMessageByScript(ClientScript, GetType(), msg);
+                                        " el administrador de la web.";
+                    Utilidades.CreateMessageandRedirect(ClientScript, GetType(), msg, "frmPrincipal");
                 }
             }
         }
@@ -53,10 +54,11 @@ namespace Proyecto.Formularios
         {
             Campeonato torneo = new Campeonato();
 
-            torneo.fec_inicio = DateTime.Parse(txtFecIni.Text);
+            torneo.fec_inicio = DateTime.Now;
             torneo.fec_fin = DateTime.Parse(txtFecFin.Text);
             torneo.id_dedicado = Int32.Parse(hdfIdPersona.Value);
             torneo.cant_equipos = Int32.Parse(txtCant.Text);
+            torneo.estado = "C";
 
             return torneo;
         }

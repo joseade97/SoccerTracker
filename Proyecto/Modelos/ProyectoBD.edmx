@@ -15,6 +15,8 @@
           <Property Name="cant_equipos" Type="int" Nullable="false" />
           <Property Name="id_dedicado" Type="int" Nullable="false" />
           <Property Name="estado" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="id_goleador" Type="int" />
+          <Property Name="id_campeon" Type="int" />
         </EntityType>
         <EntityType Name="Cantones">
           <Key>
@@ -192,6 +194,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Campeonat__id_ca__367C1819">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="0..1" />
+          <End Role="Campeonatos" Type="Self.Campeonatos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Campeonatos">
+              <PropertyRef Name="id_campeon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Campeonat__id_de__76969D2E">
           <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
           <End Role="Campeonatos" Type="Self.Campeonatos" Multiplicity="*" />
@@ -201,6 +215,18 @@
             </Principal>
             <Dependent Role="Campeonatos">
               <PropertyRef Name="id_dedicado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Campeonat__id_go__3587F3E0">
+          <End Role="Jugadores" Type="Self.Jugadores" Multiplicity="0..1" />
+          <End Role="Campeonatos" Type="Self.Campeonatos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jugadores">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Campeonatos">
+              <PropertyRef Name="id_goleador" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -413,8 +439,21 @@
           <Parameter Name="id_equipo" Type="int" Mode="In" />
           <Parameter Name="id_partido" Type="int" Mode="In" />
         </Function>
+        <Function Name="fn_partidos_equipo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="id_equipo" Type="int" Mode="In" />
+          <Parameter Name="id_campeonato" Type="int" Mode="In" />
+        </Function>
         <Function Name="fn_puntos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
           <Parameter Name="id_torneo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_campeon_torneo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Campeonato" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_goleador" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_torneo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_lista_jugadores_partido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_partido" Type="int" Mode="In" />
         </Function>
         <Function Name="PA_OBTENER_INDEX_TABLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombreTabla" Type="varchar" Mode="In" />
@@ -432,6 +471,9 @@
         <Function Name="PA_OBTENER_SIG_INDEX" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombreTabla" Type="varchar" Mode="In" />
           <Parameter Name="nombreIdentificador" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_partidos_equipo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_campeonato" Type="int" Mode="In" />
         </Function>
         <Function Name="pa_partidos_torneo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_torneo" Type="int" Mode="In" />
@@ -571,8 +613,16 @@
             <End Role="Cantones" EntitySet="Cantones" />
             <End Role="Distritos" EntitySet="Distritos" />
           </AssociationSet>
+          <AssociationSet Name="FK__Campeonat__id_ca__367C1819" Association="Self.FK__Campeonat__id_ca__367C1819">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Campeonatos" EntitySet="Campeonatos" />
+          </AssociationSet>
           <AssociationSet Name="FK__Campeonat__id_de__76969D2E" Association="Self.FK__Campeonat__id_de__76969D2E">
             <End Role="Personas" EntitySet="Personas" />
+            <End Role="Campeonatos" EntitySet="Campeonatos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Campeonat__id_go__3587F3E0" Association="Self.FK__Campeonat__id_go__3587F3E0">
+            <End Role="Jugadores" EntitySet="Jugadores" />
             <End Role="Campeonatos" EntitySet="Campeonatos" />
           </AssociationSet>
           <AssociationSet Name="FK__Cantones__id_pro__5DCAEF64" Association="Self.FK__Cantones__id_pro__5DCAEF64">
@@ -661,6 +711,10 @@
           <NavigationProperty Name="Equipos_x_Campeonato" Relationship="Self.FK__Equipos_x__id_ca__7A672E12" FromRole="Campeonatos" ToRole="Equipos_x_Campeonato" />
           <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Partidos" Relationship="ProyectoBDEntities.FK__Partidos__id_cam__2B0A656D" FromRole="Campeonato" ToRole="Partido" />
+          <Property Name="id_goleador" Type="Int32" />
+          <Property Name="id_campeon" Type="Int32" />
+          <NavigationProperty Name="Equipos" Relationship="ProyectoBDEntities.FK__Campeonat__id_ca__367C1819" FromRole="Campeonato" ToRole="Equipos" />
+          <NavigationProperty Name="Jugadore" Relationship="ProyectoBDEntities.FK__Campeonat__id_go__3587F3E0" FromRole="Campeonato" ToRole="Jugadore" />
         </EntityType>
         <EntityType Name="Cantone">
           <Key>
@@ -713,6 +767,7 @@
           <NavigationProperty Name="Partidos" Relationship="Self.FK__Partidos__id_cas__7D439ABD" FromRole="Equipos" ToRole="Partidos" />
           <NavigationProperty Name="Partidos1" Relationship="Self.FK__Partidos__id_vis__7E37BEF6" FromRole="Equipos" ToRole="Partidos" />
           <Property Name="fecha_fundacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Campeonatos" Relationship="ProyectoBDEntities.FK__Campeonat__id_ca__367C1819" FromRole="Equipos" ToRole="Campeonato" />
         </EntityType>
         <EntityType Name="Equipos_x_Campeonato">
           <Key>
@@ -758,6 +813,7 @@
           <NavigationProperty Name="Eventos_x_Partido" Relationship="Self.FK__Eventos_x__id_ju__02FC7413" FromRole="Jugadores" ToRole="Eventos_x_Partido" />
           <NavigationProperty Name="Persona" Relationship="Self.FK__Jugadores__id_pe__71D1E811" FromRole="Jugadores" ToRole="Personas" />
           <NavigationProperty Name="Posicione" Relationship="Self.FK__Jugadores__id_po__73BA3083" FromRole="Jugadores" ToRole="Posiciones" />
+          <NavigationProperty Name="Campeonatos" Relationship="ProyectoBDEntities.FK__Campeonat__id_go__3587F3E0" FromRole="Jugadore" ToRole="Campeonato" />
         </EntityType>
         <EntityType Name="Partido">
           <Key>
@@ -1294,6 +1350,32 @@
           <Parameter Name="id_torneo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="pa_RetornaPosiciones" ReturnType="Collection(ProyectoBDEntities.pa_RetornaPosiciones_Result)">
+          <Parameter Name="Id_Campeonato" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_lista_jugadores_partido" ReturnType="Collection(String)">
+            <Parameter Name="id_partido" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_lista_jugadores_partido1" ReturnType="Collection(ProyectoBDEntities.pa_lista_jugadores_partido1_Result)">
+            <Parameter Name="id_partido" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_lista_jugadores_partido2" ReturnType="Collection(ProyectoBDEntities.pa_lista_jugadores_partido2_Result)">
+          <Parameter Name="id_partido" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <AssociationSet Name="FK__Campeonat__id_ca__367C1819" Association="ProyectoBDEntities.FK__Campeonat__id_ca__367C1819">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Campeonato" EntitySet="Campeonatos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Campeonat__id_go__3587F3E0" Association="ProyectoBDEntities.FK__Campeonat__id_go__3587F3E0">
+            <End Role="Jugadore" EntitySet="Jugadores" />
+            <End Role="Campeonato" EntitySet="Campeonatos" />
+          </AssociationSet>
+          <FunctionImport Name="pa_partidos_equipo" ReturnType="Collection(Int32)">
+          <Parameter Name="id_campeonato" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_goleador" ReturnType="Collection(ProyectoBDEntities.pa_goleador_Result)">
+          <Parameter Name="id_torneo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_campeon_torneo" ReturnType="Collection(ProyectoBDEntities.pa_campeon_torneo_Result)">
             <Parameter Name="Id_Campeonato" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
@@ -1480,6 +1562,46 @@
           <Property Type="String" Name="nombre" Nullable="false" MaxLength="60" />
           <Property Type="Int32" Name="pts" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="pa_lista_jugadores_partido1_Result">
+          <Property Type="String" Name="display" Nullable="false" MaxLength="144" />
+          <Property Type="Int32" Name="value" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="pa_lista_jugadores_partido2_Result">
+          <Property Type="String" Name="display" Nullable="false" MaxLength="144" />
+          <Property Type="Int32" Name="value" Nullable="false" />
+        </ComplexType>
+        <Association Name="FK__Campeonat__id_ca__367C1819">
+          <End Type="ProyectoBDEntities.Equipos" Role="Equipos" Multiplicity="0..1" />
+          <End Type="ProyectoBDEntities.Campeonato" Role="Campeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Campeonato">
+              <PropertyRef Name="id_campeon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Campeonat__id_go__3587F3E0">
+          <End Type="ProyectoBDEntities.Jugadore" Role="Jugadore" Multiplicity="0..1" />
+          <End Type="ProyectoBDEntities.Campeonato" Role="Campeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jugadore">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Campeonato">
+              <PropertyRef Name="id_goleador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="pa_goleador_Result">
+          <Property Type="Int32" Name="jugador" Nullable="false" />
+          <Property Type="Int32" Name="goles" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="pa_campeon_torneo_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="pts" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1489,6 +1611,8 @@
           <EntitySetMapping Name="Campeonatos">
             <EntityTypeMapping TypeName="ProyectoBDEntities.Campeonato">
               <MappingFragment StoreEntitySet="Campeonatos">
+                <ScalarProperty Name="id_campeon" ColumnName="id_campeon" />
+                <ScalarProperty Name="id_goleador" ColumnName="id_goleador" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="fec_inicio" ColumnName="fec_inicio" />
@@ -1901,6 +2025,31 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="ProyectoBDEntities.pa_RetornaPosiciones_Result">
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="pts" ColumnName="pts" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_lista_jugadores_partido2" FunctionName="ProyectoBDEntities.Store.pa_lista_jugadores_partido">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoBDEntities.pa_lista_jugadores_partido2_Result">
+                <ScalarProperty Name="display" ColumnName="display" />
+                <ScalarProperty Name="value" ColumnName="value" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_partidos_equipo" FunctionName="ProyectoBDEntities.Store.pa_partidos_equipo" />
+          <FunctionImportMapping FunctionImportName="pa_goleador" FunctionName="ProyectoBDEntities.Store.pa_goleador">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoBDEntities.pa_goleador_Result">
+                <ScalarProperty Name="jugador" ColumnName="jugador" />
+                <ScalarProperty Name="goles" ColumnName="goles" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_campeon_torneo" FunctionName="ProyectoBDEntities.Store.pa_campeon_torneo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoBDEntities.pa_campeon_torneo_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="pts" ColumnName="pts" />
               </ComplexTypeMapping>
             </ResultMapping>

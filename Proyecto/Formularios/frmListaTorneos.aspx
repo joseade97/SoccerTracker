@@ -12,6 +12,7 @@
                     <asp:BoundField DataField="fec_inicio" HeaderText="Fecha de Inicio" />
                     <asp:BoundField DataField="fec_fin" HeaderText="Fecha de Fin" />
                     <asp:BoundField DataField="cant_equipos" HeaderText="Cantidad de Equipos" />
+                    <asp:BoundField DataField="estado" HeaderText="Estado" />
                     <asp:BoundField DataField="dedicado" HeaderText="Dedicado" />
                     <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="/Formularios/frmIngresarEquiposTorneo?id_torneo={0}" HeaderText="Agregar Equipos" Text="Agregar Equipos" />
                     <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="/Formularios/frmEliminarEquiposTorneo?id_torneo={0}" HeaderText="Quitar Equipos" Text="Quitar Equipos" />
@@ -32,6 +33,7 @@
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
             </asp:GridView>
+            <a href="/Formularios/frmListaTorneosF">Ver Torneos Finalizados</a>
         </form>
     </div>
 </asp:Content>

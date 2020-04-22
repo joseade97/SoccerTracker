@@ -10,24 +10,15 @@
 namespace Proyecto.Formularios {
     
     
-    public partial class frmDetallesPartido {
+    public partial class frmListaTorneosF {
         
         /// <summary>
-        /// Control grdDetalles.
+        /// Control grdTorneos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdDetalles;
-        
-        /// <summary>
-        /// Control acrVolver.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor acrVolver;
+        protected global::System.Web.UI.WebControls.GridView grdTorneos;
     }
 }
