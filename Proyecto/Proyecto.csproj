@@ -125,6 +125,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Formularios\frmCrearTorneo.aspx" />
     <Content Include="Formularios\frmEliminarEquipo.aspx" />
     <Content Include="Formularios\frmEliminarJugador.aspx" />
     <Content Include="Formularios\frmEliminarPersona.aspx" />
@@ -135,6 +136,7 @@
     <Content Include="Formularios\frmListaEquipos.aspx" />
     <Content Include="Formularios\frmListaJugadores.aspx" />
     <Content Include="Formularios\frmListaPersonas.aspx" />
+    <Content Include="Formularios\frmListaTorneos.aspx" />
     <Content Include="Formularios\frmListaUsuarios.aspx" />
     <Content Include="Formularios\frmModificarEquipo.aspx" />
     <Content Include="Formularios\frmModificarJugador.aspx" />
@@ -281,6 +283,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmCrearTorneo.aspx.cs">
+      <DependentUpon>frmCrearTorneo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCrearTorneo.aspx.designer.cs">
+      <DependentUpon>frmCrearTorneo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmEliminarEquipo.aspx.cs">
       <DependentUpon>frmEliminarEquipo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -350,6 +359,13 @@
     </Compile>
     <Compile Include="Formularios\frmListaPersonas.aspx.designer.cs">
       <DependentUpon>frmListaPersonas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmListaTorneos.aspx.cs">
+      <DependentUpon>frmListaTorneos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmListaTorneos.aspx.designer.cs">
+      <DependentUpon>frmListaTorneos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmListaUsuarios.aspx.cs">
       <DependentUpon>frmListaUsuarios.aspx</DependentUpon>

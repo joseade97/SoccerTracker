@@ -39,9 +39,8 @@
                     <div class="dropdown">
                         <a class="js-scroll-trigger btn btn-primary dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Campeonatos</a>
                         <div class="dropdown-menu" style="background-color: #1D809F;">
-                            <a class="dropdown-item" href="#IngresarCampeonatos">Ingresar Campeonatos</a>
-                            <a class="dropdown-item" href="#ModificarCampeonatos">Modificar Campeonatos</a>
-                            <a class="dropdown-item" href="#EliminarCampeonatos">Eliminar Campeonatos</a>
+                            <a class="dropdown-item" href="/Formularios/frmCrearTorneo">Crear Torneo</a>
+                            <a class="dropdown-item" href="/Formularios/frmListaTorneos">Lista de Torneos</a>
                         </div>
 
                     </div>
