@@ -409,6 +409,9 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="fn_puntos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="id_torneo" Type="int" Mode="In" />
+        </Function>
         <Function Name="PA_OBTENER_INDEX_TABLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombreTabla" Type="varchar" Mode="In" />
           <Parameter Name="nombreIdentificador" Type="varchar" Mode="In" />
@@ -418,6 +421,9 @@
         </Function>
         <Function Name="pa_obtener_lista_usuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="identificacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_obtener_partidos_torneo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_torneo" Type="int" Mode="In" />
         </Function>
         <Function Name="PA_OBTENER_SIG_INDEX" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombreTabla" Type="varchar" Mode="In" />
@@ -457,6 +463,9 @@
           <Parameter Name="Fec_Fin" Type="datetime" Mode="In" />
           <Parameter Name="Cant_Equipos" Type="int" Mode="In" />
           <Parameter Name="Id_Dedicado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_RetornaPosiciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Campeonato" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -1271,6 +1280,12 @@
             <End Role="Campeonato" EntitySet="Campeonatos" />
             <End Role="Partido" EntitySet="Partidos" />
           </AssociationSet>
+          <FunctionImport Name="pa_obtener_partidos_torneo" ReturnType="Collection(ProyectoBDEntities.pa_obtener_partidos_torneo_Result)">
+          <Parameter Name="id_torneo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_RetornaPosiciones" ReturnType="Collection(ProyectoBDEntities.pa_RetornaPosiciones_Result)">
+          <Parameter Name="Id_Campeonato" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_RetornaCantones_Result">
           <Property Type="Int32" Name="id_canton" Nullable="false" />
@@ -1425,6 +1440,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="pa_obtener_partidos_torneo_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="casa" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="visita" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="resultado" Nullable="false" MaxLength="6" />
+          <Property Type="Double" Name="posesion_casa" Nullable="false" />
+          <Property Type="Double" Name="posesion_visita" Nullable="false" />
+          <Property Type="Int32" Name="tiros_marco_casa" Nullable="false" />
+          <Property Type="Int32" Name="tiros_marco_visita" Nullable="false" />
+          <Property Type="Int32" Name="tiros_total_casa" Nullable="false" />
+          <Property Type="Int32" Name="tiros_total_visita" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="pa_RetornaPosiciones_Result">
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="60" />
+          <Property Type="Int32" Name="pts" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1808,6 +1839,30 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UPDATE_ULTIMO_INGRESO" FunctionName="ProyectoBDEntities.Store.UPDATE_ULTIMO_INGRESO" />
+          <FunctionImportMapping FunctionImportName="pa_obtener_partidos_torneo" FunctionName="ProyectoBDEntities.Store.pa_obtener_partidos_torneo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoBDEntities.pa_obtener_partidos_torneo_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="casa" ColumnName="casa" />
+                <ScalarProperty Name="visita" ColumnName="visita" />
+                <ScalarProperty Name="resultado" ColumnName="resultado" />
+                <ScalarProperty Name="posesion_casa" ColumnName="posesion_casa" />
+                <ScalarProperty Name="posesion_visita" ColumnName="posesion_visita" />
+                <ScalarProperty Name="tiros_marco_casa" ColumnName="tiros_marco_casa" />
+                <ScalarProperty Name="tiros_marco_visita" ColumnName="tiros_marco_visita" />
+                <ScalarProperty Name="tiros_total_casa" ColumnName="tiros_total_casa" />
+                <ScalarProperty Name="tiros_total_visita" ColumnName="tiros_total_visita" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_RetornaPosiciones" FunctionName="ProyectoBDEntities.Store.pa_RetornaPosiciones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoBDEntities.pa_RetornaPosiciones_Result">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="pts" ColumnName="pts" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

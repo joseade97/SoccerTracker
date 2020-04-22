@@ -11,11 +11,9 @@ namespace Proyecto.Modelos
 {
     using System;
     
-    public partial class pa_obtener_lista_usuarios_Result
+    public partial class pa_RetornaPosiciones_Result
     {
-        public int id_usuario { get; set; }
-        public string nombre_usuario { get; set; }
-        public string es_admin { get; set; }
-        public string estado { get; set; }
+        public string nombre { get; set; }
+        public Nullable<int> pts { get; set; }
     }
 }

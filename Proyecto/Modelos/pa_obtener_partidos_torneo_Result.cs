@@ -10,33 +10,18 @@
 namespace Proyecto.Modelos
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Partido
+    public partial class pa_obtener_partidos_torneo_Result
     {
-        public Partido()
-        {
-            this.Eventos_x_Partido = new HashSet<Eventos_x_Partido>();
-        }
-    
         public int id { get; set; }
-        public Nullable<System.DateTime> fecha { get; set; }
-        public int id_casa { get; set; }
-        public int id_visita { get; set; }
+        public string casa { get; set; }
+        public string visita { get; set; }
         public string resultado { get; set; }
-        public int cant_faltas_casa { get; set; }
-        public int cant_faltas_visita { get; set; }
         public double posesion_casa { get; set; }
         public double posesion_visita { get; set; }
         public int tiros_marco_casa { get; set; }
         public int tiros_marco_visita { get; set; }
         public int tiros_total_casa { get; set; }
         public int tiros_total_visita { get; set; }
-        public int id_campeonato { get; set; }
-    
-        public virtual Equipos Equipos { get; set; }
-        public virtual Equipos Equipos1 { get; set; }
-        public virtual ICollection<Eventos_x_Partido> Eventos_x_Partido { get; set; }
-        public virtual Campeonato Campeonato { get; set; }
     }
 }
