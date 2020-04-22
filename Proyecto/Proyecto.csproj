@@ -132,6 +132,7 @@
     <Content Include="Formularios\frmEliminarTorneo.aspx" />
     <Content Include="Formularios\frmEliminarUsuario.aspx" />
     <Content Include="Formularios\frmIngresarEquipo.aspx" />
+    <Content Include="Formularios\frmIngresarEquiposTorneo.aspx" />
     <Content Include="Formularios\frmIngresarJugador.aspx" />
     <Content Include="Formularios\frmIngresarUsuario.aspx" />
     <Content Include="Formularios\frmListaEquipos.aspx" />
@@ -333,6 +334,13 @@
     </Compile>
     <Compile Include="Formularios\frmIngresarEquipo.aspx.designer.cs">
       <DependentUpon>frmIngresarEquipo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmIngresarEquiposTorneo.aspx.cs">
+      <DependentUpon>frmIngresarEquiposTorneo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmIngresarEquiposTorneo.aspx.designer.cs">
+      <DependentUpon>frmIngresarEquiposTorneo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmIngresarJugador.aspx.cs">
       <DependentUpon>frmIngresarJugador.aspx</DependentUpon>
