@@ -21,7 +21,9 @@ namespace Proyecto.Formularios
         {
             this.construirReporte();
         }
-
+        /// <summary>
+        /// Procedimiento que genera el reporte
+        /// </summary>
         void construirReporte()
         {
 
