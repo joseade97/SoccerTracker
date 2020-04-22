@@ -557,6 +557,9 @@
     <Compile Include="Modelos\pa_Progra5Select2_Result.cs">
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\pa_RetornaPosiciones_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\Persona.cs">
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>

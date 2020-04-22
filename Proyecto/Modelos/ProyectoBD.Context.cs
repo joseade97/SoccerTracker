@@ -474,5 +474,14 @@ namespace Proyecto.Modelos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pa_partidos_torneo_Result>("pa_partidos_torneo", id_torneoParameter);
         }
+    
+        public virtual ObjectResult<pa_RetornaPosiciones_Result> pa_RetornaPosiciones(Nullable<int> id_Campeonato)
+        {
+            var id_CampeonatoParameter = id_Campeonato.HasValue ?
+                new ObjectParameter("Id_Campeonato", id_Campeonato) :
+                new ObjectParameter("Id_Campeonato", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pa_RetornaPosiciones_Result>("pa_RetornaPosiciones", id_CampeonatoParameter);
+        }
     }
 }

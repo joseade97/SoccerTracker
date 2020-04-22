@@ -413,6 +413,9 @@
           <Parameter Name="id_equipo" Type="int" Mode="In" />
           <Parameter Name="id_partido" Type="int" Mode="In" />
         </Function>
+        <Function Name="fn_puntos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="id_torneo" Type="int" Mode="In" />
+        </Function>
         <Function Name="PA_OBTENER_INDEX_TABLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombreTabla" Type="varchar" Mode="In" />
           <Parameter Name="nombreIdentificador" Type="varchar" Mode="In" />
@@ -467,6 +470,9 @@
           <Parameter Name="Fec_Fin" Type="datetime" Mode="In" />
           <Parameter Name="Cant_Equipos" Type="int" Mode="In" />
           <Parameter Name="Id_Dedicado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pa_RetornaPosiciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Campeonato" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -1285,7 +1291,10 @@
           <Parameter Name="id_torneo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="pa_partidos_torneo" ReturnType="Collection(ProyectoBDEntities.pa_partidos_torneo_Result)">
-            <Parameter Name="id_torneo" Mode="In" Type="Int32" />
+          <Parameter Name="id_torneo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_RetornaPosiciones" ReturnType="Collection(ProyectoBDEntities.pa_RetornaPosiciones_Result)">
+            <Parameter Name="Id_Campeonato" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_RetornaCantones_Result">
@@ -1466,6 +1475,10 @@
           <Property Type="Int32" Name="tiros_marco_visita" Nullable="false" />
           <Property Type="Int32" Name="tiros_total_casa" Nullable="false" />
           <Property Type="Int32" Name="tiros_total_visita" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="pa_RetornaPosiciones_Result">
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="60" />
+          <Property Type="Int32" Name="pts" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1881,6 +1894,14 @@
                 <ScalarProperty Name="tiros_marco_visita" ColumnName="tiros_marco_visita" />
                 <ScalarProperty Name="tiros_total_casa" ColumnName="tiros_total_casa" />
                 <ScalarProperty Name="tiros_total_visita" ColumnName="tiros_total_visita" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_RetornaPosiciones" FunctionName="ProyectoBDEntities.Store.pa_RetornaPosiciones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoBDEntities.pa_RetornaPosiciones_Result">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="pts" ColumnName="pts" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
