@@ -10,6 +10,7 @@
         <asp:TextBox runat="server" type="text" ID="txtNombreUsuario" class="form-control md-textbox btn" BorderColor="Black" BorderStyle="Solid"></asp:TextBox>
         <br />
         <label class="mb-1">Contraseña</label>
+        <br />
         <asp:TextBox runat="server" type="password" ID="txtPassword" class="form-control md-textbox btn" BorderColor="Black" BorderStyle="Solid"></asp:TextBox>
          <br />
         <label class="mb-1">Verificar Contraseña</label>
