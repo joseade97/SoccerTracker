@@ -20,12 +20,14 @@ namespace Proyecto.Formularios
 
         protected void btnSi_Click(object sender, EventArgs e)
         {
-            var torneo = new Campeonato { id = id_torneo };
-            if (torneo.estado == "C")
+            var cantPartidos = ((from c in modelo.Partidos
+                                where c.id_campeonato == id_torneo
+                                select c).Count());
+            if (cantPartidos == 0)
             {
                 try
                 {
-                    
+                    var torneo = new Campeonato { id = id_torneo };
                     modelo.Campeonatos.Attach(torneo);
                     modelo.Campeonatos.Remove(torneo);
                     modelo.SaveChanges();
@@ -33,7 +35,7 @@ namespace Proyecto.Formularios
                 }
                 catch (Exception ex)
                 {
-                    string msg = "El torneo se encuentra Iniciado y no es posible ser eliminado. Por favor comuníquese con su administrador web si necesita eliminar este registro";
+                    string msg = "El torneo tiene eventos disputados y no es posible ser eliminado. Por favor comuníquese con su administrador web si necesita eliminar este registro";
                     Utilidades.CreateMessageandRedirect(ClientScript, GetType(), msg, "frmListaTorneos");
                 }
             }
