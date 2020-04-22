@@ -78,8 +78,8 @@
                     <div class="dropdown">
                         <a class="js-scroll-trigger btn btn-primary dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Reportes</a>
                         <div class="dropdown-menu" style="background-color: #1D809F;">
-                            <a class="dropdown-item" href="/Formularios/frmReporteGoleadores">Reportes de Goleadores</a>
-                            <a class="dropdown-item" href="/Formularios/frmReporteTablaPosiciones">Reportes de Tabla de Posiciones</a>
+                            <a class="dropdown-item" href="/Formularios/frmTablaGoleadores">Reportes de Goleadores</a>
+                            <a class="dropdown-item" href="/Formularios/frmTablaPosiciones">Reportes de Tabla de Posiciones</a>
                         </div>
                     </div>
                 </li>
