@@ -17,6 +17,7 @@ namespace Proyecto.Modelos
         public Campeonato()
         {
             this.Equipos_x_Campeonato = new HashSet<Equipos_x_Campeonato>();
+            this.Partidos = new HashSet<Partido>();
         }
     
         public int id { get; set; }
@@ -28,5 +29,6 @@ namespace Proyecto.Modelos
     
         public virtual Persona Persona { get; set; }
         public virtual ICollection<Equipos_x_Campeonato> Equipos_x_Campeonato { get; set; }
+        public virtual ICollection<Partido> Partidos { get; set; }
     }
 }

@@ -16,7 +16,8 @@ namespace Proyecto.Formularios
         protected void Page_Load(object sender, EventArgs e)
         {
             idTorneo = Int32.Parse(Request.QueryString["id_torneo"]);
-            if(!IsPostBack){
+            if (!IsPostBack)
+            {
                 var listaEquipos = (from eq in modelo.Equipos
                                     join d in modelo.Distritos on eq.id_distrito equals d.id_distrito
                                     join c in modelo.Cantones on d.id_canton equals c.id_canton
@@ -53,7 +54,12 @@ namespace Proyecto.Formularios
             var cant_equipos = (from c in modelo.Campeonatos
                                 where c.id == idTorneo
                                 select c.cant_equipos).FirstOrDefault();
-            
+
+            var cant_ingresados = (from c in modelo.Equipos_x_Campeonato
+                                   where c.id_campeonato == idTorneo
+                                   select c).Count();
+            int actuales = cant_ingresados;
+
             for (int i = 0; i < grdEquipos.Rows.Count; i++)
             {
 
@@ -61,15 +67,33 @@ namespace Proyecto.Formularios
                 if (seleccion.Checked)
                 {
                     int idEquipo = Int32.Parse(grdEquipos.DataKeys[i].Value.ToString());
-
                     Equipos_x_Campeonato registro = new Equipos_x_Campeonato();
                     registro.id_campeonato = idTorneo;
                     registro.id_equipo = idEquipo;
 
                     modelo.Equipos_x_Campeonato.Add(registro);
+                    cant_ingresados++;
                 }
             }
-            modelo.SaveChanges();
+            if (cant_ingresados < cant_equipos)
+            {
+                try
+                {
+                    modelo.SaveChanges();
+                    Utilidades.CreateMessageByScript(ClientScript, GetType(), "Los equipos fueron agregados con éxito");
+                    lblRes.Text = "";
+                }
+                catch (Exception ex)
+                {
+                    lblRes.Text = "Por favor verifique que los equipos que intenta ingresar, no estén actualmente registros en el torneo.";
+                }
+            }
+            else
+            {
+                Utilidades.CreateMessageByScript(ClientScript, GetType(),
+                           $"No es posible agregar la cantidad de equipos seleccionada. Actualmente hay {actuales} ingresados, el " +
+                           $"máximo de equipos es de {cant_equipos}");
+            }
         }
     }
 }
