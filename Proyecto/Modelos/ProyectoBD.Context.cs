@@ -456,5 +456,23 @@ namespace Proyecto.Modelos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPDATE_ULTIMO_INGRESO", ult_dateParameter, idParameter);
         }
+    
+        public virtual ObjectResult<pa_obtener_partidos_torneo_Result> pa_obtener_partidos_torneo(Nullable<int> id_torneo)
+        {
+            var id_torneoParameter = id_torneo.HasValue ?
+                new ObjectParameter("id_torneo", id_torneo) :
+                new ObjectParameter("id_torneo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pa_obtener_partidos_torneo_Result>("pa_obtener_partidos_torneo", id_torneoParameter);
+        }
+    
+        public virtual ObjectResult<pa_partidos_torneo_Result> pa_partidos_torneo(Nullable<int> id_torneo)
+        {
+            var id_torneoParameter = id_torneo.HasValue ?
+                new ObjectParameter("id_torneo", id_torneo) :
+                new ObjectParameter("id_torneo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pa_partidos_torneo_Result>("pa_partidos_torneo", id_torneoParameter);
+        }
     }
 }

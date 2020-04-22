@@ -125,7 +125,9 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Formularios\frmAgregarPartido.aspx" />
     <Content Include="Formularios\frmCrearTorneo.aspx" />
+    <Content Include="Formularios\frmDetallesPartido.aspx" />
     <Content Include="Formularios\frmEliminarEquipo.aspx" />
     <Content Include="Formularios\frmEliminarEquiposTorneo.aspx" />
     <Content Include="Formularios\frmEliminarJugador.aspx" />
@@ -136,8 +138,10 @@
     <Content Include="Formularios\frmIngresarEquiposTorneo.aspx" />
     <Content Include="Formularios\frmIngresarJugador.aspx" />
     <Content Include="Formularios\frmIngresarUsuario.aspx" />
+    <Content Include="Formularios\frmIniciaTorneo.aspx" />
     <Content Include="Formularios\frmListaEquipos.aspx" />
     <Content Include="Formularios\frmListaJugadores.aspx" />
+    <Content Include="Formularios\frmListaPartidos.aspx" />
     <Content Include="Formularios\frmListaPersonas.aspx" />
     <Content Include="Formularios\frmListaTorneos.aspx" />
     <Content Include="Formularios\frmListaUsuarios.aspx" />
@@ -150,6 +154,7 @@
     <Content Include="Formularios\frmModificarUsuario.aspx" />
     <Content Include="Formularios\frmPaginaPrincipal.aspx" />
     <Content Include="Formularios\frmSalir.aspx" />
+    <Content Include="Formularios\frmTerminaTorneo.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -287,12 +292,26 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmAgregarPartido.aspx.cs">
+      <DependentUpon>frmAgregarPartido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAgregarPartido.aspx.designer.cs">
+      <DependentUpon>frmAgregarPartido.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmCrearTorneo.aspx.cs">
       <DependentUpon>frmCrearTorneo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Formularios\frmCrearTorneo.aspx.designer.cs">
       <DependentUpon>frmCrearTorneo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmDetallesPartido.aspx.cs">
+      <DependentUpon>frmDetallesPartido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmDetallesPartido.aspx.designer.cs">
+      <DependentUpon>frmDetallesPartido.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmEliminarEquipo.aspx.cs">
       <DependentUpon>frmEliminarEquipo.aspx</DependentUpon>
@@ -364,6 +383,13 @@
     <Compile Include="Formularios\frmIngresarUsuario.aspx.designer.cs">
       <DependentUpon>frmIngresarUsuario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmIniciaTorneo.aspx.cs">
+      <DependentUpon>frmIniciaTorneo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmIniciaTorneo.aspx.designer.cs">
+      <DependentUpon>frmIniciaTorneo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmListaEquipos.aspx.cs">
       <DependentUpon>frmListaEquipos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -377,6 +403,13 @@
     </Compile>
     <Compile Include="Formularios\frmListaJugadores.aspx.designer.cs">
       <DependentUpon>frmListaJugadores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmListaPartidos.aspx.cs">
+      <DependentUpon>frmListaPartidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmListaPartidos.aspx.designer.cs">
+      <DependentUpon>frmListaPartidos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmListaPersonas.aspx.cs">
       <DependentUpon>frmListaPersonas.aspx</DependentUpon>
@@ -462,6 +495,13 @@
     <Compile Include="Formularios\frmSalir.aspx.designer.cs">
       <DependentUpon>frmSalir.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmTerminaTorneo.aspx.cs">
+      <DependentUpon>frmTerminaTorneo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTerminaTorneo.aspx.designer.cs">
+      <DependentUpon>frmTerminaTorneo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\ProyectoMaster.Master.cs">
       <DependentUpon>ProyectoMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -503,6 +543,12 @@
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\pa_obtener_lista_usuarios_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\pa_obtener_partidos_torneo_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\pa_partidos_torneo_Result.cs">
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\pa_Progra5Select1_Result.cs">

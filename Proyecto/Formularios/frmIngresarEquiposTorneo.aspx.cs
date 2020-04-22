@@ -75,7 +75,7 @@ namespace Proyecto.Formularios
                     cant_ingresados++;
                 }
             }
-            if (cant_ingresados < cant_equipos)
+            if (cant_ingresados <= cant_equipos)
             {
                 try
                 {
