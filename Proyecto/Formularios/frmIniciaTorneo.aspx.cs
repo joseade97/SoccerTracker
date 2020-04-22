@@ -80,7 +80,7 @@ namespace Proyecto.Formularios
                     modelo.SaveChanges();
                     Utilidades.CreateMessageandRedirect(ClientScript, GetType(), "El torneo ha iniciado exitosamente.",
                                                         "frmListaTorneos");
-                }catch (Exception e)
+                }catch (Exception ex)
                 {
                     ///mensaje de algun otro error
                     Utilidades.CreateMessageandRedirect(ClientScript, GetType(), "Ha ocurrido un error inesperado, por favor, comuníquese con su administrador web.",
