@@ -11,10 +11,12 @@ namespace Proyecto.Formularios
 {
     public partial class frmModificarJugador : System.Web.UI.Page
     {
+        //Se crean propiedades de clase
         ProyectoBD modelo = new ProyectoBD();
         int id;
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Se inicializa el formulario
             id = Int32.Parse(Request.QueryString["id_jugador"]);
             if (!IsPostBack)
             {
@@ -22,6 +24,7 @@ namespace Proyecto.Formularios
             }
         }
 
+        //Se inicializan campos del formulario
         protected void InitForm()
         {
             var jugador = (from j in modelo.Jugadores
@@ -62,12 +65,15 @@ namespace Proyecto.Formularios
             txtNombreJugador.Text = jugador.nombre;
         }
 
+        //evento submit
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            //Valida datos
             if (IsValid)
             {
                 try
                 {
+                    //Modifica datos en la BD
                     var jugador = (from j in modelo.Jugadores
                                    where j.id == id
                                    select j).FirstOrDefault();
@@ -84,6 +90,7 @@ namespace Proyecto.Formularios
             }
         }
 
+        //Modifica Jugador que recibe por parámetro
         protected void GenerarModJugador(Jugadore nJugador)
         {
             nJugador.id_equipo = Int32.Parse(ddlEquipo.SelectedValue);

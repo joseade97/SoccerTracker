@@ -10,9 +10,11 @@ namespace Proyecto.Formularios
 {
     public partial class frmPaginaPrincipal : Page
     {
+        //Inicializa instancia de BD
         ProyectoBD modelo = new ProyectoBD();
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Establece último ingreso de sesión usuario y lo muestra
             Usuario datosUsuario = (Usuario)Session["datosUsuario"];
             var persona = (from u in modelo.Personas
                            where u.id == datosUsuario.id_persona
@@ -23,6 +25,7 @@ namespace Proyecto.Formularios
                                             $"<br />{(datosUsuario.ultimo_ingreso != null ? "Su último ingreso fue el " + datosUsuario.ultimo_ingreso : "Primer ingreso al sistema")}";
                 if (!IsPostBack)
                 {
+                    //Actualiza el último ingreso en BD
                     Usuario user = (Usuario)Session["datosUsuario"];
                     modelo.UPDATE_ULTIMO_INGRESO(DateTime.Now, user.id_usuario);
                     modelo.SaveChanges();
