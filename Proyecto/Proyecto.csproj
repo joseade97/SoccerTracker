@@ -151,6 +151,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Formularios\frmCrearTorneo.aspx" />
     <Content Include="Formularios\frmEliminarEquipo.aspx" />
+    <Content Include="Formularios\frmEliminarEquiposTorneo.aspx" />
     <Content Include="Formularios\frmEliminarJugador.aspx" />
     <Content Include="Formularios\frmEliminarPersona.aspx" />
     <Content Include="Formularios\frmEliminarTorneo.aspx" />
@@ -349,6 +350,13 @@
     </Compile>
     <Compile Include="Formularios\frmEliminarEquipo.aspx.designer.cs">
       <DependentUpon>frmEliminarEquipo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmEliminarEquiposTorneo.aspx.cs">
+      <DependentUpon>frmEliminarEquiposTorneo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmEliminarEquiposTorneo.aspx.designer.cs">
+      <DependentUpon>frmEliminarEquiposTorneo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmEliminarJugador.aspx.cs">
       <DependentUpon>frmEliminarJugador.aspx</DependentUpon>

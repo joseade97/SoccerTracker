@@ -13,7 +13,8 @@
                     <asp:BoundField DataField="fec_fin" HeaderText="Fecha de Fin" />
                     <asp:BoundField DataField="cant_equipos" HeaderText="Cantidad de Equipos" />
                     <asp:BoundField DataField="dedicado" HeaderText="Dedicado" />
-                    <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="/Formularios/frmIngresarEquiposTorneo?id_torneo={0}" HeaderText="Equipos" Text="Agregar Equipos" />
+                    <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="/Formularios/frmIngresarEquiposTorneo?id_torneo={0}" HeaderText="Agregar Equipos" Text="Agregar Equipos" />
+                    <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="/Formularios/frmEliminarEquiposTorneo?id_torneo={0}" HeaderText="Quitar Equipos" Text="Quitar Equipos" />
                     <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="/Formularios/frmModificarTorneo?id_torneo={0}" HeaderText="Modificar" Text="Modificar Torneo" />
                     <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="/Formularios/frmEliminarTorneo?id_torneo={0}" HeaderText="Eliminar" Text="Eliminar Torneo" />
                 </Columns>
