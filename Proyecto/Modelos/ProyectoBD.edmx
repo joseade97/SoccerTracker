@@ -513,6 +513,9 @@
           <Parameter Name="Cant_Equipos" Type="int" Mode="In" />
           <Parameter Name="Id_Dedicado" Type="int" Mode="In" />
         </Function>
+        <Function Name="pa_retorna_goleadores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_campeonato" Type="int" Mode="In" />
+        </Function>
         <Function Name="pa_RetornaPosiciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id_Campeonato" Type="int" Mode="In" />
         </Function>
@@ -1376,7 +1379,10 @@
           <Parameter Name="id_torneo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="pa_campeon_torneo" ReturnType="Collection(ProyectoBDEntities.pa_campeon_torneo_Result)">
-            <Parameter Name="Id_Campeonato" Mode="In" Type="Int32" />
+          <Parameter Name="Id_Campeonato" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pa_retorna_goleadores" ReturnType="Collection(ProyectoBDEntities.pa_retorna_goleadores_Result)">
+            <Parameter Name="id_campeonato" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_RetornaCantones_Result">
@@ -1601,6 +1607,11 @@
         <ComplexType Name="pa_campeon_torneo_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="Int32" Name="pts" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="pa_retorna_goleadores_Result">
+          <Property Type="Int32" Name="goles" Nullable="true" />
+          <Property Type="String" Name="jugador" Nullable="true" MaxLength="112" />
+          <Property Type="String" Name="equipo" Nullable="false" MaxLength="60" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2051,6 +2062,15 @@
               <ComplexTypeMapping TypeName="ProyectoBDEntities.pa_campeon_torneo_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="pts" ColumnName="pts" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_retorna_goleadores" FunctionName="ProyectoBDEntities.Store.pa_retorna_goleadores">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoBDEntities.pa_retorna_goleadores_Result">
+                <ScalarProperty Name="goles" ColumnName="goles" />
+                <ScalarProperty Name="jugador" ColumnName="jugador" />
+                <ScalarProperty Name="equipo" ColumnName="equipo" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
