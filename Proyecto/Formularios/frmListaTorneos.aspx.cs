@@ -27,7 +27,5 @@ namespace Proyecto.Formularios
             grdTorneos.DataSource = torneos;
             grdTorneos.DataBind();
         }
-
-
     }
 }
