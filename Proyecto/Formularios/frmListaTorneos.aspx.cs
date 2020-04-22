@@ -28,5 +28,6 @@ namespace Proyecto.Formularios
             grdTorneos.DataBind();
         }
 
+
     }
 }

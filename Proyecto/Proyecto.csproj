@@ -129,6 +129,7 @@
     <Content Include="Formularios\frmEliminarEquipo.aspx" />
     <Content Include="Formularios\frmEliminarJugador.aspx" />
     <Content Include="Formularios\frmEliminarPersona.aspx" />
+    <Content Include="Formularios\frmEliminarTorneo.aspx" />
     <Content Include="Formularios\frmEliminarUsuario.aspx" />
     <Content Include="Formularios\frmIngresarEquipo.aspx" />
     <Content Include="Formularios\frmIngresarJugador.aspx" />
@@ -143,6 +144,7 @@
     <Content Include="Formularios\frmModificarPersona.aspx" />
     <Content Include="Formularios\frmIngresarPersona.aspx" />
     <Content Include="Formularios\frmLogin.aspx" />
+    <Content Include="Formularios\frmModificarTorneo.aspx" />
     <Content Include="Formularios\frmModificarUsuario.aspx" />
     <Content Include="Formularios\frmPaginaPrincipal.aspx" />
     <Content Include="Formularios\frmSalir.aspx" />
@@ -311,6 +313,13 @@
     <Compile Include="Formularios\frmEliminarPersona.aspx.designer.cs">
       <DependentUpon>frmEliminarPersona.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmEliminarTorneo.aspx.cs">
+      <DependentUpon>frmEliminarTorneo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmEliminarTorneo.aspx.designer.cs">
+      <DependentUpon>frmEliminarTorneo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmEliminarUsuario.aspx.cs">
       <DependentUpon>frmEliminarUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -408,6 +417,13 @@
     </Compile>
     <Compile Include="Formularios\frmLogin.aspx.designer.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmModificarTorneo.aspx.cs">
+      <DependentUpon>frmModificarTorneo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmModificarTorneo.aspx.designer.cs">
+      <DependentUpon>frmModificarTorneo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmModificarUsuario.aspx.cs">
       <DependentUpon>frmModificarUsuario.aspx</DependentUpon>
