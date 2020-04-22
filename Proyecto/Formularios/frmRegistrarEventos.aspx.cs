@@ -15,6 +15,7 @@ namespace Proyecto.Formularios
         int idPartido;
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Inicializa información necesaria para el llenado de datos
             idPartido = Int32.Parse(Request.QueryString["id_partido"]);            
             if (!IsPostBack)
             {
@@ -40,6 +41,8 @@ namespace Proyecto.Formularios
             }
         }
 
+        //Evento btnSubmit
+        //Gestiona la creación del evento en la BD
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             if(IsValid)
@@ -61,6 +64,7 @@ namespace Proyecto.Formularios
             }
         }
 
+        //Crear y devuelve un objeto del tipo Eventos_x_Partido
         protected Eventos_x_Partido GenerarEvento ()
         {
             Eventos_x_Partido nEvento = new Eventos_x_Partido();

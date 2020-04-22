@@ -11,10 +11,12 @@ namespace Proyecto.Formularios
 {
     public partial class frmTerminaTorneo : System.Web.UI.Page
     {
+        //Se crean variables de clase para base de datos y gestión del ID
         ProyectoBD modelo = new ProyectoBD();
         int idTorneo;
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Se establecen los datos iniciales del formularios
             idTorneo = Int32.Parse(Request.QueryString["id_torneo"]);
             var estadoTorneo = (from c in modelo.Campeonatos
                                 where c.id == idTorneo
@@ -25,12 +27,15 @@ namespace Proyecto.Formularios
             }
         }
 
+        //Evento del btnSi
         protected void btnSi_Click(object sender, EventArgs e)
         {
+            //Valida información
             if (JornadaCumplida())
             {
                 try
                 {
+                    //Actualiza información en BD
                     var torneo = (from c in modelo.Campeonatos
                                   where c.id == idTorneo
                                   select c).FirstOrDefault();
@@ -51,13 +56,17 @@ namespace Proyecto.Formularios
             }
         }
 
+        //Evento btnNo
         protected void btnNo_Click(object sender, EventArgs e)
         {
+            //Redirige a Lista Torneos
             Response.Redirect("~/Formularios/frmListaTorneos");
         }
 
+        //Modifica un torneo recibido por parámetro, de acuerdo a los datos necesarios
         protected void ModificarTorneo(Campeonato torneo)
         {
+            //Recupera goleador y campeón desde BD
             var idGoleador = modelo.pa_goleador(idTorneo).Select(x => x.jugador).FirstOrDefault();
             var idCampeon = modelo.pa_campeon_torneo(idTorneo).Select(x => x.id).FirstOrDefault();
 
@@ -67,6 +76,7 @@ namespace Proyecto.Formularios
             torneo.fec_fin = DateTime.Now;
         }
 
+        //Verifica si un torneo cumplió su jornada
         protected bool JornadaCumplida()
         {
             var cantPartidos = modelo.pa_partidos_equipo(idTorneo).ToList();

@@ -16,6 +16,7 @@ namespace Proyecto.Formularios
         ProyectoBD modelo = new ProyectoBD();
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Inicializa formulario
             if (!IsPostBack)
             {
                 var datosCampeonatos = (from c in modelo.Campeonatos
@@ -35,6 +36,7 @@ namespace Proyecto.Formularios
             }
         }
 
+        //Sobrescribe valores de ddlEquipo según torneo
         protected void ddlCampeonatos_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(ddlCampeonatos.SelectedValue))
@@ -63,6 +65,7 @@ namespace Proyecto.Formularios
 
         }
 
+        //Construye reporte desde fuente de datos
         protected void ConstruirReporte()
         {
             string rutaReporte = "~/Reportes/ReporteGoleadores.rdlc";
@@ -97,6 +100,7 @@ namespace Proyecto.Formularios
 
         }
 
+        //Muestra reporte por medio del método ConstruirReporte
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             if(IsValid)

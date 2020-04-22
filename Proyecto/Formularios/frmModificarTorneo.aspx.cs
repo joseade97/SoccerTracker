@@ -11,10 +11,12 @@ namespace Proyecto.Formularios
 {
     public partial class frmModificarTorneo : System.Web.UI.Page
     {
+        //Se crean variables de clase para la gestión del formulario
         ProyectoBD modelo = new ProyectoBD();
         int id_torneo;
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Se inicializa el formulario
             id_torneo = Int32.Parse(Request.QueryString["id_torneo"]);
             if (!IsPostBack)
             {
@@ -22,6 +24,7 @@ namespace Proyecto.Formularios
             }
         }
 
+        //Evento btnVal, realiza una validación para seleccionar una persona de la tabla Personas en BD
         protected void btnVal_Click(object sender, EventArgs e)
         {
             var persona = (from u in modelo.Personas
@@ -38,12 +41,15 @@ namespace Proyecto.Formularios
             }
         }        
 
+        //Evento btnSubmit
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            //Valida datos
             if (IsValid)
             {
                 try
                 {
+                    //Realiza la modificación en BD
                     var torneo = (from c in modelo.Campeonatos
                                    where c.id == id_torneo
                                    select c).FirstOrDefault();
@@ -60,6 +66,8 @@ namespace Proyecto.Formularios
                 }
             }
         }
+
+        //Inicializa campos del formulario
         protected void InitForm()
         {
             var torneo = (from c in modelo.Campeonatos
@@ -73,6 +81,8 @@ namespace Proyecto.Formularios
             txtCant.Text = Convert.ToString(torneo.cant_equipos);
             ddlEstado.SelectedValue = torneo.estado.ToString();
         }
+
+        //Modifica torneo que recibe por parámentro
         protected void ModificarTorneo(Campeonato nCampeonato)
         {
             nCampeonato.fec_inicio = DateTime.Parse(txtFecIni.Text);

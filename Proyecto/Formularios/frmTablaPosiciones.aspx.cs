@@ -18,6 +18,7 @@ namespace Proyecto.Formularios
         {
             if(!IsPostBack)
             {
+                //Inicializa formulario
                 var datosCampeonatos = (from c in modelo.Campeonatos
                                         join p in modelo.Personas on c.id_dedicado equals p.id
                                         where c.estado != "C"
@@ -34,6 +35,7 @@ namespace Proyecto.Formularios
             }
         }
 
+        //Construye reporte desde fuente de datos
         protected void ConstruirReporte ()
         {
             string rutaReporte = "~/Reportes/ReporteTablaPosiciones.rdlc";
