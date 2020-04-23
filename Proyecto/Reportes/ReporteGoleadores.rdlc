@@ -469,7 +469,7 @@
           <Top>0.33333in</Top>
           <Left>0.95833in</Left>
           <Height>0.25in</Height>
-          <Width>1in</Width>
+          <Width>2.30001in</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
@@ -509,7 +509,7 @@
           <rd:DefaultName>Textbox15</rd:DefaultName>
           <Top>0.58333in</Top>
           <Height>0.25in</Height>
-          <Width>1.25in</Width>
+          <Width>1.49167in</Width>
           <ZIndex>5</ZIndex>
           <Style>
             <Border>
@@ -537,9 +537,9 @@
           </Paragraphs>
           <rd:DefaultName>PageNumber</rd:DefaultName>
           <Top>0.58333in</Top>
-          <Left>1.25in</Left>
+          <Left>1.49167in</Left>
           <Height>0.25in</Height>
-          <Width>1in</Width>
+          <Width>0.35in</Width>
           <ZIndex>6</ZIndex>
           <Style>
             <Border>
@@ -567,9 +567,9 @@
           </Paragraphs>
           <rd:DefaultName>TotalPages</rd:DefaultName>
           <Top>0.58333in</Top>
-          <Left>2.56667in</Left>
+          <Left>2.17223in</Left>
           <Height>0.25in</Height>
-          <Width>1in</Width>
+          <Width>0.35in</Width>
           <ZIndex>7</ZIndex>
           <Style>
             <Border>
@@ -597,7 +597,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
           <Top>0.58333in</Top>
-          <Left>2.25in</Left>
+          <Left>1.84167in</Left>
           <Height>0.25in</Height>
           <Width>0.31667in</Width>
           <ZIndex>8</ZIndex>

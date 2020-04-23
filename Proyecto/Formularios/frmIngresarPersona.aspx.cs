@@ -12,12 +12,14 @@ namespace Proyecto.Formularios
 {
     public partial class frmIngresarPersona : System.Web.UI.Page
     {
+        ///se crea una instancia del modelo de base de datos
         ProyectoBD modelo = new ProyectoBD();
         protected void Page_Load(object sender, EventArgs e)
         {
 
             if (!IsPostBack)
             {
+                ///se agrega la lista de provincias al ddlProvincia 
                 ddlCanton.Items.Insert(0, new ListItem("Selecccione", ""));
                 ddlDistrito.Items.Insert(0, new ListItem("Selecccione", ""));
                 var provincias = (from p in modelo.Provincias
@@ -33,6 +35,7 @@ namespace Proyecto.Formularios
 
         protected void ddlProvincia_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ///se agrega la lista de cantones al ddlCanton con respecto a la provincia
             var provincia = Int32.Parse(ddlProvincia.SelectedValue);
             var cantones = (from c in modelo.Cantones
                             where c.id_provincia == provincia
@@ -46,6 +49,7 @@ namespace Proyecto.Formularios
         }
         protected void ddlCanton_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ///se agrega la lista de distritos al ddlDistrito con respecto al canto
             var canton = Int32.Parse(ddlCanton.SelectedValue);
             var distritos = (from d in modelo.Distritos
                              where d.id_canton == canton
@@ -59,20 +63,29 @@ namespace Proyecto.Formularios
             ddlDistrito.Items.Insert(0, new ListItem("Seleccione", ""));
         }
 
+        /// <summary>
+        /// procedimiento para generar una nueva persona
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            ///se verifica que los campos requeridos fueron ingresados
             if (this.IsValid)
             {
                 try
                 {
+                    ///se genera un nueva persona
                     Persona nPersona = GenerarNuevaPersona();
                     modelo.Personas.Add(nPersona);
                     modelo.SaveChanges();
+                    ///mensaje de que la persona fue ingresada
                     Utilidades.CreateMessageByScript(ClientScript, GetType(), "La persona ha sido registrada con éxito");
                     Utilidades.ClearTextBoxes(this);
                 }
                 catch (Exception ex)
                 {
+                    ///mensaje de algun otro error, la persona no fue ingresada
                     string msg = "Ha ocurrido un error inesperado, por favor comuníquese con" +
                                         " el administrador de la web brindándole la siguiente información: " + ex.Message;
                     Utilidades.CreateMessageByScript(ClientScript, GetType(), msg);
@@ -80,10 +93,14 @@ namespace Proyecto.Formularios
 
             }
         }
-
+        /// <summary>
+        /// Procedimiento que genera un nueva persona segun los datos brindados por el administrador
+        /// </summary>
+        /// <returns></returns>
         protected Persona GenerarNuevaPersona()
         {
             Persona nPersona = new Persona();
+            ///Se verifica que el txtTel2 se nulo, sino para agregarle un segundo numero telefonico
             if (String.IsNullOrEmpty(txtTel2.Text))
             {
                 nPersona.telefono_secundario = null;
