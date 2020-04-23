@@ -26,9 +26,13 @@ namespace Proyecto.Modelos
         public int cant_equipos { get; set; }
         public int id_dedicado { get; set; }
         public string estado { get; set; }
+        public Nullable<int> id_goleador { get; set; }
+        public Nullable<int> id_campeon { get; set; }
     
         public virtual Persona Persona { get; set; }
         public virtual ICollection<Equipos_x_Campeonato> Equipos_x_Campeonato { get; set; }
         public virtual ICollection<Partido> Partidos { get; set; }
+        public virtual Equipos Equipos { get; set; }
+        public virtual Jugadore Jugadore { get; set; }
     }
 }

@@ -35,9 +35,11 @@
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li class="nav-item">
+                <% if (Session["permisoAdmin"].Equals("S"))
+                    { %>
+                <li class="nav-item" >
                     <div class="dropdown">
-                        <a class="js-scroll-trigger btn btn-primary dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Campeonatos</a>
+                        <a class="js-scroll-trigger btn btn-primary dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Torneos</a>
                         <div class="dropdown-menu" style="background-color: #1D809F;">
                             <a class="dropdown-item" href="/Formularios/frmCrearTorneo">Crear Torneo</a>
                             <a class="dropdown-item" href="/Formularios/frmListaTorneos">Lista de Torneos</a>
@@ -74,17 +76,19 @@
                         </div>
                     </div>
                 </li>
+                <%} %>
                 <li class="nav-item">
                     <div class="dropdown">
                         <a class="js-scroll-trigger btn btn-primary dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Reportes</a>
                         <div class="dropdown-menu" style="background-color: #1D809F;">
-                            <a class="dropdown-item" href="#ReportesDeCampeonatos">Reportes de Campeonatos</a>
-                            <a class="dropdown-item" href="#ReportesDeEquipos">Reportes de Equipos</a>
-                            <a class="dropdown-item" href="#ReportesDeJugadores">Reportes de Jugadores</a>
+                            <a class="dropdown-item" href="/Formularios/frmTablaGoleadores">Reportes de Goleadores</a>
+                            <a class="dropdown-item" href="/Formularios/frmTablaPosiciones">Reportes de Tabla de Posiciones</a>
                         </div>
                     </div>
                 </li>
-
+                 <li class="nav-item">
+                     <a class="btn btn-primary" href="/Formularios/frmSalir">Cerrar Sesión</a>
+                </li>
             </ul>
         </div>
     </nav>

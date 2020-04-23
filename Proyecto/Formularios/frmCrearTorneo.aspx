@@ -4,13 +4,7 @@
     <form id="frm1" runat="server" class="text-center">
         <asp:HiddenField runat="server" ID="hdfIdPersona" />
         <br />
-        <label class="mb-1">Fec. Inicio</label>
-        <asp:RequiredFieldValidator CssClass="validator-message" ID="RequiredFieldValidator10" runat="server" ErrorMessage="Este campo es requerido" ControlToValidate="txtFecIni"></asp:RequiredFieldValidator>
-        <asp:TextBox runat="server" type="text" ID="txtFecIni" class="form-control md-textbox btn" BorderColor="Black" BorderStyle="Solid"></asp:TextBox>
-        <asp:RegularExpressionValidator CssClass="validator-message" ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtFecIni"
-            ErrorMessage="Por favor, indique la fecha en formato: dd/mm/yyyy" ValidationExpression="^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$"></asp:RegularExpressionValidator>
-        <br />
-        <label class="mb-1">Fec. Fin</label>
+        <label class="mb-1">Fecha de Finalización Proyectada</label>
         <asp:RequiredFieldValidator CssClass="validator-message" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Este campo es requerido" ControlToValidate="txtFecFin"></asp:RequiredFieldValidator>
         <asp:TextBox runat="server" type="text" ID="txtFecFin" class="form-control md-textbox btn" BorderColor="Black" BorderStyle="Solid"></asp:TextBox>
         <asp:RegularExpressionValidator CssClass="validator-message" ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtFecFin"

@@ -10,14 +10,17 @@ namespace Proyecto.Formularios
 {
     public partial class frmListaEquipos : System.Web.UI.Page
     {
+        ///se crea una instancia del modelo de base de datos
         ProyectoBD modelo = new ProyectoBD();
         protected void Page_Load(object sender, EventArgs e)
         {
+            ///se cargan los equipos
             CargarEquipos();
         }
 
         protected void CargarEquipos()
         {
+            ///se carga la lista de equipos
             var listaEquipos = (from e in modelo.Equipos
                                 join d in modelo.Distritos on e.id_distrito equals d.id_distrito
                                 join c in modelo.Cantones on d.id_canton equals c.id_canton
@@ -35,7 +38,7 @@ namespace Proyecto.Formularios
                                     provincia = p.nombre
 
                                 }).ToList();
-
+            ///se agrega la lista al grid
             grdEquipos.DataSource = listaEquipos;
             grdEquipos.DataBind();
 

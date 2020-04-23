@@ -20,6 +20,7 @@ namespace Proyecto.Modelos
             this.Jugadores = new HashSet<Jugadore>();
             this.Partidos = new HashSet<Partido>();
             this.Partidos1 = new HashSet<Partido>();
+            this.Campeonatos = new HashSet<Campeonato>();
         }
     
         public int id { get; set; }
@@ -34,5 +35,6 @@ namespace Proyecto.Modelos
         public virtual ICollection<Jugadore> Jugadores { get; set; }
         public virtual ICollection<Partido> Partidos { get; set; }
         public virtual ICollection<Partido> Partidos1 { get; set; }
+        public virtual ICollection<Campeonato> Campeonatos { get; set; }
     }
 }

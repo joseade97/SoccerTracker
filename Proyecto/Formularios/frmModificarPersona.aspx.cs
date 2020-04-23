@@ -9,6 +9,7 @@ namespace Proyecto.Formularios
 {
     public partial class frmModificarPersona : System.Web.UI.Page
     {
+        //Se propiedades para la gtestión del formulario
         ProyectoBD modelo = new ProyectoBD();
         int id;
         protected void Page_Load(object sender, EventArgs e)
@@ -21,12 +22,15 @@ namespace Proyecto.Formularios
             }
         }
 
+        //Evento submit
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            //Se validan los datos
             if (this.IsValid)
             {
                 try
                 {
+                    //Se modifica la persona en BD
                     var persona = (from p in modelo.Personas
                                    where p.id == id
                                    select p).FirstOrDefault();
@@ -45,6 +49,7 @@ namespace Proyecto.Formularios
             }
         }
 
+        //Establece ddlCanton según provincia seleccionada
         protected void setDdlCanton()
         {
             var provincia = Int32.Parse(ddlProvincia.SelectedValue);
@@ -59,6 +64,7 @@ namespace Proyecto.Formularios
             ddlCanton.Items.Insert(0, new ListItem("Seleccione", ""));
         }
 
+        //Establece ddlDistrito segun cantón seleccionado
         protected void setDdlDistrito()
         {
             var canton = Int32.Parse(ddlCanton.SelectedValue);
@@ -73,14 +79,18 @@ namespace Proyecto.Formularios
             ddlDistrito.DataBind();
             ddlDistrito.Items.Insert(0, new ListItem("Seleccione", ""));
         }
+
+        //Actualiza lista cantones al cambiar provincia
         protected void ddlProvincia_SelectedIndexChanged(object sender, EventArgs e)
         {
             setDdlCanton();
         }
+        //Actualiza lista  distritos al cambiar cantón
         protected void ddlCanton_SelectedIndexChanged(object sender, EventArgs e)
         {
             setDdlDistrito();
         }
+        //Inicializa campos del formulario
         protected void InitForm()
         {
             var persona = (from ps in modelo.Personas
@@ -119,6 +129,7 @@ namespace Proyecto.Formularios
             txtDireccion.Text = persona.datos.direccion_fisica;
         }
 
+        //Modifica persona recibida por parámetro
         protected void GenerarModificacionPersona(Persona nPersona)
         {
             if (String.IsNullOrEmpty(txtTel2.Text))

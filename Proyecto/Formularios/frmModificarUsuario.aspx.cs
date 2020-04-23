@@ -13,10 +13,12 @@ namespace Proyecto.Formularios
 {
     public partial class frmModificarUsuario : System.Web.UI.Page
     {
+        //Crea variables de clase para la gestión del formulario
         ProyectoBD modelo = new ProyectoBD();
         int id_usuario;
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Inicializa formulario
             id_usuario = Int32.Parse(Request.QueryString["id_usuario"]);
             if (!IsPostBack)
             {
@@ -24,12 +26,16 @@ namespace Proyecto.Formularios
 
             }
         }
+
+        //Evento btnSubmit
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            //Valida datos
             if (this.IsValid)
             {
                 try
                 {
+                    //Realiza la modificación en BD
                     var usuario = (from u in modelo.Usuarios
                                    where u.id_usuario == id_usuario
                                    select u).FirstOrDefault();
@@ -55,6 +61,7 @@ namespace Proyecto.Formularios
         {
         }
 
+        //Establece datos iniciales
         protected void InitForm()
         {
             var usuario = (from us in modelo.Usuarios
@@ -66,6 +73,7 @@ namespace Proyecto.Formularios
             ddlTipoUsu.SelectedValue = usuario.es_admin.ToString();
         }
 
+        //Modifica Usuario que recibe por parámetro
         protected void GenerarModificacionPersona(Usuario nUsuario)
         {
             nUsuario.nombre_usuario = txtNombreUsuario.Text;

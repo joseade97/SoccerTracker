@@ -11,6 +11,7 @@ namespace Proyecto.Formularios
 {
     public partial class frmLogin : System.Web.UI.Page
     {
+        ///Se crean variables de clase para la gestión del formulario
         ProyectoBD modelo = new ProyectoBD();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,7 +27,7 @@ namespace Proyecto.Formularios
         }
         void RealizarAutenticacion()
         {
-
+            ///se obtiene el usuario y contraseña ingresados en el formulario
             var hasher = new PasswordHasher();
 
             string nomUsuario = this.txtUsuario.Text;
@@ -43,6 +44,7 @@ namespace Proyecto.Formularios
             if (isValid)
             {
                 Session["datosUsuario"] = user;
+                Session["permisoAdmin"] = user.es_admin ? "S" : "N";
                 ///redireccionar a la pagina inicial
                 this.Response.Redirect("~/Formularios/frmPaginaPrincipal.aspx", false);
             }
@@ -53,6 +55,7 @@ namespace Proyecto.Formularios
                 ///nombre variable, valor de la variable
                 this.lblResultado.Text = "Debe ingresar un usuario y/o contraseña válidos";
                 Session["datosUsuario"] = null;
+                Session["permisoAdmin"] = null;
             }
         }
     }

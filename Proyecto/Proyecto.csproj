@@ -51,6 +51,24 @@
       <HintPath>..\packages\Liphsoft.Crypto.Argon2.1.0.5\lib\net35\x86\Liphsoft.Crypto.Argon2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.WebDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -125,8 +143,11 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Formularios\frmAgregarPartido.aspx" />
     <Content Include="Formularios\frmCrearTorneo.aspx" />
+    <Content Include="Formularios\frmDetallesPartido.aspx" />
     <Content Include="Formularios\frmEliminarEquipo.aspx" />
+    <Content Include="Formularios\frmEliminarEquiposTorneo.aspx" />
     <Content Include="Formularios\frmEliminarJugador.aspx" />
     <Content Include="Formularios\frmEliminarPersona.aspx" />
     <Content Include="Formularios\frmEliminarTorneo.aspx" />
@@ -135,10 +156,13 @@
     <Content Include="Formularios\frmIngresarEquiposTorneo.aspx" />
     <Content Include="Formularios\frmIngresarJugador.aspx" />
     <Content Include="Formularios\frmIngresarUsuario.aspx" />
+    <Content Include="Formularios\frmIniciaTorneo.aspx" />
     <Content Include="Formularios\frmListaEquipos.aspx" />
     <Content Include="Formularios\frmListaJugadores.aspx" />
+    <Content Include="Formularios\frmListaPartidos.aspx" />
     <Content Include="Formularios\frmListaPersonas.aspx" />
     <Content Include="Formularios\frmListaTorneos.aspx" />
+    <Content Include="Formularios\frmListaTorneosF.aspx" />
     <Content Include="Formularios\frmListaUsuarios.aspx" />
     <Content Include="Formularios\frmModificarEquipo.aspx" />
     <Content Include="Formularios\frmModificarJugador.aspx" />
@@ -148,7 +172,11 @@
     <Content Include="Formularios\frmModificarTorneo.aspx" />
     <Content Include="Formularios\frmModificarUsuario.aspx" />
     <Content Include="Formularios\frmPaginaPrincipal.aspx" />
+    <Content Include="Formularios\frmRegistrarEventos.aspx" />
     <Content Include="Formularios\frmSalir.aspx" />
+    <Content Include="Formularios\frmTablaGoleadores.aspx" />
+    <Content Include="Formularios\frmTablaPosiciones.aspx" />
+    <Content Include="Formularios\frmTerminaTorneo.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -167,6 +195,17 @@
     <Content Include="Modelos\ProyectoBD.edmx.diagram">
       <DependentUpon>ProyectoBD.edmx</DependentUpon>
     </Content>
+    <Content Include="progra5DataSet1.xsc">
+      <DependentUpon>progra5DataSet1.xsd</DependentUpon>
+    </Content>
+    <None Include="progra5DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>progra5DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="progra5DataSet1.xss">
+      <DependentUpon>progra5DataSet1.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Modelos\ProyectoBD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -178,7 +217,6 @@
       <DependentUpon>ProyectoBD.edmx</DependentUpon>
       <LastGenOutput>ProyectoBD.cs</LastGenOutput>
     </Content>
-    <Content Include="prueba\frmPrueba.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -286,6 +324,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmAgregarPartido.aspx.cs">
+      <DependentUpon>frmAgregarPartido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAgregarPartido.aspx.designer.cs">
+      <DependentUpon>frmAgregarPartido.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmCrearTorneo.aspx.cs">
       <DependentUpon>frmCrearTorneo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -293,12 +338,26 @@
     <Compile Include="Formularios\frmCrearTorneo.aspx.designer.cs">
       <DependentUpon>frmCrearTorneo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmDetallesPartido.aspx.cs">
+      <DependentUpon>frmDetallesPartido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmDetallesPartido.aspx.designer.cs">
+      <DependentUpon>frmDetallesPartido.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmEliminarEquipo.aspx.cs">
       <DependentUpon>frmEliminarEquipo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Formularios\frmEliminarEquipo.aspx.designer.cs">
       <DependentUpon>frmEliminarEquipo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmEliminarEquiposTorneo.aspx.cs">
+      <DependentUpon>frmEliminarEquiposTorneo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmEliminarEquiposTorneo.aspx.designer.cs">
+      <DependentUpon>frmEliminarEquiposTorneo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmEliminarJugador.aspx.cs">
       <DependentUpon>frmEliminarJugador.aspx</DependentUpon>
@@ -356,6 +415,13 @@
     <Compile Include="Formularios\frmIngresarUsuario.aspx.designer.cs">
       <DependentUpon>frmIngresarUsuario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmIniciaTorneo.aspx.cs">
+      <DependentUpon>frmIniciaTorneo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmIniciaTorneo.aspx.designer.cs">
+      <DependentUpon>frmIniciaTorneo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmListaEquipos.aspx.cs">
       <DependentUpon>frmListaEquipos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -370,6 +436,13 @@
     <Compile Include="Formularios\frmListaJugadores.aspx.designer.cs">
       <DependentUpon>frmListaJugadores.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmListaPartidos.aspx.cs">
+      <DependentUpon>frmListaPartidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmListaPartidos.aspx.designer.cs">
+      <DependentUpon>frmListaPartidos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmListaPersonas.aspx.cs">
       <DependentUpon>frmListaPersonas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -383,6 +456,13 @@
     </Compile>
     <Compile Include="Formularios\frmListaTorneos.aspx.designer.cs">
       <DependentUpon>frmListaTorneos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmListaTorneosF.aspx.cs">
+      <DependentUpon>frmListaTorneosF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmListaTorneosF.aspx.designer.cs">
+      <DependentUpon>frmListaTorneosF.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmListaUsuarios.aspx.cs">
       <DependentUpon>frmListaUsuarios.aspx</DependentUpon>
@@ -447,12 +527,40 @@
     <Compile Include="Formularios\frmPaginaPrincipal.aspx.designer.cs">
       <DependentUpon>frmPaginaPrincipal.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmRegistrarEventos.aspx.cs">
+      <DependentUpon>frmRegistrarEventos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmRegistrarEventos.aspx.designer.cs">
+      <DependentUpon>frmRegistrarEventos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmSalir.aspx.cs">
       <DependentUpon>frmSalir.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Formularios\frmSalir.aspx.designer.cs">
       <DependentUpon>frmSalir.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTablaGoleadores.aspx.cs">
+      <DependentUpon>frmTablaGoleadores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTablaGoleadores.aspx.designer.cs">
+      <DependentUpon>frmTablaGoleadores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTablaPosiciones.aspx.cs">
+      <DependentUpon>frmTablaPosiciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTablaPosiciones.aspx.designer.cs">
+      <DependentUpon>frmTablaPosiciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTerminaTorneo.aspx.cs">
+      <DependentUpon>frmTerminaTorneo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTerminaTorneo.aspx.designer.cs">
+      <DependentUpon>frmTerminaTorneo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\ProyectoMaster.Master.cs">
       <DependentUpon>ProyectoMaster.Master</DependentUpon>
@@ -491,16 +599,40 @@
     <Compile Include="Modelos\Partido.cs">
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\pa_campeon_torneo_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\pa_goleador_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\pa_lista_jugadores_partido1_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\pa_lista_jugadores_partido2_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\pa_obtener_lista_personas_Result.cs">
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\pa_obtener_lista_usuarios_Result.cs">
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\pa_obtener_partidos_torneo_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\pa_partidos_torneo_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\pa_Progra5Select1_Result.cs">
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\pa_Progra5Select2_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\pa_RetornaPosiciones_Result.cs">
+      <DependentUpon>ProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\pa_retorna_goleadores_Result.cs">
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Persona.cs">
@@ -560,14 +692,12 @@
     <Compile Include="Modelos\Usuario.cs">
       <DependentUpon>ProyectoBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="progra5DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>progra5DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="prueba\frmPrueba.aspx.cs">
-      <DependentUpon>frmPrueba.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="prueba\frmPrueba.aspx.designer.cs">
-      <DependentUpon>frmPrueba.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -652,6 +782,10 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reportes\ReporteGoleadores.rdlc" />
+    <EmbeddedResource Include="Reportes\ReporteTablaPosiciones.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
