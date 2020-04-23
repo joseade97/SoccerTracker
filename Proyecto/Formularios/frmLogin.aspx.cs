@@ -43,6 +43,7 @@ namespace Proyecto.Formularios
             if (isValid)
             {
                 Session["datosUsuario"] = user;
+                Session["permisoAdmin"] = user.es_admin ? "S" : "N";
                 ///redireccionar a la pagina inicial
                 this.Response.Redirect("~/Formularios/frmPaginaPrincipal.aspx", false);
             }
@@ -53,6 +54,7 @@ namespace Proyecto.Formularios
                 ///nombre variable, valor de la variable
                 this.lblResultado.Text = "Debe ingresar un usuario y/o contraseña válidos";
                 Session["datosUsuario"] = null;
+                Session["permisoAdmin"] = null;
             }
         }
     }
