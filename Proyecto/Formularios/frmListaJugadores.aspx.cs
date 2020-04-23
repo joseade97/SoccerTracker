@@ -10,13 +10,16 @@ namespace Proyecto.Formularios
 {
     public partial class frmListaJugadores : System.Web.UI.Page
     {
+        ///Se crean variables de clase para la gestión del formulario
         ProyectoBD modelo = new ProyectoBD();
         int id_equipo;
         protected void Page_Load(object sender, EventArgs e)
         {
+            ///se verificac que el equipo exista
             bool existeEquipo = Int32.TryParse(Request.QueryString["id_equipo"], out id_equipo);
             if (!IsPostBack)
             {
+                ///se carga la lista de jugadores del equipo
                 var lista = (from j in modelo.Jugadores
                              where j.id_equipo == id_equipo
                                    || !existeEquipo
@@ -30,6 +33,7 @@ namespace Proyecto.Formularios
                                  equipo = eq.nombre,
                                  posicion = r.nombre
                              }).ToList();
+                ///se agrega la lista al grid
                 grdJugadores.DataSource = lista;
                 grdJugadores.DataBind();
             }

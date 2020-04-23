@@ -11,6 +11,7 @@ namespace Proyecto.Formularios
 {
     public partial class frmLogin : System.Web.UI.Page
     {
+        ///Se crean variables de clase para la gestión del formulario
         ProyectoBD modelo = new ProyectoBD();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,7 +27,7 @@ namespace Proyecto.Formularios
         }
         void RealizarAutenticacion()
         {
-
+            ///se obtiene el usuario y contraseña ingresados en el formulario
             var hasher = new PasswordHasher();
 
             string nomUsuario = this.txtUsuario.Text;

@@ -12,10 +12,12 @@ namespace Proyecto.Formularios
 {
     public partial class frmModificarEquipo : System.Web.UI.Page
     {
+        ///Se crean variables de clase para la gestión del formulario
         ProyectoBD modelo = new ProyectoBD();
         int id;
         protected void Page_Load(object sender, EventArgs e)
         {
+            ///se cargan los datos del equipo a modificar
             id = Int32.Parse(Request.QueryString["id_equipo"]);
             if (!IsPostBack)
             {
@@ -25,17 +27,21 @@ namespace Proyecto.Formularios
 
         protected void InitForm()
         {
+            ///se carga la informacion del equipo a modificar
             var equipo = (from e in modelo.Equipos
                           where e.id == id
                           select e).FirstOrDefault();
-
+            ///se asigna la informacion a los campos
             EstablecerDdls(equipo);
             txtFecFund.Text = ((DateTime)equipo.fecha_fundacion).ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
             txtNombre.Text = equipo.nombre;
             EstablecerDatosFundador(equipo);
 
         }
-
+        /// <summary>
+        /// se obtiene los datos del fundador y se asigna a los campos destinados
+        /// </summary>
+        /// <param name="equipo"></param>
         protected void EstablecerDatosFundador(Equipos equipo)
         {
             var fundador = (from f in modelo.Personas
@@ -47,6 +53,10 @@ namespace Proyecto.Formularios
             txtNombreFundador.Text = fundador.nombre_fundador;
         }
 
+        /// <summary>
+        /// se obtiene informacion de las zonas y se agregan a los campos destinados
+        /// </summary>
+        /// <param name="equipo"></param>
         protected void EstablecerDdls(Equipos equipo)
         {
             var zonas = (from d in modelo.Distritos
@@ -89,7 +99,11 @@ namespace Proyecto.Formularios
             ddlDistrito.SelectedValue = zonas.distrito.ToString();
 
         }
-
+        /// <summary>
+        /// se verifica que el numero de identificacion exista para devolver nombre del fundador
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnVal_Click(object sender, EventArgs e)
         {
             var persona = (from u in modelo.Personas
@@ -105,9 +119,10 @@ namespace Proyecto.Formularios
                 Utilidades.CreateMessageByScript(ClientScript, GetType(), "No hay ninguna persona registrada con ese número de identificación.");
             }
         }
-
+        ///Evento submit para modificar el equipo
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            ///Valida datos
             if (IsValid)
             {
                 if (!String.IsNullOrEmpty(hdfIdFundador.Value))
@@ -134,7 +149,7 @@ namespace Proyecto.Formularios
                 }
             }
         }
-
+        ///se asignan los datos de las provincias
         protected void ddlProvincia_SelectedIndexChanged(object sender, EventArgs e)
         {
             var provincia = Int32.Parse(ddlProvincia.SelectedValue);
@@ -148,6 +163,7 @@ namespace Proyecto.Formularios
             ddlCanton.DataBind();
             ddlCanton.Items.Insert(0, new ListItem("Seleccione", ""));
         }
+        ///se asignan los datos de los cantones segun la provincia
         protected void ddlCanton_SelectedIndexChanged(object sender, EventArgs e)
         {
             var canton = Int32.Parse(ddlCanton.SelectedValue);
@@ -162,7 +178,7 @@ namespace Proyecto.Formularios
             ddlDistrito.DataBind();
             ddlDistrito.Items.Insert(0, new ListItem("Seleccione", ""));
         }
-
+        ///se asginan los datos de los distritos segun el canton
         protected void ModificarEquipo(Equipos nEquipo)
         {
             nEquipo.nombre = txtNombre.Text;

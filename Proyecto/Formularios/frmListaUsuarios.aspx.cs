@@ -11,6 +11,7 @@ namespace Proyecto.Formularios
 {
     public partial class frmListaUsuarios : System.Web.UI.Page
     {
+        ///Se crean variables de clase para la gestión del formulario
         ProyectoBD modelo = new ProyectoBD();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,13 +23,16 @@ namespace Proyecto.Formularios
 
         protected void InitList()
         {
+            ///se obtiene la lista de usuarios
             var lista = modelo.pa_obtener_lista_usuarios("");
+            ///se agrega la lista al grid
             grdUsuarios.DataSource = lista;
             grdUsuarios.DataBind();
         }
 
         protected void grdUsuarios_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            ///se agregan los datos de y a una nueva pagina del grid
             grdUsuarios.PageIndex = e.NewPageIndex;
             InitList();
         }
